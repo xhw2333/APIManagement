@@ -1,0 +1,161 @@
+
+#side-nav ul{
+    padding-top: 40px;
+}
+
+.side-tabs {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+
+#operation-mine{
+    display: flex;
+    margin: 24px 0 0 16px;
+    /* justify-content: space-around; */
+    user-select: none;
+}
+
+.side-now {
+    background-color: #E5E5E5;
+}
+
+.side-tabs:hover {
+    background-color: #E5E5E5;
+}
+
+
+.mine-project,
+.mine-nozzle {
+    /* width: 800px; */
+    padding: 0 5px;
+    background-color: #fff;
+}
+
+.mine-nozzle {
+    /* max-width: 800px; */
+}
+
+.project-title,
+.nozzle-title {
+    margin-left: 10px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+}
+
+.project-pane thead,
+.nozzle-pane thead {
+    background-color: #F2F2F2;
+}
+
+.project-pane thead th {
+    padding: 10px 20px;
+    border: 0;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.project-pane tbody td {
+    padding: 10px 20px;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.project-footer,
+.nozzle-footer {
+    display: flex;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px;
+    margin-top: 10px;
+    justify-content: flex-end;
+    background-color: #F2F2F2;
+}
+
+.project-footer div,
+.nozzle-footer div {
+    margin: 0 5px;
+}
+
+.nozzle-title {
+    margin-top: 16px;
+}
+
+.nozzle-pane thead th {
+    padding: 10px 20px;
+    border: 0;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.nozzle-pane tbody td {
+    padding: 10px 20px;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.nozzle-pane tbody tr td span {
+    padding: 2px 5px;
+    color: #4FC1E9;
+    border: 1px solid #4FC1E9;
+    border-radius: 5px;
+}
+
+#nozzle-item td{
+    padding: 5px 10px;
+    
+    text-align: left;
+}
+
+#nozzle-item i {
+    padding: 5px ;
+    color: #ADADAD;
+    background-color: #E5E5E5;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.mine-message {
+    width: 240px;
+    margin-left: 25px;
+    padding: 28px 24px;
+    background-color: #fff;
+
+}
+
+.message-portrait {
+    display: flex;
+    margin: 10px 0;
+    justify-content: center;
+    align-content: center;
+}
+
+.message-portrait img {
+    width: 80px;
+    height: 80px;
+}
+
+.message-name h4,
+.message-email h4{
+    margin: 10px 0;
+    color: #ADADAD;
+}
+
+.message-name p,
+.message-email p {
+    height: 32px;
+    line-height: 32px;
+}
+
+#operation-team {
+    
+}
+
+.team-man {
+    background-color: #fff;
+}

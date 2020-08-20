@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/personal.css">
+</head>
+<body>
+    <div id="top">
+        <ul id="top-nav">
+            <li class="top-choose">
+                <a href="">API管理</a>
+            </li>
+            <li class="">
+                <a href="">我的</a> 
+            </li>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="side-nav">
+            <!-- 左边导航 -->
+            <ul>
+                <li class="side-tabs side-now">我的信息</li>
+                <li class="side-tabs">我的团队</li>
+            </ul>
+        </div>
+        <div id="operation">
+            <!-- 右边内容 -->
+            <!-- 我的信息 -->
+            <div id="operation-mine" class="operation-part">
+                <div class="mine-relate">
+                    <div class="mine-project">
+                        <h3 class="project-title">我参与的项目</h3>
+                        <table class="project-pane">
+                            <thead>
+                                <tr>
+                                    <th>项目名称</th>
+                                    <th>版本号</th>
+                                    <th>类型</th>
+                                    <th>最后更新时间</th>
+                                    <th>操作</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>一个版面最多显示6行项目</td>
+                                    <td>V 1.0</td>
+                                    <td>Web</td>
+                                    <td>2020-08-18 13:07:18</td>
+                                    <td>编辑</td>
+                                    <td>新标签页打开</td>
+                                    <td>更多></td>
+                                </tr>
+                                <tr>
+                                    <td>多了的话就做分页</td>
+                                    <td>V 1.0</td>
+                                    <td>Web</td>
+                                    <td>2020-08-18 13:07:18</td>
+                                    <td>编辑</td>
+                                    <td>新标签页打开</td>
+                                    <td>更多></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="project-footer">
+                            <div class="project-footer-pre"><p href="">上一页</p></div>
+                            <ul id="project-page-ul">
+                            </ul>
+                            <div class="project-footer-nxt"><p href="">下一页</p></div>
+                            <!-- <div class="project-switch"><p>跳转第</p><input type="text" id="opt-topage"><p>页</p></div> -->
+                        </div>
+                    </div>
+                    <div class="mine-nozzle">
+                        <h3 class="nozzle-title">我参与的接口</h3>
+                        <table class="nozzle-pane">
+                            <thead>
+                                <tr>
+                                    <th>APIs</th>
+                                    <th>请求方式</th>
+                                    <th>URL</th>
+                                    <th>最近更新者</th>
+                                    <th>最后更新时间</th>
+                                    <!-- <th></th>
+                                    <th></th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="nozzle-item">
+                                    <td>
+                                        <i>项目一</i> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>已发布</span>
+                                        获取统计图表所需要的数据
+                                    </td>
+                                    <td>
+                                        <span>POST</span>
+                                    </td>
+                                    <td>https://www.ba.com/graphic</td>
+                                    <td>阿斌</td>
+                                    <td>2020-08-18</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>已发布</span>
+                                        获取统计图表所需要的数据
+                                    </td>
+                                    <td>
+                                        <span>POST</span>
+                                    </td>
+                                    <td>/graphic</td>
+                                    <td>阿斌</td>
+                                    <td>2020-08-18</td>
+                                    
+                                </tr>
+                                <tr id="nozzle-item">
+                                    <td>
+                                        <i>项目二</i> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>已发布</span>
+                                        获取统计图表所需要的数据
+                                    </td>
+                                    <td>
+                                        <span>POST</span>
+                                    </td>
+                                    <td>/graphic</td>
+                                    <td>阿斌</td>
+                                    <td>2020-08-18</td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="nozzle-footer">
+                            <div class="nozzle-footer-pre"><p href="">上一页</p></div>
+                            <ul id="nozzle-page-ul">
+                            </ul>
+                            <div class="nozzle-footer-nxt"><p href="">下一页</p></div>
+                            <!-- <div class="project-switch"><p>跳转第</p><input type="text" id="opt-topage"><p>页</p></div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="mine-message">
+                    <h3 class="message-title">基本信息</h3>
+                    <div class="message-portrait">
+                        <img src="../images/my.png" alt="">
+                    </div>
+                    <div class="message-name">
+                        <h4>昵称（建议使用真实姓名）</h4>
+                        <p>阿斌</p>
+                    </div>
+                    <div class="message-email">
+                        <h4>注册邮箱</h4>
+                        <p>1234567890@qq.com</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 成员管理 -->
+            <div id="operation-team" class="operation-part hide">
+                <div class="team-man">
+                    <div class="team-member">
+                        <h3>所有成员</h3>
+                        <div class="member-search">
+                            
+                        </div>
+                    </div>
+                    <div class="team-creator">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/personal.js"></script>
+</body>
+</html>
