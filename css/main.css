@@ -1,7 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family:Source Han Sans CN;
 }
 
 li, ul, ol {
@@ -22,6 +23,8 @@ button {
 
 body {
     background-color: #E5E5E5;
+    width: 100%;
+    height: 100vh;
 }
 
 .hide {
@@ -29,14 +32,19 @@ body {
 }
 
 #top {
+    position: fixed;
+    top: 0;
     background-color: #313131;
     height: 48px;
+    width: 100%;
     line-height: 48px;
+    overflow: hidden;
 }
 
-#top-nav{
+#top-nav {
     display: flex;
     margin-left: 250px;
+    height: 48px;
 }
 
 #top-nav li {
@@ -44,7 +52,12 @@ body {
     text-align: center;
 }
 
-.top-api {
+#top-nav li:hover {
+    background-color: rgba(122, 87, 209, 0.4)
+}
+
+.top-choose {
+    border-top: solid 5px rgba(122, 87, 209, .7);
     background-color: rgba(122, 87, 209, 0.4);
 }
 
@@ -54,10 +67,15 @@ body {
 
 #content {
     display: flex;
+    height: 100%;
+}
+
+#content>div {
+    padding-top: 48px;
 }
 
 #side-nav {
     width: 250px;
-    height: 90vh;
+    /* s */
     background-color: #F2F2F2;
 }
