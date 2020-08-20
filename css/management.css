@@ -2,6 +2,11 @@
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 
+.rount {
+    transform: rotate(90deg);
+    transition: 1s ease;
+}
+
 #api-nav-new {
     display: flex;
     flex-wrap: wrap;
@@ -23,7 +28,6 @@
     vertical-align: middle;
     color: #7A57D1;
     font-size: 12px;
-    cursor: pointer;
 }
 
 #api-nav-new>div:nth-child(2) {
@@ -40,3 +44,75 @@
     vertical-align: middle;
 }
 
+/* 套娃 */
+
+#api-module>li>div:hover {
+    background-color: #E5E5E5;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
+.api-main-li {
+    width: 238px;
+    min-height: 40px;
+    line-height: 40px;
+}
+
+.api-li {
+    position: relative;
+    padding-left: 12px;
+}
+
+.api-li img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.api-li img:first-child {
+    cursor: pointer;
+}
+
+.api-li span {
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(123, 123, 123, 1);
+}
+
+.api-more {
+    margin: auto;
+    position: absolute;
+    right: 8px;
+    top: 0;
+    bottom: 0;
+    width: 24px !important;
+    height: 24px !important;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#api-module div:hover {
+    background-color: #E5E5E5;
+    cursor: pointer;
+}
+
+.api-child-module {
+    margin: 0 8px;
+}
+
+.api-child-module ul {
+    margin: 0 0 0 8px;
+}
+
+.api-child-module div {
+    height: 24px !important;
+    line-height: 24px !important;
+}
+
+/* 右边 */
+
+.api-body-out {
+    width: 100%;
+    height: 100%;
+    margin: 22px 16px;
+    background-color: rgba(242, 242, 242, 1);
+}
