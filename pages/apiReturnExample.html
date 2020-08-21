@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API管理</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/management.css">
+    <link rel="stylesheet" href="../css/apiDetail.css">
+    <link rel="stylesheet" href="../css/apiReturnExample.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="top">
+        <ul id="top-nav">
+            <li class="top-choose"><a href="">API管理</a></li>
+            <li><a href="">我的</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <!-- 左边导航 -->
+        <div id="side-nav">
+            <div id="api-nav-new">
+                <div>创建新项目</div>
+                <div>
+                    <img src="../images/piliang.png">导入
+                </div>
+            </div>
+            <ul id="api-module">
+                <li>
+                    <div class="api-main-li api-li api-shadow">
+                        <img src="../images/list.png" class="rount">
+                        <img src="../images/pack.png">
+                        <span>项目1</span>
+                        <img src="../images/more.png" class="api-more">
+                    </div>
+
+                    <ul class="api-child-module">
+                        <li>
+                            <div class="api-li api-child-main">
+                                <img src="../images/list.png" class="rount">
+                                <img src="../images/pack.png">
+                                <span>项目1</span>
+                                <img src="../images/more.png" class="api-more">
+                            </div>
+
+                            <ul class="api-child-module">
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="rount">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="api-li api-child-main">
+                                <img src="../images/list.png" class="">
+                                <img src="../images/pack.png">
+                                <span>项目1</span>
+                                <img src="../images/more.png" class="api-more">
+                            </div>
+
+
+                        </li>
+                        <li>
+                            <div class="api-li api-child-main">
+                                <img src="../images/list.png" class="rount">
+                                <img src="../images/pack.png">
+                                <span>项目1</span>
+                                <img src="../images/more.png" class="api-more">
+                            </div>
+
+                            <ul class="api-child-module">
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="api-main-li api-li api-shadow">
+                        <img src="../images/list.png" class="rount">
+                        <img src="../images/pack.png">
+                        <span>项目1</span>
+                        <img src="../images/more.png" class="api-more">
+                    </div>
+
+                    <ul class="api-child-module">
+                        <li>
+                            <div class="api-li api-child-main">
+                                <img src="../images/list.png" class="rount">
+                                <img src="../images/pack.png">
+                                <span>项目1</span>
+                                <img src="../images/more.png" class="api-more">
+                            </div>
+
+                            <ul class="api-child-module">
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="rount">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- 右边内容 -->
+        <div id="operation" class="ope-sha">
+
+            <div class="detail-top">
+                <button type="button">
+                    <img src="../images/piliang.png">返回API列表
+                </button>
+                <button>保存</button>
+            </div>
+            <div id="detail-main-nav">
+                <div>API描述</div>
+                <div class="detail-main-nav-choose">返回示例</div>
+            </div>
+
+            <!-- 页面内容 -->
+            <div class="detail-main">
+
+                <!-- 请求参数 -->
+                <div class="detail-req-res">
+                    <!-- 标题 -->
+                    <div class="magin-top-12">
+                        请求参数
+                        <div class="detail-req-res-open">
+                            <span>展开</span>
+                            <img src="../images/nav.png">
+                        </div>
+                    </div>
+                    <!-- 主体 -->
+                    <div>
+                        <div class="detail-req-res-nav">
+                            <div class="detail-req-res-nav-choose">请求头部</div>
+                            <div>请求体</div>
+                        </div>
+
+                        <!-- 请求头部 -->
+                        <div class="detail-req-div">
+                            <img src="../images/pack.png"><span>导入</span>
+                            <table class="table detail-table detail-table-w">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>标签</th>
+                                        <th>必填</th>
+                                        <th>示例</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w50"></td>
+                                        <td>
+                                            <select>
+                                                <option>aaa</option>
+                                                <option>bbb</option>
+                                            </select>
+                                        </td>
+                                        <td class="w50"><input type="checkbox"></td>
+                                        <td><input type="text"></td>
+                                        <td>更多设置 | 删除</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-grey w50">添加</td>
+                                        <td>
+                                            <select>
+                                                <option>aaa</option>
+                                                <option>bbb</option>
+                                            </select>
+                                        </td>
+                                        <td class="w50"></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 请求体 -->
+                        <div class="detail-req-div hide">
+                            <div class="detail-req-body">
+                                <div>
+                                    <input type="radio" name="api-head">
+                                    <span>Form-data</span>
+                                </div>
+                                <div>
+                                    <input type="radio" name="api-head">
+                                    <span>JSON</span>
+                                </div>
+                                <div>
+                                    <input type="radio" name="api-head">
+                                    <span>Binary</span>
+                                </div>
+                                <div>
+                                    <input type="radio" name="api-head">
+                                    <span>Raw</span>
+                                </div>
+                                <div>
+                                    <span>转换为</span>
+                                    <select>
+                                        <option>选择格式</option>
+                                        <option>JSON</option>
+                                        <option>JSON Schema</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <span>导入</span>
+                                    <select>
+                                        <option>选择格式</option>
+                                        <option>XML</option>
+                                        <option>Raw</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <table class="table detail-table detail-w14">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>参数名</th>
+                                        <th>类型</th>
+                                        <th>必填</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td><input type="text"></td>
+                                        <td>
+                                            <select>
+                                                <option>String</option>
+                                                <option>bool</option>
+                                            </select>
+                                        </td>
+                                        <td class="w50"><input type="checkbox"></td>
+                                        <td>更多设置 | 插入 | 删除</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-grey">添加</td>
+                                        <td>
+                                            <!-- <input type="text"> -->
+                                        </td>
+                                        <td>
+                                            <!-- <select>
+                                                <option>aaa</option>
+                                                <option>bbb</option>
+                                            </select> -->
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 响应内容 -->
+                <div class="detail-req-res">
+                    <!-- nav -->
+                    <div>
+                        响应内容
+                        <div class="detail-req-res-open">
+                            <span>展开</span>
+                            <img src="../images/nav.png">
+                        </div>
+                    </div>
+
+                    <!-- 主体 -->
+                    <div>
+                        <div class="detail-req-res-nav">
+                            <div class="detail-req-res-nav-choose">返回头部</div>
+                            <div>返回结果</div>
+                        </div>
+
+                        <!-- 返回头部 -->
+                        <div class="detail-req-div">
+                            <img src="../images/pack.png"><span>导入</span>
+                            <table class="table detail-table detail-table-w">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>标签</th>
+                                        <th>必填</th>
+                                        <th>示例</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <select>
+                                                <option>aaa</option>
+                                                <option>bbb</option>
+                                            </select>
+                                        </td>
+                                        <td class="w50"><input type="checkbox"></td>
+                                        <td><input type="text"></td>
+                                        <td>更多设置 | 删除</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-grey">添加</td>
+                                        <td>
+                                            <select>
+                                                <option>aaa</option>
+                                                <option>bbb</option>
+                                            </select>
+                                        </td>
+                                        <td class="w50"></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 返回结果 -->
+                        <div class="detail-req-div hide">
+                            <div class="detail-req-body">
+                                <div>
+                                    <input type="radio" name="api-head">
+                                    <span>Form-data</span>
+                                </div>
+                                <div>
+                                    <input type="radio" name="api-head">
+                                    <span>JSON</span>
+                                </div>
+                                <div>
+                                    <input type="radio" name="api-head">
+                                    <span>Binary</span>
+                                </div>
+                                <div>
+                                    <input type="radio" name="api-head">
+                                    <span>Raw</span>
+                                </div>
+                                <div>
+                                    <span>转换为</span>
+                                    <select>
+                                        <option>选择格式</option>
+                                        <option>JSON</option>
+                                        <option>JSON Schema</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <span>导入</span>
+                                    <select>
+                                        <option>选择格式</option>
+                                        <option>XML</option>
+                                        <option>Raw</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <table class="table detail-table detail-w14">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>字段名</th>
+                                        <th>类型</th>
+                                        <th>必填</th>
+                                        <th>说明</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td><input type="text"></td>
+                                        <td>
+                                            <select>
+                                                <option>String</option>
+                                                <option>bool</option>
+                                            </select>
+                                        </td>
+                                        <td class="w50"><input type="checkbox"></td>
+                                        <td><input type="text"></td>
+                                        <td>更多设置 | 插入 | 删除</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-grey">添加</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="w50"></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
