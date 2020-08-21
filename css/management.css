@@ -27,19 +27,20 @@
     text-align: center;
     vertical-align: middle;
     color: #7A57D1;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 #api-nav-new>div:nth-child(2) {
     margin-right: 8px;
-    font-size: 12px;
+    font-size: 14px;
     font-family: Source Han Sans CN;
     font-weight: 400;
     line-height: 20px;
     color: rgba(123, 123, 123, 1);
 }
 
-#api-nav-new input {
+#api-nav-new img {
+    height: 16px;
     margin-right: 4px;
     vertical-align: middle;
 }
@@ -52,14 +53,14 @@
 }
 
 .api-main-li {
-    width: 238px;
+    /* width: 244px; */
     min-height: 40px;
     line-height: 40px;
 }
 
 .api-li {
     position: relative;
-    padding-left: 12px;
+    padding-left: 16px;
 }
 
 .api-li img {
@@ -111,8 +112,165 @@
 /* 右边 */
 
 .api-body-out {
-    width: 100%;
-    height: 100%;
+    /*     width: 100%;
+    height: 100%; */
+    position: relative;
+    height: calc(100% - 44px);
+    min-width: 900px;
     margin: 22px 16px;
     background-color: rgba(242, 242, 242, 1);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
+.api-new-search {
+    position: relative;
+    display: inline-block;
+    height: 48px;
+    width: 100%;
+    line-height: 48px;
+    background-color: white;
+}
+
+.api-new-search button {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px;
+    margin: 0 16px;
+    background: rgba(122, 87, 209, 1);
+    border: 1px solid rgba(122, 87, 209, 1);
+    border-radius: 4px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.api-new-search>img {
+    width: 16px;
+    height: 16px;
+    margin: 0 4px;
+}
+
+.api-new-search span {
+    margin-right: 16px;
+    font-size: 14px;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(49, 49, 49, 1);
+}
+
+.api-new-search>div {
+    position: absolute;
+    right: 24px;
+    top: 8px;
+    width: 192px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid rgba(173, 173, 173, 1);
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.api-search img {
+    width: 24px;
+    height: 24px;
+    margin-top: -5px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.api-search input {
+    height: 100%;
+    width: 82%;
+}
+
+/* 项目接口内容 */
+
+.table-out {
+    margin-bottom: 48px;
+    height: calc(100% - 92px);
+    overflow-y: auto;
+}
+
+.table>thead {
+    height: 32px;
+    border: none;
+}
+
+.table>thead th {
+    border-bottom: none !important;
+    border-right: 1px solid rgba(229, 229, 229, 1);
+}
+
+.table>thead th:first-child {
+    padding-left: 40px;
+}
+
+.table>thead th:last-child {
+    border: none;
+}
+
+.table>tbody>tr>td {
+    border-top: 0 !important;
+}
+
+.table>thead img {
+    float: right;
+    height: 16px;
+}
+
+#api-tbody {
+    background-color: white;
+}
+
+#api-tbody tr:hover {
+    cursor: pointer;
+    background-color: rgb(239, 239, 239);
+}
+
+#api-tbody>tr td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#api-tbody>tr td:first-child {
+    padding-left: 40px;
+    max-width: 272px;
+}
+
+#api-tbody>tr td:nth-child(3) {
+    max-width: 240px;
+    text-overflow: ellipsis;
+}
+
+.my-border {
+    display: inline-block;
+    min-width: 52px;
+    height: 24px;
+    font-size: 14px;
+    text-align: center;
+    background: transparent;
+    border-radius: 4px;
+}
+
+.my-border-blue {
+    border: 1px solid rgba(79, 193, 233, 1);
+    color: rgba(79, 193, 233, 1);
+}
+
+.my-border-green {
+    border: 1px solid rgba(91, 231, 196, 1);
+    color: rgba(91, 231, 196, 1);
+}
+
+#table-bottom {
+    position: absolute;
+    bottom: 0;
+    height: 48px;
+    line-height: 48px;
+    width: 100%;
+    color: black;
+    padding-left: 48px;
+    background-color: rgba(229, 229, 229, 1);
 }

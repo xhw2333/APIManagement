@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API管理</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/management.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="top">
+        <ul id="top-nav">
+            <li class="top-choose"><a href="">API管理</a></li>
+            <li><a href="">我的</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="side-nav">
+            <!-- 左边导航 -->
+            <div id="api-nav-new">
+                <div>创建新项目</div>
+                <div>
+                    <img src="../images/piliang.png">导入
+                </div>
+            </div>
+            <ul id="api-module">
+                <li>
+                    <div class="api-main-li api-li api-shadow">
+                        <img src="../images/list.png" class="rount">
+                        <img src="../images/pack.png">
+                        <span>项目1</span>
+                        <img src="../images/more.png" class="api-more">
+                    </div>
+
+                    <ul class="api-child-module">
+                        <li>
+                            <div class="api-li api-child-main">
+                                <img src="../images/list.png" class="rount">
+                                <img src="../images/pack.png">
+                                <span>项目1</span>
+                                <img src="../images/more.png" class="api-more">
+                            </div>
+
+                            <ul class="api-child-module">
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="rount">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="api-li api-child-main">
+                                <img src="../images/list.png" class="">
+                                <img src="../images/pack.png">
+                                <span>项目1</span>
+                                <img src="../images/more.png" class="api-more">
+                            </div>
+
+
+                        </li>
+                        <li>
+                            <div class="api-li api-child-main">
+                                <img src="../images/list.png" class="rount">
+                                <img src="../images/pack.png">
+                                <span>项目1</span>
+                                <img src="../images/more.png" class="api-more">
+                            </div>
+
+                            <ul class="api-child-module">
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="api-main-li api-li api-shadow">
+                        <img src="../images/list.png" class="rount">
+                        <img src="../images/pack.png">
+                        <span>项目1</span>
+                        <img src="../images/more.png" class="api-more">
+                    </div>
+
+                    <ul class="api-child-module">
+                        <li>
+                            <div class="api-li api-child-main">
+                                <img src="../images/list.png" class="rount">
+                                <img src="../images/pack.png">
+                                <span>项目1</span>
+                                <img src="../images/more.png" class="api-more">
+                            </div>
+
+                            <ul class="api-child-module">
+                                <li>
+                                    <div class="api-li api-child-main">
+                                        <img src="../images/list.png" class="rount">
+                                        <img src="../images/pack.png">
+                                        <span>项目1</span>
+                                        <img src="../images/more.png" class="api-more">
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+        <div id="operation">
+            <!-- 右边内容 -->
+            <div class="api-body-out">
+                <div class="api-new-search">
+                    <button type="button">+ 新建API项目</button>
+                    <img src="../images/piliang.png"><span>批量操作</span>
+                    <img src="../images/piliang.png"><span>导出</span>
+                    <div class="api-search">
+                        <img src="../images/find.png">
+                        <input type="text" placeholder="搜索API">
+                    </div>
+                </div>
+
+                <div class="table-out">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>APIs<img src="../images/xianshi.png"></th>
+                                <!-- <th>
+                                    <select>
+                                        <option>APIs</option>
+                                    </select>
+                                </th> -->
+                                <th>请求方式<img src="../images/xianshi.png"></th>
+                                <th>URL<img src="../images/xianshi.png"></th>
+                                <th>最近更新者<img src="../images/xianshi.png"></th>
+                                <th>最近更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="api-tbody">
+                            <tr>
+                                <td>
+                                    <div class="my-border my-border-blue">已发布</div>
+                                    ${name}${name}${name}${name}${name}${name}${name}
+                                </td>
+                                <td>
+                                    <div class="my-border my-border-blue">POST</div>
+                                </td>
+                                <td>${group}</td>
+                                <td>${evaluation}</td>
+                                <td>2020-8-20 23:23:48</td>
+                                <td>编辑 | 新标签页打开 | 更多
+                                    <svg class="tr-change" t="1596188186738" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2935" fill=""
+                                        height="17.5px">
+                                        <path
+                                            d="M768.928 334.016l-94.208-94.208L300.544 614.016l-4.416 98.592 98.592-4.416 374.208-374.176zM862.048 777.472H246.048a44.16 44.16 0 0 0-44 44 44.16 44.16 0 0 0 44 44h616a44.16 44.16 0 0 0 44-44c0-24.192-19.776-44-44-44zM787.716 315.2l-94.208-94.208 26.4-26.4a39.488 39.488 0 0 1 55.648 0l38.56 38.56a39.488 39.488 0 0 1 0 55.648l-26.4 26.4z"
+                                            p-id="2936"></path>
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="my-border my-border-blue">已发布</div>
+                                    ${name}${name}${name}${name}${name}${name}${name}
+                                </td>
+                                <td>
+                                    <div class="my-border my-border-blue">POST</div>
+                                </td>
+                                <td>${group}</td>
+                                <td>${evaluation}</td>
+                                <td>2020-8-20 23:23:48</td>
+                                <td>编辑 | 新标签页打开 | 更多
+                                    <svg class="tr-change" t="1596188186738" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2935" fill=""
+                                        height="17.5px">
+                                        <path
+                                            d="M768.928 334.016l-94.208-94.208L300.544 614.016l-4.416 98.592 98.592-4.416 374.208-374.176zM862.048 777.472H246.048a44.16 44.16 0 0 0-44 44 44.16 44.16 0 0 0 44 44h616a44.16 44.16 0 0 0 44-44c0-24.192-19.776-44-44-44zM787.716 315.2l-94.208-94.208 26.4-26.4a39.488 39.488 0 0 1 55.648 0l38.56 38.56a39.488 39.488 0 0 1 0 55.648l-26.4 26.4z"
+                                            p-id="2936"></path>
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="my-border my-border-blue">已发布</div>
+                                    ${name}${name}${name}${name}${name}${name}${name}
+                                </td>
+                                <td>
+                                    <div class="my-border my-border-blue">POST</div>
+                                </td>
+                                <td>${group}</td>
+                                <td>${evaluation}</td>
+                                <td>2020-8-20 23:23:48</td>
+                                <td>编辑 | 新标签页打开 | 更多
+                                    <svg class="tr-change" t="1596188186738" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2935" fill=""
+                                        height="17.5px">
+                                        <path
+                                            d="M768.928 334.016l-94.208-94.208L300.544 614.016l-4.416 98.592 98.592-4.416 374.208-374.176zM862.048 777.472H246.048a44.16 44.16 0 0 0-44 44 44.16 44.16 0 0 0 44 44h616a44.16 44.16 0 0 0 44-44c0-24.192-19.776-44-44-44zM787.716 315.2l-94.208-94.208 26.4-26.4a39.488 39.488 0 0 1 55.648 0l38.56 38.56a39.488 39.488 0 0 1 0 55.648l-26.4 26.4z"
+                                            p-id="2936"></path>
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="my-border my-border-blue">已发布</div>
+                                    ${name}${name}${name}${name}${name}${name}${name}
+                                </td>
+                                <td>
+                                    <div class="my-border my-border-blue">POST</div>
+                                </td>
+                                <td>${group}</td>
+                                <td>${evaluation}</td>
+                                <td>2020-8-20 23:23:48</td>
+                                <td>编辑 | 新标签页打开 | 更多
+                                    <svg class="tr-change" t="1596188186738" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2935" fill=""
+                                        height="17.5px">
+                                        <path
+                                            d="M768.928 334.016l-94.208-94.208L300.544 614.016l-4.416 98.592 98.592-4.416 374.208-374.176zM862.048 777.472H246.048a44.16 44.16 0 0 0-44 44 44.16 44.16 0 0 0 44 44h616a44.16 44.16 0 0 0 44-44c0-24.192-19.776-44-44-44zM787.716 315.2l-94.208-94.208 26.4-26.4a39.488 39.488 0 0 1 55.648 0l38.56 38.56a39.488 39.488 0 0 1 0 55.648l-26.4 26.4z"
+                                            p-id="2936"></path>
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="my-border my-border-blue">已发布</div>
+                                    ${name}${name}${name}${name}${name}${name}${name}
+                                </td>
+                                <td>
+                                    <div class="my-border my-border-blue">POST</div>
+                                </td>
+                                <td>${group}</td>
+                                <td>${evaluation}</td>
+                                <td>2020-8-20 23:23:48</td>
+                                <td>编辑 | 新标签页打开 | 更多
+                                    <svg class="tr-change" t="1596188186738" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2935" fill=""
+                                        height="17.5px">
+                                        <path
+                                            d="M768.928 334.016l-94.208-94.208L300.544 614.016l-4.416 98.592 98.592-4.416 374.208-374.176zM862.048 777.472H246.048a44.16 44.16 0 0 0-44 44 44.16 44.16 0 0 0 44 44h616a44.16 44.16 0 0 0 44-44c0-24.192-19.776-44-44-44zM787.716 315.2l-94.208-94.208 26.4-26.4a39.488 39.488 0 0 1 55.648 0l38.56 38.56a39.488 39.488 0 0 1 0 55.648l-26.4 26.4z"
+                                            p-id="2936"></path>
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="my-border my-border-blue">已发布</div>
+                                    ${name}${name}${name}${name}${name}${name}${name}
+                                </td>
+                                <td>
+                                    <div class="my-border my-border-blue">POST</div>
+                                </td>
+                                <td>${group}</td>
+                                <td>${evaluation}</td>
+                                <td>2020-8-20 23:23:48</td>
+                                <td>编辑 | 新标签页打开 | 更多
+                                    <svg class="tr-change" t="1596188186738" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2935" fill=""
+                                        height="17.5px">
+                                        <path
+                                            d="M768.928 334.016l-94.208-94.208L300.544 614.016l-4.416 98.592 98.592-4.416 374.208-374.176zM862.048 777.472H246.048a44.16 44.16 0 0 0-44 44 44.16 44.16 0 0 0 44 44h616a44.16 44.16 0 0 0 44-44c0-24.192-19.776-44-44-44zM787.716 315.2l-94.208-94.208 26.4-26.4a39.488 39.488 0 0 1 55.648 0l38.56 38.56a39.488 39.488 0 0 1 0 55.648l-26.4 26.4z"
+                                            p-id="2936"></path>
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="my-border my-border-blue">已发布</div>
+                                    ${name}${name}${name}${name}${name}${name}${name}
+                                </td>
+                                <td>
+                                    <div class="my-border my-border-blue">POST</div>
+                                </td>
+                                <td>${group}</td>
+                                <td>${evaluation}</td>
+                                <td>2020-8-20 23:23:48</td>
+                                <td>编辑|新标签页打开|更多
+                                    <svg class="tr-change" t="1596188186738" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2935" fill=""
+                                        height="17.5px">
+                                        <path
+                                            d="M768.928 334.016l-94.208-94.208L300.544 614.016l-4.416 98.592 98.592-4.416 374.208-374.176zM862.048 777.472H246.048a44.16 44.16 0 0 0-44 44 44.16 44.16 0 0 0 44 44h616a44.16 44.16 0 0 0 44-44c0-24.192-19.776-44-44-44zM787.716 315.2l-94.208-94.208 26.4-26.4a39.488 39.488 0 0 1 55.648 0l38.56 38.56a39.488 39.488 0 0 1 0 55.648l-26.4 26.4z"
+                                            p-id="2936"></path>
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="my-border my-border-blue">已发布</div>
+                                    ${name}${name}${name}${name}${name}${name}${name}
+                                </td>
+                                <td>
+                                    <div class="my-border my-border-blue">POST</div>
+                                </td>
+                                <td>${group}</td>
+                                <td>${evaluation}</td>
+                                <td>2020-8-20 23:23:48</td>
+                                <td>编辑|新标签页打开|更多
+                                    <svg class="tr-change" t="1596188186738" class="icon" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2935" fill=""
+                                        height="17.5px">
+                                        <path
+                                            d="M768.928 334.016l-94.208-94.208L300.544 614.016l-4.416 98.592 98.592-4.416 374.208-374.176zM862.048 777.472H246.048a44.16 44.16 0 0 0-44 44 44.16 44.16 0 0 0 44 44h616a44.16 44.16 0 0 0 44-44c0-24.192-19.776-44-44-44zM787.716 315.2l-94.208-94.208 26.4-26.4a39.488 39.488 0 0 1 55.648 0l38.56 38.56a39.488 39.488 0 0 1 0 55.648l-26.4 26.4z"
+                                            p-id="2936"></path>
+                                    </svg>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="table-bottom">已加载3条信息，共3条记录</div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
