@@ -1,3 +1,75 @@
 .magin-top-12 {
     margin-top: 12px !important;
 }
+
+.retexa-name {
+    margin: 12px 16px 16px;
+}
+
+.retexa-name>div, .retexa-name>input {
+    width: 100%;
+}
+
+.retexa-name>p {
+    margin-bottom: 4px;
+}
+
+.retexa-name>input {
+    background-color: rgba(255, 255, 255, 1);
+    padding: 4px 12px;
+    border: 1px solid rgba(173, 173, 173, 1);
+    border-radius: 4px;
+}
+
+.reteax-se-in-out {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(112, 112, 112, 1);
+    border-radius: 4px;
+    padding: 12px 16px;
+}
+
+.reteax-se-in {
+    width: 100%;
+    margin-bottom: 16px;
+    background-color: rgba(242, 242, 242, 1);
+    border: 1px solid rgba(173, 173, 173, 1);
+    border-radius: 4px;
+}
+
+.reteax-se-in select {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-right: 1px solid rgba(173, 173, 173, 1);
+    padding: 4px 12px;
+}
+
+.reteax-se-in input {
+    padding: 4px 12px;
+    width: 50%;
+}
+
+.reteax-se-in>div {
+    display: inline-block;
+    padding: 4px 12px;
+    border-right: 1px solid rgba(173, 173, 173, 1);
+}
+
+#detail-code-area {
+    outline: none;
+    border: none;
+    border-top: 1px solid rgba(173, 173, 173, .4);
+    width: 100%;
+    height: 128px;
+    padding: 16px;
+    background: rgba(242, 242, 242, 1);
+    resize: none;
+}
+
+.copy-fl {
+    cursor: pointer;
+    float: right;
+    margin: 0 12px;
+    border: none !important;
+}

@@ -253,8 +253,8 @@ select {
     padding: 0 12px;
 }
 
-.detail-req-body>div:nth-child(4) {
-    border-right: 1px solid rgba(151, 151, 151 , .4);
+.detail-req-body>div:nth-child(5) {
+    border-left: 1px solid rgba(151, 151, 151 , .4);
 }
 
 .detail-req-body select {
