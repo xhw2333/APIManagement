@@ -93,25 +93,7 @@ regIn.onclick = function(){
 }
 
 
-// 校验范围
-function checkRange(series, min, max) {
-    if (series.value > max || series.value < min) {
-        course.style.color = 'red'
-    } else {
-        course.style.color = 'black';
-    }
-}
 
-// 校验邮箱
-function checkEmail(email) {
-    if (!/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(email.value)) {
-        email.style.color = 'red';
-        return false;
-    } else {
-        email.style.color = 'black';
-        return true;
-    }
-}
 
 
 
