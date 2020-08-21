@@ -120,9 +120,11 @@
     border-radius: 5px;
 }
 
-.mine-message {
+.mine-message,
+.notice-message {
     width: 240px;
-    margin-left: 25px;
+    max-height: 672px;
+    margin-right: 25px;
     padding: 28px 24px;
     background-color: #fff;
 
@@ -153,9 +155,192 @@
 }
 
 #operation-team {
+    display: flex;
+    margin: 24px 0 0 20px;
+    /* justify-content: space-around; */
+    user-select: none;
+}
+
+.team-about {
+    display: flex;
+    padding-left: 16px;
+    height: 600px;
+    background-color: #fff;
+
+}
+
+.team-item {
+    width: 280px;
+}
+
+.item-title,
+.member-title {
+    height: 72px;
+    line-height: 72px;
+} 
+
+.item-title {
+    margin-left: 16px;
+}
+
+.item-list li {
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+}
+
+.team-member {
+    width: 850px;
+    padding: 0 16px; 
+    background-color: #F2F2F2;
+}
+
+.team-member i {
+    font-style: normal;
+}
+
+.team-member img{
+    width: 40px;
+    height: 40px;
+}
+
+.member-title {
+    margin-left: 32px;
+}
+
+.member-creator li {
+    display: flex;
+    padding: 10px 150px 10px 10px;
+    background-color: #fff;
     
 }
 
-.team-man {
+.creator-message,
+.joiner-message {
+    margin-left: 10px;
+}
+
+.creator-message span {
+    color: #7A57D1;
+}
+
+.creator-message i {
+    color: #5BE7C4;
+}
+
+.creator-email,
+.joiner-email {
+    color: #ADADAD;
+}
+
+.member-creator,
+.member-joiner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.member-joiner li {
+    display: flex;
+    margin: 10px 0;
+    padding: 10px 150px 10px 10px;
     background-color: #fff;
+}
+
+.joiner-message i {
+    color: #4FC1E9;
+}
+
+li.joiner-add {
+    font-size: 20px;
+    padding: 10px 218px 10px 10px;
+    background-color: #F2F2F2;
+    border: 1px solid #ADADAD;
+}
+
+.joiner-add p {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 30px;
+    color: #ADADAD;
+    border: 1px solid #ADADAD;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.joiner-add div {
+    margin-left: 10px;
+    height: 40px;
+    line-height: 40px;
+}
+
+#operation-notice{
+    display: flex;
+    margin: 24px 0 0 16px;
+    /* justify-content: space-around; */
+    user-select: none;
+}
+
+.notice-deal {
+    width: 800px;
+    padding: 0 32px;
+    background-color: #fff;
+}
+
+.notice-title {
+    height: 72px;
+    line-height: 72px;
+    color: #7B7B7B;
+}
+
+.notice-invite {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.notice-invite img {
+    width: 40px;
+    height: 40px;
+}
+
+.invite-message {
+    margin: 0 100px 0 10px;
+    color: #7B7B7B;
+}
+
+.invite-message span {
+    margin: 0 3px;
+}
+
+.invite-message strong {
+    color: #7A57D1;
+}
+
+.notice-invite li {
+    display: flex;
+    padding: 5px 20px;
+    margin: 10px 0;
+    width: 528px;
+    align-items: center;
+    border-bottom: 1px solid #E5E5E5;
+    
+}
+
+.invite-confirm button {
+    width: 48px;
+    height: 24px;
+    line-height: 24px;
+    border: none;
+    border: 1px solid #ADADAD;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.invite-confirm button:first-child {
+    color: #fff;
+    background-color: #5BE7C4;
 }
