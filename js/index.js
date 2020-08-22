@@ -1,141 +1,177 @@
-
-var server = "http://39.98.41.126:30004/api/user";
-
-
-
-//切换“登录”、“注册”、“找回密码”页面
-var mainPage = document.getElementsByClassName("main-page");
-
-//登录-->注册
-var logToreg = document.getElementById('log-reg');
-logToreg.onclick = function(){
-    showPage(1);
+// 页面切换
+function toPage(dom, target) {
+    $(dom).click(function () {
+        $('.panel').fadeOut(0);
+        $(target).fadeIn(500).css('display', 'flex');
+    })
 }
+// 登录界面->忘记密码
+toPage('#to-rechieve', '#rechieve')
+// 登录界面->注册界面
+toPage('#to-register', '#register')
+// 忘记密码->登陆界面
+toPage('#rechieve-log', '#login')
+// 注册界面->登录界面
+toPage('#reg-log', '#login');
 
-//注册->登录
-var regTolog = document.getElementById('reg-log');
-regTolog.onclick = function(){
-    showPage(0);
-}
-
-//登录->找回密码
-var logToback = document.getElementById('log-back');
-logToback.onclick = function(){
-    showPage(2);
-}
-
-//找回密码->登录
-var backTolog = document.getElementById('back-log');
-backTolog.onclick = function(){
-    showPage(0);
-} 
-
-//展示特定页面
-function showPage(num){
-    for(let i = 0; i < mainPage.length; i++){
-        mainPage[i].classList.add('hide');
+// 获取cookie
+function getCookie(name) {
+    var reg = RegExp(name + '=([^;]+)');
+    var arr = document.cookie.match(reg);
+    if (arr) {
+        return arr[1];
+    } else {
+        return '';
     }
-    mainPage[num].classList.remove('hide');
 }
 
+// 设置cookie
+function setCookie(name, value, day) {
+    var date = new Date();
+    date.setDate(date.getDate() + day);
+    document.cookie = name + '=' + value + ';expires=' + date;
+};
 
+// 删除cookie
+function delCookie(name) {
+    setCookie(name, null, -1);
+}
 
+// 记住我
+$('#log-rem').click(ev => {
+    ev.stopPropagation();
+})
+$('#remember').click(function () {
+    if ($('#log-rem').data('checked') || $('#log-rem').prop('checked')) {
+        $('#log-rem').data('checked', false);
+        $('#log-rem').prop('checked', false);
+    } else {
+        $('#log-rem').data('checked', true);
+        $('#log-rem').prop('checked', true);
+    }
+})
 
-function postDo(url,data){
-    return new Promise((resolve)=>{
+// 提示框
+let alertTimer = null;
+function alertIt(content) {
+    $('#alert-div').html(content);
+    $('#alert-div').slideDown(500);
+    if (alertTimer) {
+        alertTimer = null;
+        clearTimeout(alertTimer);
+    } else {
+        alertTimer = setTimeout(() => {
+            $('#alert-div').slideUp(500);
+            alertTimer = null;
+        }, 3000);
+    }
+}
+
+// 登录事件
+$('#login-btn').bind('click', function () {
+    alertIt('登录中，请稍后！')
+    // $(this).unbind('click');
+    let email = $('#log-email').val();
+    let pwd  = $('#log-password').val();
+    if (email == '' || pwd == '' || !email || !pwd) {
+        alertIt('用户名或密码不能为空!')
+        return;
+    }
+    if (isEamilValid(email) && isPwdValid(pwd)) {
+        let data = {
+            "email": email,
+            "password": pwd
+        }
+        let url = 'http://39.98.41.126:30004/api/user/login';
+        doPost(url, data).then(res => {
+            if(res.code){
+                alertIt(res.msg);
+                $('#log-email').val('');
+                $('#log-password').val('');
+            }else{
+                alertIt(res.msg);
+                return;
+            }
+        })
+    } else {
+        return;
+    }
+})
+
+// 校验邮箱
+function isEamilValid(email) {
+    let re = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    return re.test(email);
+}
+// 校验密码
+function isPwdValid(pwd) {
+    return (pwd.length >= 6 && pwd.length <= 15);
+}
+
+// 使用post请求
+function doPost(url, data) {
+    return new Promise((resolve) => {
         $.ajax({
             method: "POST",
-            url: server+ url,
+            url: url,
             headers: {
                 "Content-Type": "application/json"
             },
             data: JSON.stringify(data),
-            success: function (res) {
-                resolve(res);
+            success: function (res, status, xhr) {
+                // setCookie('session',xhr.getResponseHeader('SESSION'))
+                resolve(res)
             },
             error: function () {
-                alert('error!^_^!');
+                alertIt("服务器连接失败！请联系管理员！")
             }
         })
     })
 }
 
-//点击登录按钮
-var logIn = document.getElementById("log-in");
-logIn.onclick = function(){
-    let logEmail = document.getElementById("log-email");
-    let logPassword = document.getElementById('log-password');
-    let data = {
-        email: logEmail.value,
-        password: logPassword.value
+// 注册事件
+$('#reg-in').click(function () {
+    let nickname = $('#reg-nickname').val();
+    let email = $("#reg-email").val();
+    let pwd = $('#reg-password').val();
+    let pwd2 = $('#reg-confirm').val();
+
+    if (email == '' || pwd == '' || nickname == '' || !email || !pwd || !nickname) {
+        alertIt('信息不能为空！')
+        return;
     }
-    console.log(data);
-    postDo('/login',data).then((res)=>{
-        console.log(res.msg);
-    });
+    if (isEamilValid(email) && isPwdComfirm(pwd, pwd2) && isNicknameValid(nickname)) {
+        let url = 'http://39.98.41.126:30004/api/user/register';
+        let data = {
+            "email": email,
+            "password": pwd,
+            "nickname": nickname
+        }
+
+        doPost(url, data).then(res => {
+            if (res.code) {
+                alertIt(res.msg);
+                $('#reg-nickname').val('');
+                $("#reg-email").val('');
+                $('#reg-password').val('');
+                $('#reg-confirm').val('');
+            } else {
+                alertIt(res.msg);
+                return;
+            }
+        })
+    } else {
+        alertIt('信息填写错误！');
+        return;
+    }
+})
+
+// 确认密码
+function isPwdComfirm(p1, p2) {
+    return p1 == p2
 }
 
-
-//点击注册按钮
-var regIn = document.getElementById("reg-in");
-regIn.onclick = function(){
-    let regEmail = document.getElementById("reg-email");
-    let regUsername = document.getElementById("reg-username");
-    let regPassword = document.getElementById("reg-password");
-    let data = {
-        email: regEmail.value,
-        password: regPassword.value,
-        nickname: regUsername.value
-    }
-    console.log(data);
-    postDo('/register',data);
-   
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//发送请求做某事
-function postDoD(url,data){
-    //发送请求
-    fetch(server+url, {
-       method: 'POST',
-       body: JSON.stringify(data),
-       headers: {
-           "Content-Type": "application/json"
-       }
-   })
-   .then(res => {
-       return res.json();      //返回一个promise对象
-   })
-   .then(resjson => {
-       console.log(resjson);
-
-    //    callback(resjson);
-   })
-   .catch(e=>{
-    //    hideLoading();
-       alert("服务器连接失败！请联系管理员！")
-   });
+// 昵称是否合法
+function isNicknameValid(name) {
+    return (name.length >= 3 && name.length <= 10)
 }

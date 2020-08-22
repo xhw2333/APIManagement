@@ -4,79 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/my.png" type="image/x-icon">
     <title>API管理平台</title>
-    <link rel="stylesheet" href="css/index.css">
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-    <div id="main-div">
-        <h1 class="main-logo">API</h1>
-        <!-- 登录 -->
-        <div class="log-div main-page">
-            <h2 class="log-title">SIGN IN</h2>
-            <span class="">邮箱</span>
-            <input id="log-email" type="text" placeholder="邮箱">
-            <span>密码</span>
-            <input id="log-password" type="password" placeholder="密码(6-15位)">
-            <div class="log-else">
+    <div id="container">
+        <div id="content">
+            <div>
                 <div>
-                    <input type="checkbox">记住我
-                </div>   
-                <i id="log-back">忘记密码</i>
-            </div>
-            <button id="log-in">登录</button>
-            <p id="log-reg" class="log-reg">还未拥有账号？</p>
-        </div>
-        <!-- 注册 -->
-        <div class="reg-div main-page hide">
-            <h2 class="reg-title">REGISTER</h2>
-            <div>
-                <span>输入您的昵称</span>
-                <input id="reg-username" type="text" placeholder="昵称(3-10位)">
-            </div>
-            <div>
-                <span>输入您的邮箱</span>
-                <input id="reg-email" type="text" placeholder="邮箱">
-            </div>
-            <div>
-                <span>输入密码</span>
-                <input id="reg-password" type="password" placeholder="密码(6-15位)">
-            </div>
-            <div>
-                <span>确认密码</span>
-                <input id="reg-confirm" type="password" placeholder="密码(6-15位)">
-            </div>
-            <button id="reg-in">注册</button>
-            <p id="reg-log" class="reg-log">已有账号,点此登录</p>
-        </div>
-        <!-- 找回密码 -->
-        <div class="back-div main-page hide">
-            <h2 class="back-title">RETRIEVE PASSWORD</h2>
-            <div class="back-email-div">
-                <span>输入邮箱</span>
-                <div>
-                    <input id="back-email" type="text" placeholder="邮箱">
-                    <button class="back-send">发送验证码</button>
+                    <div id="login" class="panel">
+                        <span class="title">SIGN IN</span>
+                        <div id="login-form">
+                            <span>邮箱</span>
+                            <input type="email" id="log-email">
+                            <span>密码</span>
+                            <input type="password" id="log-password">
+                        </div>
+                        <div id="login-opt">
+                            <div id="remember">
+                                <input type="checkbox" id="log-rem">
+                                <p>记住我</p>
+                            </div>
+                            <p id="to-rechieve">忘记密码</p>
+                        </div>
+                        <button id="login-btn">登录</button>
+                        <p id="to-register">还未拥有账号？</p>
+                    </div>
+                    <div id="register" class="panel">
+                        <span class="title">REGISTER</span>
+                        <div>
+                            <span>输入您的昵称:</span>
+                            <input id="reg-nickname" type="text" placeholder="昵称(3-10位)">
+                        </div>
+                        <div>
+                            <span>输入您的邮箱:</span>
+                            <input id="reg-email" type="email" placeholder="邮箱">
+                        </div>
+                        <div>
+                            <span>输入密码:</span>
+                            <input id="reg-password" type="password" placeholder="密码(6-15位)">
+                        </div>
+                        <div>
+                            <span>确认密码:</span>
+                            <input id="reg-confirm" type="password" placeholder="密码(6-15位)">
+                        </div>
+                        <button id="reg-in">注册</button>
+                        <p id="reg-log" class="reg-log">已有账号,点此登录</p>
+                    </div>
+                    <div id="rechieve" class="panel">
+                        <span class="title">RETRIEVE PASSWORD</span>
+                        <div class="rechieve-email-div">
+                            <span>输入邮箱:</span>
+                            <div>
+                                <input id="rechieve-email" type="email" placeholder="邮箱">
+                                <!-- <button class="rechieve-send">获取验证码</button> -->
+                            </div>
+                        </div>
+                        <div>
+                            <span>输入新密码:</span>
+                            <input id="rechieve-password" type="password" placeholder="输入密码(6-15位)">
+                        </div>
+                        <div>
+                            <span>确认新密码:</span>
+                            <input id="rechieve-confirm" type="password" placeholder="确认密码(6-15位)">
+                        </div>
+                        <div>
+                            <span>输入验证码:</span>
+                            <input id="rechieve-code" type="text" placeholder="验证码">
+                        </div>
+                        <button id="rechieve-reset">确定修改密码</button>
+                        <p id="rechieve-log" class="rechieve-log">已有账号，点击登录</p>
+                    </div>
                 </div>
             </div>
-            <div>
-                <span>输入密码</span>
-                <input id="back-password" type="password" placeholder="输入密码(6-15位)">
-            </div>
-            <div>
-                <span>确认密码</span>
-                <input id="back-confirm" type="password" placeholder="确认密码(6-15位)">
-            </div>
-            <div>
-                <span>输入验证码</span>
-                <input id="back-code" type="text" placeholder="验证码">
-            </div>
-            <button id="back-reset">确定修改密码</button>
-            <p id="back-log" class="back-log">已有账号，点击登录</p>
         </div>
     </div>
-    <script src="js/index.js"></script>
+    <div id="alert-div" class="hide">提示框</div>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./js/index.js"></script>
 </body>
+
 
 </html>

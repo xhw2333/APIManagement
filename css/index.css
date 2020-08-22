@@ -1,156 +1,240 @@
 * {
-    padding: 0;
     margin: 0;
-    font-family:Source Han Sans CN;
-}
-
-a {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-button,
-input {
+    padding: 0;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Source Han Sans CN;
     outline: none;
 }
 
-.hide {
-    display: none !important;
+html {
+    width: 100%;
+    height: 100%;
 }
 
 body {
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-image: url(../image/bg.png);
-    background-size: cover;
-    background-attachment: fixed;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-image: url('../image/bg.png');
 }
 
-#main-div {
-    display: flex;
-    user-select: none;
+.hide{
+    display: none;
+}
+
+#alert-div {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
+    min-width: 220px;
+    width: 20%;
+    max-width: 420px;
+    padding: 42px 30px;
+    border-radius: 0 0 10px 10px;
     background-color: #fff;
-    border-radius: 8px;
+    color: #000;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, .2);
+    overflow: hidden;
+    z-index: 999;
 }
 
-.main-logo {
-    padding-right: 25px;
-    width: 665px;
-    height: 622px;
-    line-height: 622px;
-    font-size: 80px;
+#container {
+    min-width: 1200px;
+    height: 600px;
+}
+
+button{
+    cursor: pointer;
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
+}
+
+#login{
+    display: flex;
+}
+#register,#rechieve{
+    display: none;
+}
+
+#content::before {
+    content: '';
+    position: absolute;
+    width: 55%;
+    height: 100%;
+    background-image: url('../image/logo.png');
+    background-size: cover;
+    animation: ease 2s slidein;
+}
+
+@keyframes slidein {
+    0% {
+        transform: translate(30%);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+#content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+#content>div {
+    width: 100%;
+    height: 98%;
+    background-color: transparent;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#content>div>div {
+    width: 58%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 0 8px 8px 0;
+}
+
+.panel {
+    width: 70%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 38px !important;
     font-family: Source Han Sans CN;
-    color: #fff;
-    text-align: right;
-    background-image: url(../image/QG.png);
-    background-size: 100% 100%;
-    
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: rgba(112, 112, 112, 1);
+    user-select: none;
 }
 
 
 /* 登录 */
-.log-div,
-.reg-div,
-.back-div {
+#login-form {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-.log-title {
-    margin-bottom: 30px;
-    font-size: 31px;
-    font-weight: normal;
-    color: #707070;
-}
-
-.log-div {
+#login-form>span {
+    width: 28px;
+    height: 14px;
     font-size: 14px;
-    color: #707070;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(112, 112, 112, 1);
 }
 
-.log-div span {
-    margin: 10px 220px 5px 0;
-}
-
-#log-email,
-#log-password {
+#login-form>input {
     width: 249px;
     height: 32px;
-    border: 1px solid #808080;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(128, 128, 128, 1);
+    margin: 10px 0;
+    border-radius: 5px;
+    padding-left: 10px;
+    outline: none;
 }
 
-.log-else {
-    margin-top: 8px;
+#login-opt {
+    width: 250px;
     display: flex;
-    width: 249px;
-    font-size: 12px;
     justify-content: space-between;
     align-items: center;
 }
 
-.log-else i {
-    font-style: normal;
-    text-decoration: underline;
-    cursor: pointer;
+#login-opt>div {
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#log-in {
-    margin: 26px 0 14px;
+#login-opt p {
+    font-size: 12px;
+    font-family: Source Han Sans CN;
+    font-weight: 300;
+    color: rgba(112, 112, 112, 1);
+    cursor: pointer;
+    user-select: none;
+}
+
+
+#login-btn {
+    margin-top: 20px;
     width: 136px;
     height: 34px;
-    line-height: 34px;
-    text-align: center;
+    background: rgba(91, 231, 196, 1);
     color: #fff;
-    background-color: #5BE7C4;
-    border: none;
-    border-radius:5px;
+    font-size: 12px;
+    font-weight: 400;
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+}
+
+#login-btn:hover{
+    background-color: rgb(78, 202, 171);
+}
+
+#to-rechieve{
+    text-decoration: underline;
+}
+
+#to-register{
+    margin: 20px 0 0 200px;
+    font-size: 12px;
+    font-family: Source Han Sans CN;
+    font-weight: 300;
+    color: rgba(112, 112, 112, 1);
+    text-decoration: underline;
     cursor: pointer;
 }
 
-.log-reg {
-    width: 249px;
-    font-size: 12px;
-    text-decoration: underline;
-    text-align: right;
-    cursor: pointer;
-}
+
 
 /* 注册 */
-
-
-
-.reg-title {
-    margin-bottom: 30px;
-    font-size: 31px;
-    font-weight: normal;
-    color: #707070;
-}
-
-.reg-div span{
+#register span{
     font-size: 14px;
     color: #707070;
 }
 
-.reg-div > div {
+#register > div {
     display: flex;
-    width: 330px;
+    width: 360px;
     height: 60px;
     line-height: 60px;
     align-items: center;
     justify-content: space-between;
 }
 
-.reg-div input {
-    width: 220px;
-    height: 30px;
+#register input {
+    padding-left: 10px;
+    width: 249px;
+    height: 32px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(128, 128, 128, 1);
+    border-radius: 5px;
+    outline: none;
 }
 
 
@@ -166,6 +250,10 @@ body {
     cursor: pointer;
 }
 
+#reg-in:hover{
+    background-color: #43a1c4;
+}
+
 .reg-log {
     width: 330px;
     font-size: 12px;
@@ -177,56 +265,52 @@ body {
 
 
 /* 找回密码 */
-.back-title {
-    margin-bottom: 30px;
-    font-size: 31px;
-    font-weight: normal;
-    color: #707070;
-}
-
-.back-div span{
+#rechieve span{
     font-size: 14px;
     color: #707070;
 }
-
-.back-div > div {
+#rechieve > div {
     display: flex;
-    width: 330px;
+    width: 340px;
     height: 60px;
     line-height: 60px;
     align-items: center;
     justify-content: space-between;
 }
 
-.back-div input {
-    width: 220px;
-    height: 30px;
+#rechieve input {
+    padding-left: 10px;
+    width: 249px;
+    height: 32px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(128, 128, 128, 1);
+    border-radius: 5px;
+    outline: none;
 }
 
 
-.back-email-div input {
+#rechieve-email-div input {
     width: 152px;
     border: none;
     text-indent: 2px;
 }
 
-.back-email-div > div {
+#rechieve-email-div > div {
     width: 222px;
     height: 32px;
     line-height: 32px;
     border: 1px solid #707070;
     border-radius: 2px;
-    /* box-sizing: border-box; */
 }
 
-.back-send {
+.rechieve-send {
     font-size: 12px;
     background-color: #fff;
     border: none;
     cursor: pointer;
 }
 
-#back-reset {
+#rechieve-reset {
     margin: 15px 0;
     width: 168px;
     height: 34px;
@@ -238,7 +322,11 @@ body {
     cursor: pointer;
 }
 
-.back-log {
+#rechieve-reset:hover{
+    background-color: #43a1c4;
+}
+
+.rechieve-log {
     width: 330px;
     font-size: 12px;
     color: #707070;
