@@ -1,3 +1,45 @@
+window.onload = function () {
+    // 登录界面->忘记密码
+    toPage('#to-rechieve', '#rechieve')
+    // 登录界面->注册界面
+    toPage('#to-register', '#register')
+    // 忘记密码->登陆界面
+    toPage('#rechieve-log', '#login')
+    // 注册界面->登录界面
+    toPage('#reg-log', '#login');
+
+    // 记住我
+    remember();
+    if (getCookie('email')) {
+        $('#log-rem').data('checked', true);
+        $('#log-rem').prop('checked', true);
+        $('#log-email').val(getCookie('email'));
+        let b = new Base64();
+        let pwd = b.decode(getCookie('pwd'));
+        $('#log-password').val(pwd);
+
+    }
+
+    // 功能事件
+    loginBind();
+    registerBind();
+    codeBind();
+    rechieveBind();
+
+    // 表单验证
+    checkForm('#log-email', isEmailValid);
+    checkForm('#log-password', isPwdValid);
+    checkForm('#reg-email', isEmailValid);
+    checkForm('#reg-password', isPwdValid);
+    checkForm('#reg-confirm', isPwdComfirm('#reg-password', '#reg-confirm'));
+    checkForm('#reg-nickname', isNicknameValid);
+    checkForm('#rechieve-email', isEmailValid);
+    checkForm('#rechieve-password', isPwdValid);
+    checkForm('#rechieve-confirm', isPwdComfirm('#rechieve-password', '#rechieve-confirm'));
+
+
+}
+
 // 页面切换
 function toPage(dom, target) {
     $(dom).click(function () {
@@ -5,14 +47,7 @@ function toPage(dom, target) {
         $(target).fadeIn(500).css('display', 'flex');
     })
 }
-// 登录界面->忘记密码
-toPage('#to-rechieve', '#rechieve')
-// 登录界面->注册界面
-toPage('#to-register', '#register')
-// 忘记密码->登陆界面
-toPage('#rechieve-log', '#login')
-// 注册界面->登录界面
-toPage('#reg-log', '#login');
+
 
 // 获取cookie
 function getCookie(name) {
@@ -38,18 +73,20 @@ function delCookie(name) {
 }
 
 // 记住我
-$('#log-rem').click(ev => {
-    ev.stopPropagation();
-})
-$('#remember').click(function () {
-    if ($('#log-rem').data('checked') || $('#log-rem').prop('checked')) {
-        $('#log-rem').data('checked', false);
-        $('#log-rem').prop('checked', false);
-    } else {
-        $('#log-rem').data('checked', true);
-        $('#log-rem').prop('checked', true);
-    }
-})
+function remember() {
+    $('#log-rem').click(ev => {
+        ev.stopPropagation();
+    })
+    $('#remember').click(function () {
+        if ($('#log-rem').data('checked') || $('#log-rem').prop('checked')) {
+            $('#log-rem').data('checked', false);
+            $('#log-rem').prop('checked', false);
+        } else {
+            $('#log-rem').data('checked', true);
+            $('#log-rem').prop('checked', true);
+        }
+    })
+}
 
 // 提示框
 let alertTimer = null;
@@ -68,38 +105,58 @@ function alertIt(content) {
 }
 
 // 登录事件
-$('#login-btn').bind('click', function () {
-    alertIt('登录中，请稍后！')
-    // $(this).unbind('click');
-    let email = $('#log-email').val();
-    let pwd  = $('#log-password').val();
-    if (email == '' || pwd == '' || !email || !pwd) {
-        alertIt('用户名或密码不能为空!')
-        return;
-    }
-    if (isEamilValid(email) && isPwdValid(pwd)) {
-        let data = {
-            "email": email,
-            "password": pwd
+function loginBind() {
+    $('#login-btn').bind('click', function () {
+        alertIt('登录中，请稍后！')
+        $(this).unbind('click');
+        let email = $('#log-email').val();
+        let pwd = $('#log-password').val();
+        if (email == '' || pwd == '' || !email || !pwd) {
+            alertIt('用户名或密码不能为空!');
+            loginBind();
+            return;
         }
-        let url = 'http://39.98.41.126:30004/api/user/login';
-        doPost(url, data).then(res => {
-            if(res.code){
-                alertIt(res.msg);
-                $('#log-email').val('');
-                $('#log-password').val('');
-            }else{
-                alertIt(res.msg);
-                return;
+        if (isEmailValid(email) && isPwdValid(pwd)) {
+            let data = {
+                "email": email,
+                "password": pwd
             }
-        })
-    } else {
-        return;
-    }
-})
+            let url = 'http://39.98.41.126:30004/api/user/login';
+
+            doPost(url, data).then(res => {
+                if (res.code == 1) {
+                    alertIt('登录成功！')
+                    // 设置cookie
+                    let base = new Base64();
+                    pwd = base.encode(pwd);
+                    if ($('#log-rem').data('checked') || $('#log-rem').prop('checked')) {
+                        setCookie('email', email, 7);
+                        setCookie('pwd', pwd,7);
+                    } else {
+                        delCookie('pwd');
+                    }
+                    setCookie('Buuid', res.msg, 7);
+                    $('#log-email').val('');
+                    $('#log-password').val('');
+                    $('#log-rem').data('checked', false);
+                    $('#log-rem').prop('checked', false);
+
+                } else {
+                    alertIt(res.msg);
+                    loginBind();
+                    return;
+                }
+            })
+        } else {
+            alertIt('请检查密码和邮箱格式！')
+            loginBind();
+            return;
+        }
+    })
+}
 
 // 校验邮箱
-function isEamilValid(email) {
+function isEmailValid(email) {
     let re = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
     return re.test(email);
 }
@@ -109,13 +166,15 @@ function isPwdValid(pwd) {
 }
 
 // 使用post请求
-function doPost(url, data) {
+function doPost(url, data, bindFn) {
     return new Promise((resolve) => {
         $.ajax({
             method: "POST",
             url: url,
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Auuid" : getCookie('Auuid'),
+                "Buuid" : getCookie('Buuid')
             },
             data: JSON.stringify(data),
             success: function (res, status, xhr) {
@@ -123,55 +182,191 @@ function doPost(url, data) {
                 resolve(res)
             },
             error: function () {
-                alertIt("服务器连接失败！请联系管理员！")
+                alertIt("服务器连接失败！请联系管理员！");
+                if (bindFn) {
+                    bindFn();
+                }
             }
         })
     })
 }
 
 // 注册事件
-$('#reg-in').click(function () {
-    let nickname = $('#reg-nickname').val();
-    let email = $("#reg-email").val();
-    let pwd = $('#reg-password').val();
-    let pwd2 = $('#reg-confirm').val();
+function registerBind() {
+    $('#reg-in').bind('click', function () {
+        $('#reg-in').unbind('click')
+        let nickname = $('#reg-nickname').val();
+        let email = $("#reg-email").val();
+        let pwd1 = $('#reg-password').val();
+        let pwd2 = $('#reg-confirm').val();
 
-    if (email == '' || pwd == '' || nickname == '' || !email || !pwd || !nickname) {
-        alertIt('信息不能为空！')
-        return;
-    }
-    if (isEamilValid(email) && isPwdComfirm(pwd, pwd2) && isNicknameValid(nickname)) {
-        let url = 'http://39.98.41.126:30004/api/user/register';
-        let data = {
-            "email": email,
-            "password": pwd,
-            "nickname": nickname
+        if (email == '' || pwd1 == '' || nickname == '' || !email || !pwd1 || !nickname) {
+            alertIt('信息不能为空！');
+            registerBind();
+            return;
         }
-
-        doPost(url, data).then(res => {
-            if (res.code) {
-                alertIt(res.msg);
-                $('#reg-nickname').val('');
-                $("#reg-email").val('');
-                $('#reg-password').val('');
-                $('#reg-confirm').val('');
-            } else {
-                alertIt(res.msg);
-                return;
+        if (isEmailValid(email) && isPwdComfirm(pwd1, pwd2) && isNicknameValid(nickname)) {
+            let url = 'http://39.98.41.126:30004/api/user/register';
+            let data = {
+                "email": email,
+                "password": pwd1,
+                "nickname": nickname
             }
-        })
-    } else {
-        alertIt('信息填写错误！');
-        return;
-    }
-})
+
+            doPost(url, data, registerBind).then(res => {
+                if (res.code == 1) {
+                    alertIt('注册成功！');
+                    $('#reg-nickname').val('');
+                    $("#reg-email").val('');
+                    $('#reg-password').val('');
+                    $('#reg-confirm').val('');
+                } else {
+                    alertIt(res.msg);
+                    registerBind();
+                    return;
+                }
+            })
+        } else {
+            alertIt('信息填写错误！');
+            registerBind();
+            return;
+        }
+    })
+}
 
 // 确认密码
 function isPwdComfirm(p1, p2) {
-    return p1 == p2
+    let pwd1 = $(p1).val();
+    let pwd2 = $(p2).val();
+    return pwd1 == pwd2;
 }
 
 // 昵称是否合法
 function isNicknameValid(name) {
     return (name.length >= 3 && name.length <= 10)
+}
+
+
+// 获取验证码
+function codeBind() {
+    $('.rechieve-send').bind('click', function () {
+        let email = $('#rechieve-email').val();
+        if (isEmailValid(email)) {
+            $('.rechieve-send').unbind('click');
+            let time = 60;
+            let timer = null;
+            if (!timer) {
+                timer = setInterval(() => {
+                    $('.rechieve-send').text(time);
+                    if (time) {
+                        time--;
+                    } else {
+                        clearInterval(timer);
+                        time = 60;
+                        $('.rechieve-send').text('获取验证码');
+                        codeBind();
+                    }
+                }, 1000)
+            }
+
+            let url = 'http://39.98.41.126:30004/api/user/getCode';
+            let data = {
+                "email": email
+            }
+            doPost(url, data).then(res => {
+                if (res.code == 1) {
+                    setCookie('Auuid', res.msg);
+                    alertIt('验证码已发送，请留意邮箱！');
+                } else {
+                    alertIt(res.msg + '!请' + time + '秒后重试！');
+                }
+            })
+
+        } else {
+            alertIt('邮箱格式错误！');
+            codeBind();
+            return;
+        }
+    })
+}
+// 找回密码
+function rechieveBind() {
+    $('#rechieve-reset').bind('click', function () {
+        $('#rechieve-reset').unbind('click')
+        let email = $('#rechieve-email').val();
+        let pwd1 = $('#rechieve-password').val();
+        let pwd2 = $('#rechieve-confirm').val();
+        let code = $('#rechieve-code').val();
+
+        if (email == '' || pwd1 == '' || code == '' || !email || !pwd1 || !code) {
+            alertIt('信息不能为空！');
+            rechieveBind();
+            return;
+        }
+        if (isEmailValid(email) && isPwdComfirm(pwd1, pwd2)) {
+            let url = 'http://39.98.41.126:30004/api/user/findPass';
+            let data = {
+                "email": email,
+                "password": pwd1,
+                "code": code
+            };
+
+            doPost(url,data,rechieveBind)
+            .then(res => {
+                if (res.code == 1) {
+                    alertIt('密码修改成功！');
+                    $('#rechieve-email').val('');
+                    $('#rechieve-password').val('');
+                    $('#rechieve-confirm').val('');
+                    $('#rechieve-code').val('');
+                    return;
+                } else {
+                    alertIt(res.msg);
+                    rechieveBind();
+                    return;
+                }
+            })
+        } else {
+            alertIt('请检查信息格式！');
+            rechieveBind();
+            return;
+        }
+
+    })
+}
+
+// 警告颜色
+function warnIt(domId) {
+    let style = '1px solid red'
+    $(domId).css('border', style);
+}
+
+// 恢复颜色
+function recover(domId) {
+    let style = '1px solid rgba(128, 128, 128, 1)'
+    $(domId).css('border', style);
+}
+
+
+
+// 表单验证
+function checkForm(domID, checkFn) {
+    if (domID != '#reg-confirm' && domID != '#rechieve-confirm') {
+        $(domID).blur(function () {
+            if (checkFn($(domID).val())) {
+                recover(domID);
+            } else {
+                warnIt(domID);
+            }
+        })
+    } else {
+        $(domID).blur(function () {
+            if (checkFn) {
+                recover(domID);
+            } else {
+                warnIt(domID);
+            }
+        })
+    }
+
 }
