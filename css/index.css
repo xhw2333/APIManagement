@@ -3,6 +3,7 @@
     padding: 0;
     /* font-family: Arial, Helvetica, sans-serif; */
     font-family: Source Han Sans CN;
+    outline: none;
 }
 
 html {
@@ -16,7 +17,30 @@ body {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgb(90, 82, 174);
+    background-image: url('../image/bg.png');
+}
+
+.hide{
+    display: none;
+}
+
+#alert-div {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
+    min-width: 220px;
+    width: 20%;
+    max-width: 420px;
+    padding: 42px 30px;
+    border-radius: 0 0 10px 10px;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, .2);
+    overflow: hidden;
+    z-index: 999;
 }
 
 #container {
@@ -24,14 +48,29 @@ body {
     height: 600px;
 }
 
+button{
+    cursor: pointer;
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
+}
+
+#login{
+    display: flex;
+}
+#register,#rechieve{
+    display: none;
+}
+
 #content::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 55%;
     height: 100%;
-    background-image: url('/image/logo.png');
+    background-image: url('../image/logo.png');
     background-size: cover;
-    animation: ease 1s slidein;
+    animation: ease 2s slidein;
 }
 
 @keyframes slidein {
@@ -52,10 +91,6 @@ body {
     align-items: center;
 }
 
-.hide {
-    display: none;
-}
-
 #content>div {
     width: 100%;
     height: 98%;
@@ -71,32 +106,36 @@ body {
     background-color: #fff;
     display: flex;
     justify-content: flex-end;
+    border-radius: 0 8px 8px 0;
 }
 
 .panel {
     width: 70%;
     height: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#login-title {
-    font-size: 38px;
+.title {
+    font-size: 38px !important;
     font-family: Source Han Sans CN;
     font-weight: 400;
     margin-bottom: 30px;
     color: rgba(112, 112, 112, 1);
+    user-select: none;
 }
 
+
+/* 登录 */
 #login-form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-#login-form>p {
+#login-form>span {
     width: 28px;
     height: 14px;
     font-size: 14px;
@@ -112,6 +151,7 @@ body {
     border: 1px solid rgba(128, 128, 128, 1);
     margin: 10px 0;
     border-radius: 5px;
+    padding-left: 10px;
     outline: none;
 }
 
@@ -135,7 +175,9 @@ body {
     font-weight: 300;
     color: rgba(112, 112, 112, 1);
     cursor: pointer;
+    user-select: none;
 }
+
 
 #login-btn {
     margin-top: 20px;
@@ -150,6 +192,10 @@ body {
     outline: none;
 }
 
+#login-btn:hover{
+    background-color: rgb(78, 202, 171);
+}
+
 #to-rechieve{
     text-decoration: underline;
 }
@@ -160,6 +206,131 @@ body {
     font-family: Source Han Sans CN;
     font-weight: 300;
     color: rgba(112, 112, 112, 1);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+/* 注册 */
+#register span{
+    font-size: 14px;
+    color: #707070;
+}
+
+#register > div {
+    display: flex;
+    width: 360px;
+    height: 60px;
+    line-height: 60px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#register input {
+    padding-left: 10px;
+    width: 249px;
+    height: 32px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(128, 128, 128, 1);
+    border-radius: 5px;
+    outline: none;
+}
+
+
+#reg-in {
+    margin: 15px 0;
+    width: 168px;
+    height: 34px;
+    line-height: 34px;
+    color: #fff;
+    background-color: #4FC1E9;
+    border: none;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+#reg-in:hover{
+    background-color: #43a1c4;
+}
+
+.reg-log {
+    width: 330px;
+    font-size: 12px;
+    color: #707070;
+    text-align: right;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* 找回密码 */
+#rechieve span{
+    font-size: 14px;
+    color: #707070;
+}
+#rechieve > div {
+    display: flex;
+    width: 340px;
+    height: 60px;
+    line-height: 60px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#rechieve input {
+    padding-left: 10px;
+    width: 249px;
+    height: 32px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(128, 128, 128, 1);
+    border-radius: 5px;
+    outline: none;
+}
+
+
+#rechieve-email-div input {
+    width: 152px;
+    border: none;
+    text-indent: 2px;
+}
+
+#rechieve-email-div > div {
+    width: 222px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #707070;
+    border-radius: 2px;
+}
+
+.rechieve-send {
+    font-size: 12px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#rechieve-reset {
+    margin: 15px 0;
+    width: 168px;
+    height: 34px;
+    line-height: 34px;
+    color: #fff;
+    background-color: #4FC1E9;
+    border: none;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+#rechieve-reset:hover{
+    background-color: #43a1c4;
+}
+
+.rechieve-log {
+    width: 330px;
+    font-size: 12px;
+    color: #707070;
+    text-align: right;
     text-decoration: underline;
     cursor: pointer;
 }
