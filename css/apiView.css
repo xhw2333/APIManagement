@@ -1,0 +1,236 @@
+img {
+    height: 16px;
+}
+
+.detail-top>div {
+    display: inline-block;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.detail-top>div>img {
+    margin: -2px 2px 0 0;
+}
+
+/* api描述 */
+
+.view-status {
+    height: 24px;
+    line-height: 24px;
+}
+
+.view-status>div {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.view-status-fr {
+    float: right;
+}
+
+.view-status-fr div {
+    display: inline-block;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.view-status-fr button {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 16px;
+    color: white;
+    background: rgba(122, 87, 209, 1);
+    border: 1px solid rgba(122, 87, 209, 1);
+    border-radius: 4px;
+}
+
+.view-green {
+    margin-left: 20px;
+    width: 16px;
+    height: 16px;
+    background: rgba(88, 209, 155, 1);
+}
+
+.view-overview {
+    border-bottom: 1px solid rgba(229, 229, 229, 1);
+}
+
+.view-overview p {
+    font-size: 18px;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    line-height: 27px;
+    color: rgba(49, 49, 49, 1);
+}
+
+.view-overview p:last-child {
+    margin-top: 24px;
+    font-size: 12px;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgba(173, 173, 173, 1);
+}
+
+.view-tit {
+    margin: 16px 0 !important;
+    background-color: transparent !important;
+}
+
+.view-tit>div {
+    display: inline-block;
+    color: white;
+    padding: 2px 6px;
+    margin-left: 8px;
+    border-radius: 4px;
+}
+
+.view-black {
+    background: rgba(49, 49, 49, 1);
+}
+
+.view-blue {
+    background: rgba(79, 193, 233, 1);
+}
+
+.view-table-des>thead th:first-child, .view-table-des>tbody td:first-child {
+    width: auto !important;
+    text-align: left !important;
+    padding-left: 8px !important;
+}
+
+.detail-table td {
+    min-height: 32px;
+}
+
+.mar-top-48 {
+    margin-top: 48px !important;
+}
+
+/* 版本管理 */
+
+#history-change {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 582px;
+    height: calc(100% - 48px);
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
+    z-index: 99;
+}
+
+.history-top {
+    height: 64px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(173, 173, 173, 1);
+}
+
+.history-top span {
+    margin: 24px 32px;
+    font-size: 16px;
+    font-family: Source Han Sans CN;
+    font-weight: 500;
+    line-height: 27px;
+    color: rgba(49, 49, 49, 1);
+}
+
+.history-top button {
+    float: right;
+    width: 64px;
+    height: 32px;
+    margin-right: 46px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(173, 173, 173, 1);
+    border-radius: 4px;
+}
+
+.history-table-out {
+    width: 100%;
+    padding: 16px 46px 16px 16px;
+}
+
+.history-table {
+    border-radius: 4px;
+    border: 1px solid rgba(173, 173, 173, 1);
+    overflow: hidden;
+}
+
+.history-table table span {
+    color: rgba(122, 87, 209, 1);
+    cursor: pointer;
+}
+
+.history-now {
+    text-align: center;
+    color: white;
+    background: rgba(79, 193, 233, 1);
+    border-radius: 4px;
+}
+
+/* 测试 */
+
+.test-status {
+    width: calc(100% - 32px);
+    padding: 4px 8px;
+    margin: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.view-text-post {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.view-text>div {
+    margin-bottom: 24px;
+}
+
+.view-text-post select, .view-text-post button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.view-text-post input {
+    border-left: solid 1px rgba(173, 173, 173, 1);
+    padding: 0 8px;
+    width: 70%;
+}
+
+.view-text-post button {
+    padding: 0 8px;
+}
+
+.view-text-post>div {
+    padding: 4px 8px;
+    border: 1px solid rgba(173, 173, 173, 1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.view-text-post>div:first-child {
+    width: 70%;
+}
+
+.view-text-post>div:last-child {
+    background: rgba(122, 87, 209, 1);
+    color: white;
+}
+
+.view-dele-all-history {
+    margin: 8px 16px;
+    padding: 4px 8px;
+    background-color: rgb(232, 51, 51);
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.red {
+    color: red;
+}
