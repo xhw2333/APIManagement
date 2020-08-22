@@ -50,6 +50,7 @@ body {
 
 button{
     cursor: pointer;
+    user-select: none;
 }
 
 input[type="checkbox"]{
@@ -271,7 +272,7 @@ input[type="checkbox"]{
 }
 #rechieve > div {
     display: flex;
-    width: 340px;
+    width: 350px;
     height: 60px;
     line-height: 60px;
     align-items: center;
@@ -303,11 +304,19 @@ input[type="checkbox"]{
     border-radius: 2px;
 }
 
+
 .rechieve-send {
+    position: absolute;
+    top: 200px;
+    right: 80px;
     font-size: 12px;
-    background-color: #fff;
+    background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.rechieve-send:hover{
+    color: #4FC1E9;
 }
 
 #rechieve-reset {
