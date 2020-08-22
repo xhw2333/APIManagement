@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API管理</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/apiReturnExample.css">
     <link rel="stylesheet" href="../css/management.css">
     <link rel="stylesheet" href="../css/apiDetail.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/apiView.css">
 </head>
 
 <body>
@@ -152,112 +154,171 @@
                 <button type="button">
                     <img src="../images/return.png">返回API列表
                 </button>
-                <button>保存</button>
+                <div>
+                    <img src="../images/change.png">
+                    <span>编辑</span>
+                </div>
+                <div>
+                    <img src="../images/copy.png">
+                    <span>复制</span>
+                </div>
+                <div>
+                    <img src="../images/de.png">
+                    <span>删除</span>
+                </div>
             </div>
 
             <div id="detail-main-nav">
-                <div class="detail-main-nav-choose">API描述</div>
-                <div>返回示例</div>
+                <div>API描述</div>
+                <div class="detail-main-nav-choose">测试</div>
+                <div>测试用例</div>
+                <div>Mock API</div>
             </div>
 
             <div class="detail-main">
-                <div class="detail-descript">
-                    <p>API状态</p>
-                    <div class="descript-status descript-div">
-                        <div class="descript-status-green">
-                            <input type="radio" name="status">
-                            <span>已发布</span>
-                        </div><div class="descript-status-yellow">
-                            <input type="radio" name="status">
-                            <span>设计中</span>
-                        </div><div class="descript-status-yellow">
-                            <input type="radio" name="status">
-                            <span>待确定</span>
-                        </div><div class="descript-status-yellow">
-                            <input type="radio" name="status">
-                            <span>开发</span>
-                        </div><div class="descript-status-yellow">
-                            <input type="radio" name="status">
-                            <span>对接</span>
-                        </div><div class="descript-status-yellow">
-                            <input type="radio" name="status">
-                            <span>测试</span>
-                        </div><div class="descript-status-yellow">
-                            <input type="radio" name="status">
-                            <span>完成</span>
-                        </div><div class="descript-status-red">
-                            <input type="radio" name="status">
-                            <span>异常</span>
-                        </div><div class="descript-status-red">
-                            <input type="radio" name="status">
-                            <span>维护</span>
-                        </div><div class="descript-status-red">
-                            <input type="radio" name="status">
-                            <span>废弃</span>
+
+                <!-- api描述 -->
+                <div class="hide">
+                    <div class="view-status">
+                        <div class="my-border my-border-blue">HTTP</div>
+                        <div class="my-border my-border-blue">HTTP</div>
+                        <div class="view-green"></div>
+                        <div>已发布</div>
+                        <div class="view-status-fr">
+                            <div>
+                                <img src="../images/change.png">
+                                <span>编辑</span>
+                            </div>
+                            <div>
+                                <img src="../images/history.png">
+                                <span>编辑历史</span>
+                            </div>
+                            <button>测试</button>
                         </div>
                     </div>
+
+                    <div class="view-overview">
+                        <h2>/hape</h2>
+                        <p>该路径的简介</p>
+                        <P>最后编辑人：hape 更新时间：2020-8-22 16:25:02</P>
+                    </div>
+
+                    <!-- Body请求参数 -->
+                    <div class="detail-req-res">
+                        <!-- 标题 -->
+                        <div class="view-tit">
+                            <span>Body请求参数</span>
+                            <div class="view-black">dorm-data</div>
+                            <div class="view-blue">生成预览数据</div>
+                        </div>
+
+                        <!-- 主体 -->
+                        <div>
+                            <!-- 请求头部 -->
+                            <div class="detail-req-div">
+                                <table class="table detail-table detail-table-w view-table-des">
+                                    <thead>
+                                        <tr>
+                                            <th>函数名</th>
+                                            <th>类型</th>
+                                            <th>必填</th>
+                                            <th>说明</th>
+                                            <th>示例</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>名字</td>
+                                            <td></td>
+                                            <td class="w50"></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 返回参数 -->
+                    <div class="detail-req-res">
+                        <!-- 标题 -->
+                        <div class="view-tit mar-top-48">
+                            <span>返回参数</span>
+                            <div class="view-black">JSON</div>
+                            <div class="view-blue">生成预览数据</div>
+                        </div>
+
+                        <!-- 主体 -->
+                        <div>
+                            <!-- 请求头部 -->
+                            <div class="detail-req-div">
+                                <table class="table detail-table detail-table-w">
+                                    <thead>
+                                        <tr>
+                                            <th>函数名</th>
+                                            <th>类型</th>
+                                            <th>必填</th>
+                                            <th>说明</th>
+                                            <th>示例</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>名字</td>
+                                            <td></td>
+                                            <td class="w50"></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="detail-descript">
-                    <p>API Path</p>
-                    <div class="descript-div" id="detail-path">
-                        <div>
-                            <select>
-                                <option>HTTP</option>
-                                <option>HTTPS</option>
-                            </select>
-                        </div>
+                <!-- 测试 -->
+                <div class="view-text">
+
+                    <!-- 头 -->
+                    <div class="view-text-post">
                         <div>
                             <select>
                                 <option>POST</option>
                                 <option>GET</option>
-                                <option>PUT</option>
-                                <option>DELETE</option>
-                                <option>HEAD</option>
-                                <option>OPTIONS</option>
-                                <option>PATCH</option>
                             </select>
+                            <input type="text" placeholder="http……">
                         </div>
+
                         <div>
-                            <input type="text" value="/login">
+                            <button>测试用例</button>
                         </div>
-                    </div>
-                </div>
 
-                <div class="detail-descript detail-name">
-                    <p>API名称</p>
-                    <div class="descript-div">
-                        <input type="text" value="登录接口">
-                    </div>
-                </div>
-
-                <!-- 请求参数 -->
-                <div class="detail-req-res">
-                    <!-- 标题 -->
-                    <div>
-                        请求参数
-                        <div class="detail-req-res-open">
-                            <span>展开</span>
-                            <img src="../images/nav.png">
+                        <div>
+                            <button>测试[通过服务器测试]</button>
                         </div>
+
                     </div>
-                    <!-- 主体 -->
+
                     <div>
                         <div class="detail-req-res-nav">
-                            <div class="detail-req-res-nav-choose">请求头部</div>
-                            <div>请求体</div>
+                            <div>请求头部</div>
+                            <div class="detail-req-res-nav-choose">请求体</div>
                         </div>
 
                         <!-- 请求头部 -->
-                        <div class="detail-req-div">
+                        <div class="detail-req-div hide">
                             <img src="../images/pack.png"><span>导入</span>
                             <table class="table detail-table detail-table-w">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th class="w50"></th>
                                         <th>标签</th>
-                                        <th>必填</th>
-                                        <th>示例</th>
+                                        <th>内容</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
@@ -270,7 +331,6 @@
                                                 <option>bbb</option>
                                             </select>
                                         </td>
-                                        <td class="w50"><input type="checkbox"></td>
                                         <td><input type="text"></td>
                                         <td>更多设置 | 删除</td>
                                     </tr>
@@ -282,7 +342,6 @@
                                                 <option>bbb</option>
                                             </select> -->
                                         </td>
-                                        <td class="w50"></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
@@ -291,7 +350,7 @@
                         </div>
 
                         <!-- 请求体 -->
-                        <div class="detail-req-div hide">
+                        <div class="detail-req-div">
                             <div class="detail-req-body">
                                 <div>
                                     <input type="radio" name="api-head">
@@ -367,144 +426,90 @@
                             </table>
                         </div>
                     </div>
-                </div>
 
-                <!-- 响应内容 -->
-                <div class="detail-req-res">
-                    <!-- nav -->
-                    <div>
-                        响应内容
-                        <div class="detail-req-res-open">
-                            <span>展开</span>
-                            <img src="../images/nav.png">
-                        </div>
-                    </div>
-
-                    <!-- 主体 -->
                     <div>
                         <div class="detail-req-res-nav">
-                            <div class="detail-req-res-nav-choose">返回头部</div>
                             <div>返回结果</div>
-                        </div>
-
-                        <!-- 返回头部 -->
-                        <div class="detail-req-div">
-                            <img src="../images/pack.png"><span>导入</span>
-                            <table class="table detail-table detail-table-w">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>标签</th>
-                                        <th>必填</th>
-                                        <th>示例</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <select>
-                                                <option>aaa</option>
-                                                <option>bbb</option>
-                                            </select>
-                                        </td>
-                                        <td class="w50"><input type="checkbox"></td>
-                                        <td><input type="text"></td>
-                                        <td>更多设置 | 删除</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="detail-grey">添加</td>
-                                        <td></td>
-                                        <td class="w50"></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="detail-req-res-nav-choose">测试历史</div>
                         </div>
 
                         <!-- 返回结果 -->
                         <div class="detail-req-div hide">
-                            <div class="detail-req-body">
-                                <div>
-                                    <input type="radio" name="api-head">
-                                    <span>Form-data</span>
-                                </div>
-                                <div>
-                                    <input type="radio" name="api-head">
-                                    <span>JSON</span>
-                                </div>
-                                <div>
-                                    <input type="radio" name="api-head">
-                                    <span>Binary</span>
-                                </div>
-                                <div>
-                                    <input type="radio" name="api-head">
-                                    <span>Raw</span>
-                                </div>
-                                <div>
-                                    <span>转换为</span>
-                                    <select>
-                                        <option>选择格式</option>
-                                        <option>JSON</option>
-                                        <option>JSON Schema</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <span>导入</span>
-                                    <select>
-                                        <option>选择格式</option>
-                                        <option>XML</option>
-                                        <option>Raw</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <table class="table detail-table detail-w14">
+                            <div class="test-status descript-status-green">404</div>
+                            <textarea id="detail-code-area" placeholder="在此输入代码……"></textarea>
+                        </div>
+
+                        <!-- 请求头部 -->
+                        <div class="detail-req-div">
+                            <button class="view-dele-all-history">清空历史记录</button>
+                            <table class="table detail-table detail-table-w view-table-des">
                                 <thead>
                                     <tr>
-                                        <th></th>
-                                        <th>字段名</th>
-                                        <th>类型</th>
-                                        <th>必填</th>
-                                        <th>说明</th>
+                                        <th>测试时间</th>
+                                        <th>请求地址</th>
+                                        <th>返回状态</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td></td>
-                                        <td><input type="text"></td>
+                                        <td>2020年8月22日18:23:31</td>
                                         <td>
-                                            <select>
-                                                <option>String</option>
-                                                <option>bool</option>
-                                            </select>
+                                            <div class="my-border my-border-blue">POST</div>
+                                            <span>http://00.00.00.000:00000/xxxx</span>
                                         </td>
-                                        <td class="w50"><input type="checkbox"></td>
-                                        <td><input type="text"></td>
-                                        <td>更多设置 | 插入 | 删除</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="detail-grey">添加</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="w50"></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td class="red">404</td>
+                                        <td>删除</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
-
                 </div>
+
             </div>
         </div>
 
     </div>
-    </div>
+
+
+    <section id="history-change" class="hide">
+        <div class="history-top">
+            <span>版本管理</span>
+            <button>关闭</button>
+        </div>
+
+        <div class="history-table-out">
+            <div class="history-table">
+                <table class="table detail-table detail-table-w">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>人员</th>
+                            <th>操作时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="w50">
+                                <div class="history-now">当前</div>
+                            </td>
+                            <td>美女</td>
+                            <td>2020年8月22日17:31:10</td>
+                            <td><span>详情</span></td>
+                        </tr>
+                        <tr>
+                            <td class="w50"></td>
+                            <td>美女</td>
+                            <td>2020年8月22日17:31:10</td>
+                            <td><span>详情</span> | <span>切换</span> | <span>删除</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>

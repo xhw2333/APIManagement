@@ -23,8 +23,8 @@ select {
 }
 
 .detail-top button:first-child {
-    padding: 5px 16px;
-    border: 1px solid rgba(112, 112, 112, 1);
+    padding: 6px 16px;
+    /* border: 1px solid rgba(112, 112, 112, 1); */
     background-color: rgba(255, 255, 255, 1);
 }
 
