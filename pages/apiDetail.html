@@ -167,31 +167,40 @@
                         <div class="descript-status-green">
                             <input type="radio" name="status">
                             <span>已发布</span>
-                        </div><div class="descript-status-yellow">
+                        </div>
+                        <div class="descript-status-yellow">
                             <input type="radio" name="status">
                             <span>设计中</span>
-                        </div><div class="descript-status-yellow">
+                        </div>
+                        <div class="descript-status-yellow">
                             <input type="radio" name="status">
                             <span>待确定</span>
-                        </div><div class="descript-status-yellow">
+                        </div>
+                        <div class="descript-status-yellow">
                             <input type="radio" name="status">
                             <span>开发</span>
-                        </div><div class="descript-status-yellow">
+                        </div>
+                        <div class="descript-status-yellow">
                             <input type="radio" name="status">
                             <span>对接</span>
-                        </div><div class="descript-status-yellow">
+                        </div>
+                        <div class="descript-status-yellow">
                             <input type="radio" name="status">
                             <span>测试</span>
-                        </div><div class="descript-status-yellow">
+                        </div>
+                        <div class="descript-status-yellow">
                             <input type="radio" name="status">
                             <span>完成</span>
-                        </div><div class="descript-status-red">
+                        </div>
+                        <div class="descript-status-red">
                             <input type="radio" name="status">
                             <span>异常</span>
-                        </div><div class="descript-status-red">
+                        </div>
+                        <div class="descript-status-red">
                             <input type="radio" name="status">
                             <span>维护</span>
-                        </div><div class="descript-status-red">
+                        </div>
+                        <div class="descript-status-red">
                             <input type="radio" name="status">
                             <span>废弃</span>
                         </div>
@@ -242,14 +251,14 @@
                         </div>
                     </div>
                     <!-- 主体 -->
-                    <div>
+                    <div >
                         <div class="detail-req-res-nav">
-                            <div class="detail-req-res-nav-choose">请求头部</div>
-                            <div>请求体</div>
+                            <div class="detail-req-res-nav-choose detail-attr-tag" id="detail-attr-tag-head">请求头部</div>
+                            <div class="detail-attr-tag" id="detail-attr-tag-body">请求体</div>
                         </div>
 
                         <!-- 请求头部 -->
-                        <div class="detail-req-div">
+                        <div class="detail-req-div" id="detail-req-head">
                             <img src="../images/pack.png"><span>导入</span>
                             <table class="table detail-table detail-table-w">
                                 <thead>
@@ -261,7 +270,7 @@
                                         <th>操作</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="request-head">
                                     <tr>
                                         <td class="w50"></td>
                                         <td>
@@ -272,7 +281,11 @@
                                         </td>
                                         <td class="w50"><input type="checkbox"></td>
                                         <td><input type="text"></td>
-                                        <td>更多设置 | 删除</td>
+                                        <td>
+                                            <a href="#">更多设置</a>
+                                            |
+                                            <a href="#">删除</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="detail-grey w50">添加</td>
@@ -291,7 +304,7 @@
                         </div>
 
                         <!-- 请求体 -->
-                        <div class="detail-req-div hide">
+                        <div class="detail-req-div hide" id="detail-req-body">
                             <div class="detail-req-body">
                                 <div>
                                     <input type="radio" name="api-head">
@@ -347,7 +360,13 @@
                                             </select>
                                         </td>
                                         <td class="w50"><input type="checkbox"></td>
-                                        <td>更多设置 | 插入 | 删除</td>
+                                        <td>
+                                            <a href="#">更多设置</a>
+                                            |
+                                            <a href="#">插入</a>
+                                            |
+                                            <a href="#">删除</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="detail-grey">添加</td>
@@ -383,12 +402,13 @@
                     <!-- 主体 -->
                     <div>
                         <div class="detail-req-res-nav">
-                            <div class="detail-req-res-nav-choose">返回头部</div>
-                            <div>返回结果</div>
+                            <div class="detail-req-res-nav-choose detail-return-tag" id="detail-return-tag-head">返回头部
+                            </div>
+                            <div class="detail-return-tag" id="detail-return-tag-result">返回结果</div>
                         </div>
 
                         <!-- 返回头部 -->
-                        <div class="detail-req-div">
+                        <div class="detail-return-div" id="detail-return-head">
                             <img src="../images/pack.png"><span>导入</span>
                             <table class="table detail-table detail-table-w">
                                 <thead>
@@ -411,7 +431,11 @@
                                         </td>
                                         <td class="w50"><input type="checkbox"></td>
                                         <td><input type="text"></td>
-                                        <td>更多设置 | 删除</td>
+                                        <td>
+                                            <a href="#">更多设置</a>
+                                            |
+                                            <a href="#">删除</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="detail-grey">添加</td>
@@ -425,7 +449,7 @@
                         </div>
 
                         <!-- 返回结果 -->
-                        <div class="detail-req-div hide">
+                        <div class="detail-return-div hide" id="detail-return-result">
                             <div class="detail-req-body">
                                 <div>
                                     <input type="radio" name="api-head">
@@ -483,7 +507,13 @@
                                         </td>
                                         <td class="w50"><input type="checkbox"></td>
                                         <td><input type="text"></td>
-                                        <td>更多设置 | 插入 | 删除</td>
+                                        <td>
+                                            <a href="#">更多设置</a>
+                                            |
+                                            <a href="#">插入</a>
+                                            |
+                                            <a href="#">删除</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="detail-grey">添加</td>
@@ -504,9 +534,10 @@
         </div>
 
     </div>
-    </div>
 
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/apiDetail.js"></script>
 </body>
 
 </html>

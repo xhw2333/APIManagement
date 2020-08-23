@@ -144,6 +144,10 @@ select {
 
 /* 请求与响应 */
 
+.detail-attr-tag,.detail-return-tag{
+    user-select: none;
+}
+
 .detail-req-res-nav {
     width: 100%;
 }
@@ -187,7 +191,17 @@ select {
     border: solid 1px rgba(173, 173, 173, 1);
 }
 
+.detail-return-div{
+    margin-top: -1px;
+    border: solid 1px rgba(173, 173, 173, 1);
+}
+
 .detail-req-div>img {
+    height: 16px;
+    margin: 8px 4px 8px 16px;
+}
+
+.detail-return-div>img{
     height: 16px;
     margin: 8px 4px 8px 16px;
 }
