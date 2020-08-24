@@ -36,7 +36,7 @@ window.onload = function () {
     checkForm('#rechieve-email', isEmailValid);
     checkForm('#rechieve-password', isPwdValid);
     checkForm('#rechieve-confirm', isPwdComfirm('#rechieve-password', '#rechieve-confirm'));
-
+    hideLoading();
 
 }
 
@@ -105,7 +105,7 @@ function alertIt(content) {
 // 登录事件
 function loginBind() {
     $('#login-btn').bind('click', function () {
-        alertIt('登录中，请稍后！')
+
         $(this).unbind('click');
         let email = $('#log-email').val();
         let pwd = $('#log-password').val();
@@ -120,7 +120,7 @@ function loginBind() {
                 "password": pwd
             }
             let url = 'http://39.98.41.126:30004/api/user/login';
-
+            showLoading();
             doPost(url, data).then(res => {
                 if (res.code == 1) {
                     alertIt('登录成功！')
@@ -143,6 +143,7 @@ function loginBind() {
                 } else {
                     alertIt(res.msg);
                     loginBind();
+                    hideLoading();
                     return;
                 }
             })
@@ -181,6 +182,7 @@ function doPost(url, data, bindFn) {
             },
             error: function () {
                 alertIt("服务器连接失败！请联系管理员！");
+                hideLoading();
                 if (bindFn) {
                     bindFn();
                 }
@@ -210,7 +212,7 @@ function registerBind() {
                 "password": pwd1,
                 "nickname": nickname
             }
-
+            showLoading();
             doPost(url, data, registerBind).then(res => {
                 if (res.code == 1) {
                     alertIt('注册成功！');
@@ -221,12 +223,14 @@ function registerBind() {
                 } else {
                     alertIt(res.msg);
                     registerBind();
+                    hideLoading();
                     return;
                 }
             })
         } else {
             alertIt('信息填写错误！');
             registerBind();
+            hideLoading();
             return;
         }
     })
@@ -271,11 +275,14 @@ function codeBind() {
             let data = {
                 "email": email
             }
+            alertIt('正在发送验证码......')
             doPost(url, data).then(res => {
                 if (res.code == 1) {
                     setCookie('Auuid', res.msg);
+                    hideLoading();
                     alertIt('验证码已发送，请留意邮箱！');
                 } else {
+                    hideLoading();
                     alertIt(res.msg + '!请' + time + '秒后重试！');
                 }
             })
@@ -308,7 +315,7 @@ function rechieveBind() {
                 "password": pwd1,
                 "code": code
             };
-
+            showLoading();
             doPost(url,data,rechieveBind)
             .then(res => {
                 if (res.code == 1) {
@@ -317,10 +324,12 @@ function rechieveBind() {
                     $('#rechieve-password').val('');
                     $('#rechieve-confirm').val('');
                     $('#rechieve-code').val('');
+                    hideLoading();
                     return;
                 } else {
                     alertIt(res.msg);
                     rechieveBind();
+                    hideLoading();
                     return;
                 }
             })
@@ -367,4 +376,13 @@ function checkForm(domID, checkFn) {
         })
     }
 
+}
+
+// loading
+function showLoading(){
+    $('#loading').fadeIn(500);
+}
+
+function hideLoading(){
+    $('#loading').fadeOut(300);
 }

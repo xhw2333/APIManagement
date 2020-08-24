@@ -283,7 +283,7 @@ $('#save-api').click(function(){
         "responseHeader" : '[' + responseHeader.toString()+ ']',
         "responseBody" :'[' +  responseBody.toString()+ ']'
     }
-
+    showLoading();
     fetch('http://39.98.41.126:30003/api/interface/create',{
         method : 'post',
         body : JSON.stringify(json),
@@ -294,9 +294,23 @@ $('#save-api').click(function(){
     })
     .then(res=>res.json())
     .then(resjson=>{
-        alertIt(resjson.msg);
-        setCookie('api-id',resjson.data.id);
-        location.assign('./apiManagement.html');
+        if(resjson.code == 1){
+            alertIt(resjson.msg);
+            setCookie('api-id',resjson.data.id);
+            hideLoading();
+            location.assign('./apiManagement.html');
+        }else{
+            alertIt(resjson.msg);
+            hideLoading();
+            location.assign('../index.html');
+
+        }
+
+    })
+    .catch(err=>{
+        alertIt('请先登录！');
+        hideLoading();
+        location.assign('../index.html');
 
     })
 

@@ -415,14 +415,24 @@ function exportApiMd(projectId) {
         let oData = {
             "projectId": projectId
         };
-
+        console.log(projectId);
         alertIt("开始建立连接……");
         dom.classList.add("hide");
         getData("http://39.98.41.126:30008/api/pro/export", oData).then((res) => {
-            //location.reload();
-            //console.log(res);
             window.open(res);
         });
+        // fetch("http://39.98.41.126:30008/api/pro/export",{
+        //     method : 'post',
+        //     body : JSON.stringify(oData),
+        //     headers : {
+        //         "Content-Type" : "application/json",
+        //         "Buuid" : Buuid
+        //     }
+        // })
+        // .then(res=>res.json())
+        // .then(resjson=>{
+        //     console.log(resjson);
+        // })
     }
 }
 

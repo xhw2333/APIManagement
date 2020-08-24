@@ -42,3 +42,14 @@ $('.exit').click( function(){
     delCookie('Buuid');
     location.assign('../index.html');
 })
+
+
+// loading
+function showLoading(){
+    $('#loading').fadeIn(500);
+}
+
+function hideLoading(){
+    $('#loading').fadeOut(300);
+}
+hideLoading();
