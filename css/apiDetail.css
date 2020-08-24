@@ -142,6 +142,12 @@ select {
     padding: 4px 8px;
 }
 
+.option{
+    color: rgba(122, 87, 209, 1);
+    user-select: none;
+    cursor: pointer;
+}
+
 /* 请求与响应 */
 
 .detail-attr-tag,.detail-return-tag{
@@ -164,6 +170,7 @@ select {
 .detail-req-res-open {
     float: right;
     cursor: pointer;
+    user-select: none;
 }
 
 .detail-req-res-open img{
@@ -224,13 +231,21 @@ select {
     text-align: center;
 }
 
+.detail-table>thead th:nth-child(2){
+    width: 200px;
+}
+
 .w50 {
     width: 50px;
     text-align: center;
 }
 
 .detail-w14>tbody td:last-child {
-    width: 200px;
+    width: 100px;
+}
+
+.detail-w14>thead>tr:nth-child(4){
+    width: 100px;
 }
 
 .detail-table>thead>tr>th {
@@ -251,6 +266,7 @@ select {
 .detail-table tr>td:first-child {
     border-left: none !important;
 }
+
 
 .detail-grey {
     color: rgba(173, 173, 173, 1);
@@ -275,4 +291,13 @@ select {
     margin-left: 6px;
     border-radius: 4px;
     outline: none;
+}
+
+input{
+    user-select: none;
+}
+
+
+.body-input{
+    content: '导入';
 }

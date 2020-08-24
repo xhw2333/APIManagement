@@ -245,6 +245,15 @@
                                     </tr>
                                 </thead>
                                 <tbody id="request-head">
+                                    <tr>
+                                        <td></td>
+                                        <td><input type="text" class="req-headers"></td>
+                                        <td class="w50"><input type="checkbox" class="req-header-must"></td>
+                                        <td><input type="text" class="req-header-examples"></td>
+                                        <td>
+                                            <span class="option del-req-header" key="0">删除</span>
+                                        </td>
+                                    </tr>
                                 </tbody>
                                 <tr>
                                     <td class="detail-grey w50 req-add-header">添加</td>
@@ -266,132 +275,169 @@
                                     </select>
                                 </div>
                                 <div>
-                            </div>
-                            <table class="table detail-table detail-w14">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>参数名</th>
-                                        <th>说明</th>
-                                        <th>类型</th>
-                                        <th>必填</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="request-body">
-                                </tbody>
-                                <tr>
-                                    <td class="detail-grey req-add-body">添加</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 响应内容 -->
-                <div class="detail-req-res">
-                    <!-- nav -->
-                    <div >
-                        响应内容
-                        <div class="detail-req-res-open detail-res-open">
-                            <span  id="detail-res-open-tag">收起</span>
-                            <img src="../images/nav.png">
-                        </div>
-                    </div>
-
-                    <!-- 主体 -->
-                    <div  id="detail-res">
-                        <div class="detail-req-res-nav">
-                            <div class="detail-req-res-nav-choose detail-return-tag" id="detail-return-tag-head">返回头部
-                            </div>
-                            <div class="detail-return-tag" id="detail-return-tag-result">返回结果</div>
-                        </div>
-
-                        <!-- 返回头部 -->
-                        <div class="detail-return-div" id="detail-return-head">
-                            <!-- <img src="../images/pack.png"><span>导入</span> -->
-                            <table class="table detail-table detail-table-w">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>标签</th>
-                                        <th>必填</th>
-                                        <th>示例</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="response-head">
-                                </tbody>
-                                <tr>
-                                    <td class="detail-grey res-add-header">添加</td>
-                                    <td></td>
-                                    <td class="w50"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <!-- 返回结果 -->
-                        <div class="detail-return-div hide" id="detail-return-result">
-                            <div class="detail-req-body">
-                                <div>
-                                    <select id="response-type">
-                                        <option value="form-data">Form-data</option>
-                                        <option value="application/json">JSON</option>
-                                    </select>
                                 </div>
-                                <!-- <div>
+                                <table class="table detail-table detail-w14">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>参数名</th>
+                                            <th>说明</th>
+                                            <th>类型</th>
+                                            <th>必填</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="request-body">
+                                        <td></td>
+                                        <td><input type="text" class="req-bodys"></td>
+                                        <td><input type="text" class="req-body-example"></td>
+                                        <td>
+                                            <select class="req-body-type">
+                                                <option value="String" >String</option>
+                                                <option value="bool" >bool</option>
+                                            </select>
+                                        </td>
+                                        <td class="w50"><input type="checkbox" class="req-body-must" }></td>
+                                        <td>
+                                            <span class="option del-req-body" key="0">删除</span>
+                                        </td>
+                                    </tbody>
+                                    <tr>
+                                        <td class="detail-grey req-add-body">添加</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 响应内容 -->
+                    <div class="detail-req-res">
+                        <!-- nav -->
+                        <div>
+                            响应内容
+                            <div class="detail-req-res-open detail-res-open">
+                                <span id="detail-res-open-tag">收起</span>
+                                <img src="../images/nav.png">
+                            </div>
+                        </div>
+
+                        <!-- 主体 -->
+                        <div id="detail-res">
+                            <div class="detail-req-res-nav">
+                                <div class="detail-req-res-nav-choose detail-return-tag" id="detail-return-tag-head">
+                                    返回头部
+                                </div>
+                                <div class="detail-return-tag" id="detail-return-tag-result">返回结果</div>
+                            </div>
+
+                            <!-- 返回头部 -->
+                            <div class="detail-return-div" id="detail-return-head">
+                                <!-- <img src="../images/pack.png"><span>导入</span> -->
+                                <table class="table detail-table detail-table-w">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>标签</th>
+                                            <th>必填</th>
+                                            <th>示例</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="response-head">
+                                        <tr>
+                                            <td></td>
+                                            <td><input type="text" class="res-headers"></td>
+                                            <td class="w50"><input class="res-header-must" type="checkbox" ></td>
+                                            <td><input type="text" class="res-header-examples"></td>
+                                            <td>
+                                                <span class="option del-res-header" key="0">删除</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tr>
+                                        <td class="detail-grey res-add-header">添加</td>
+                                        <td></td>
+                                        <td class="w50"></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!-- 返回结果 -->
+                            <div class="detail-return-div hide" id="detail-return-result">
+                                <div class="detail-req-body">
+                                    <div>
+                                        <select id="response-type">
+                                            <option value="form-data">Form-data</option>
+                                            <option value="application/json">JSON</option>
+                                        </select>
+                                    </div>
+                                    <!-- <div>
                                     <select class="file-type">
                                         <option>选择格式</option>
                                         <option>XML</option>
                                         <option>Raw</option>
                                     </select>
                                 </div> -->
-                                <!-- <div>
+                                    <!-- <div>
                                     <input type="file" placeholder="导入" class="body-input">
                                 </div> -->
-                                
-                            </div>
-                            <table class="table detail-table detail-w14">
-                                <thead>
+
+                                </div>
+                                <table class="table detail-table detail-w14">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>参数名</th>
+                                            <th>说明</th>
+                                            <th>类型</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="response-body">
+                                        <tr>
+                                            <td></td>
+                                            <td><input type="text" class="res-bodys"></td>
+                                            <td><input type="text" class="res-body-example"></td>
+                                            <td>
+                                                <select class="res-body-type">
+                                                    <option value="String" >String</option>
+                                                    <option value="bool" >bool</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <span class="option del-res-body" key="0">删除</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                     <tr>
-                                        <th></th>
-                                        <th>参数名</th>
-                                        <th>说明</th>
-                                        <th>类型</th>
-                                        <th>操作</th>
+                                        <td class="detail-grey res-add-body">添加</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
-                                </thead>
-                                <tbody id="response-body">
-                                </tbody>
-                                <tr>
-                                    <td class="detail-grey res-add-body">添加</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                                </table>
+                            </div>
                         </div>
+
+
                     </div>
-
-
                 </div>
             </div>
-        </div>
         </div>
     </div>
     <div id="alert-div" class="hide">提示框</div>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/apiDetail.js"></script>
+    <script src="../js/createApi.js"></script>
 </body>
 
 </html>

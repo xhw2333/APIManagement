@@ -1,0 +1,38 @@
+// 获取cookie
+function getCookie(name) {
+    var reg = RegExp(name + '=([^;]+)');
+    var arr = document.cookie.match(reg);
+    if (arr) {
+        return arr[1];
+    } else {
+        return '';
+    }
+}
+
+// 设置cookie
+function setCookie(name, value, day) {
+    var date = new Date();
+    date.setDate(date.getDate() + day);
+    document.cookie = name + '=' + value + ';expires=' + date;
+};
+
+// 删除cookie
+function delCookie(name) {
+    setCookie(name, null, -1);
+}
+
+// 提示框
+let alertTimer = null;
+function alertIt(content) {
+    $('#alert-div').html(content);
+    $('#alert-div').slideDown(500);
+    if (alertTimer) {
+        alertTimer = null;
+        clearTimeout(alertTimer);
+    } else {
+        alertTimer = setTimeout(() => {
+            $('#alert-div').slideUp(500);
+            alertTimer = null;
+        }, 3000);
+    }
+}
