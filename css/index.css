@@ -17,7 +17,7 @@ body {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-image: url('../image/bg.png');
+    background-image: url('../images/bg.png');
 }
 
 .hide{
@@ -69,7 +69,7 @@ input[type="checkbox"]{
     position: absolute;
     width: 55%;
     height: 100%;
-    background-image: url('../image/logo.png');
+    background-image: url('../images/logo.png');
     background-size: cover;
     animation: ease 2s slidein;
 }

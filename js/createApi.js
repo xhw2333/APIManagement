@@ -197,7 +197,9 @@ function addRow(tbody, template) {
 
 // 保存接口
 $('#save-api').click(function(){
-    let moduleId=37,projectId=16,status;
+    let moduleId = getQueryString('mID'),
+    projectId = getQueryString('pID'),
+    status;
     // 获取请求头
     let reqHeaders = document.getElementById('request-head').children;
     let reqheaders = document.getElementsByClassName('req-headers');

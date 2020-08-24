@@ -10,7 +10,7 @@ window.onload = function () {
 
     // 记住我
     remember();
-    if (getCookie('email')) {
+    if (getCookie('pwd')) {
         $('#log-rem').data('checked', true);
         $('#log-rem').prop('checked', true);
         $('#log-email').val(getCookie('email'));
@@ -127,7 +127,7 @@ function loginBind() {
                     // 设置cookie
                     let base = new Base64();
                     pwd = base.encode(pwd);
-                    if ($('#log-rem').data('checked')) {
+                    if ($('#log-rem').prop('checked')) {
                         setCookie('email', email, 7);
                         setCookie('pwd', pwd,7);
                     } else {
@@ -138,7 +138,7 @@ function loginBind() {
                     $('#log-password').val('');
                     $('#log-rem').data('checked', false);
                     $('#log-rem').prop('checked', false);
-                    // location.assign('./pages/personal.html');
+                    location.assign('./pages/personal.html');
 
                 } else {
                     alertIt(res.msg);
@@ -177,7 +177,6 @@ function doPost(url, data, bindFn) {
             },
             data: JSON.stringify(data),
             success: function (res, status, xhr) {
-                // setCookie('session',xhr.getResponseHeader('SESSION'))
                 resolve(res)
             },
             error: function () {
