@@ -148,6 +148,7 @@ function addModule() {
                 if (modules && !that.getElementsByTagName('ul').length) {
 
                     /* 循环一个个插入 */
+                    let unAdd = new Array();
                     for (let i = 0; i < modules.length; i++) {
                         /* 找到父节点 */
                         let pID;
@@ -158,7 +159,8 @@ function addModule() {
                             pID = that.querySelector(`li[myID="${modules[i].parentId}"]`);
                         }
 
-                        let str = `
+                        if (pID) {
+                            let str = `
                         <li myID="${modules[i].id}" projectId="${modules[i].projectId}">
                             <div class="api-li api-child-main" parentId="${modules[i].parentId}" myID="${modules[i].id}" projectId="${modules[i].projectId}">
                                 <img src="../images/list.png" class="rount list">
@@ -169,17 +171,63 @@ function addModule() {
                         </li>
                         `;
 
-                        if (pID.getElementsByTagName('ul').length) {
-                            /* 如果已经有子模块 */
-                            pID = pID.getElementsByTagName('ul')[0];
-                            pID.innerHTML += str;
-                        } else {
-                            pID.innerHTML = pID.innerHTML + `
+                            if (pID.getElementsByTagName('ul').length) {
+                                /* 如果已经有子模块 */
+                                pID = pID.getElementsByTagName('ul')[0];
+                                pID.innerHTML += str;
+                            } else {
+                                pID.innerHTML = pID.innerHTML + `
                             <ul class="api-child-module">` + str + `
                             </ul>`;
+                            }
+                        } else {
+                            unAdd.push(i);
                         }
 
                     }
+
+                    /* 只进行一次排序 */
+                    if (unAdd.length) {
+                        while(unAdd.length) {
+                            let i = unAdd.pop();
+                            /* 找到父节点 */
+                            let pID;
+
+                            if (modules[i].parentId == 0) {
+                                pID = that;
+                            } else {
+                                pID = that.querySelector(`li[myID="${modules[i].parentId}"]`);
+                            }
+
+                            if (pID) {
+                                let str = `
+                            <li myID="${modules[i].id}" projectId="${modules[i].projectId}">
+                                <div class="api-li api-child-main" parentId="${modules[i].parentId}" myID="${modules[i].id}" projectId="${modules[i].projectId}">
+                                    <img src="../images/list.png" class="rount list">
+                                    <img src="../images/pack.png">
+                                    <span>${modules[i].name}</span>
+                                    <img src="../images/more.png" class="api-more api-more-modu">
+                                </div>
+                            </li>
+                            `;
+
+                                if (pID.getElementsByTagName('ul').length) {
+                                    /* 如果已经有子模块 */
+                                    pID = pID.getElementsByTagName('ul')[0];
+                                    pID.innerHTML += str;
+                                } else {
+                                    pID.innerHTML = pID.innerHTML + `
+                                <ul class="api-child-module">` + str + `
+                                </ul>`;
+                                }
+
+                            } else {
+                                unAdd.push(i);
+                            }
+
+                        }
+                    }
+
                 }
 
                 /* 添加apis */
@@ -465,7 +513,6 @@ function moveModu(name, myId) {
                 if (getNextElement(ppdiv)) {
                     let ddiv = getNextElement(ppdiv).getElementsByTagName("div");
 
-                    console.log(newSelect);
 
                     let div = document.createElement('div');
                     newSelect.parentElement.appendChild(div);
@@ -475,7 +522,7 @@ function moveModu(name, myId) {
                     let se = getNextElement(newSelect).children[0];
                     se.onchange = function () {
                         parentId = se.value;
-                        console.log(parentId);
+
                     }
                 }
 
