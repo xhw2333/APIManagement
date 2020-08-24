@@ -99,18 +99,18 @@ function addClickModule(dom) {
                         let apiStr = "";
                         for (let j = 0; j < apis.length; j++) {
                             apiStr += `
-                        <tr apiID=${apis[i].id}>
+                        <tr apiID=${apis[j].id}>
                             <td class="w50"><input type="checkbox"></td>
                             <td>
-                                <div class="my-border my-border-${getStatusColor(apis[i].status)}">${getStatus(apis[i].status)}</div>
-                                ${apis[i].url}
+                                <div class="my-border my-border-${getStatusColor(apis[j].status)}">${getStatus(apis[j].status)}</div>
+                                ${apis[j].url}
                             </td>
                             <td>
-                                <div class="my-border my-border-blue">${apis[i].method}</div>
+                                <div class="my-border my-border-blue">${apis[j].method}</div>
                             </td>
-                            <td>${apis[i].url}</td>
-                            <td>${apis[i].updater}</td>
-                            <td>${apis[i].updateTime}</td>
+                            <td>${apis[j].url}</td>
+                            <td>${apis[j].updater}</td>
+                            <td>${apis[j].updateTime}</td>
                             <td>
                                 <span>编辑</span> | <span>新标签页打开</span> | <span>删除</span>
                             </td>
