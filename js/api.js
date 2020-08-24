@@ -1,12 +1,15 @@
 // 文件下载不了,求助威哥
 // 项目导入，求助威哥
-// 层级筛选未测试
+
 
 
 /* 左边导航栏的内容 */
 
+// 从cookie获取
 var email = "3014899575@qq.com";
 var Buuid = "5668cbba-630f-4968-894e-bcd2a0a4ddc3";
+
+
 
 var tBody = document.getElementById("api-tbody");
 
@@ -637,7 +640,7 @@ function getData(url, data) {
 }
 
 // 提示框
-let alertTimer = null;
+alertTimer = null;
 function alertIt(content) {
     $('#alert-div').html(content);
     $('#alert-div').slideDown(500);

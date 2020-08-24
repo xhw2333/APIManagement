@@ -22,130 +22,14 @@
         <div id="side-nav">
             <!-- 左边导航 -->
             <div id="api-nav-new">
-                <div>创建新项目</div>
-                <div>
+                <div id="new-groud">创建新项目</div>
+                <div id="add-new-file">
                     <img src="../images/piliang.png">导入
                 </div>
             </div>
-            <ul id="api-module">
-                <li>
-                    <div class="api-main-li api-li api-shadow">
-                        <img src="../images/list.png" class="rount">
-                        <img src="../images/pack.png">
-                        <span>项目1</span>
-                        <img src="../images/more.png" class="api-more">
-                    </div>
-
-                    <ul class="api-child-module">
-                        <li>
-                            <div class="api-li api-child-main">
-                                <img src="../images/list.png" class="rount">
-                                <img src="../images/pack.png">
-                                <span>项目1</span>
-                                <img src="../images/more.png" class="api-more">
-                            </div>
-
-                            <ul class="api-child-module">
-                                <li>
-                                    <div class="api-li api-child-main">
-                                        <img src="../images/list.png" class="rount">
-                                        <img src="../images/pack.png">
-                                        <span>项目1</span>
-                                        <img src="../images/more.png" class="api-more">
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="api-li api-child-main">
-                                <img src="../images/list.png" class="">
-                                <img src="../images/pack.png">
-                                <span>项目1</span>
-                                <img src="../images/more.png" class="api-more">
-                            </div>
-
-
-                        </li>
-                        <li>
-                            <div class="api-li api-child-main">
-                                <img src="../images/list.png" class="rount">
-                                <img src="../images/pack.png">
-                                <span>项目1</span>
-                                <img src="../images/more.png" class="api-more">
-                            </div>
-
-                            <ul class="api-child-module">
-                                <li>
-                                    <div class="api-li api-child-main">
-                                        <img src="../images/list.png" class="">
-                                        <img src="../images/pack.png">
-                                        <span>项目1</span>
-                                        <img src="../images/more.png" class="api-more">
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="api-li api-child-main">
-                                        <img src="../images/list.png" class="">
-                                        <img src="../images/pack.png">
-                                        <span>项目1</span>
-                                        <img src="../images/more.png" class="api-more">
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="api-li api-child-main">
-                                        <img src="../images/list.png" class="">
-                                        <img src="../images/pack.png">
-                                        <span>项目1</span>
-                                        <img src="../images/more.png" class="api-more">
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="api-li api-child-main">
-                                        <img src="../images/list.png" class="">
-                                        <img src="../images/pack.png">
-                                        <span>项目1</span>
-                                        <img src="../images/more.png" class="api-more">
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <div class="api-main-li api-li api-shadow">
-                        <img src="../images/list.png" class="rount">
-                        <img src="../images/pack.png">
-                        <span>项目1</span>
-                        <img src="../images/more.png" class="api-more">
-                    </div>
-
-                    <ul class="api-child-module">
-                        <li>
-                            <div class="api-li api-child-main">
-                                <img src="../images/list.png" class="rount">
-                                <img src="../images/pack.png">
-                                <span>项目1</span>
-                                <img src="../images/more.png" class="api-more">
-                            </div>
-
-                            <ul class="api-child-module">
-                                <li>
-                                    <div class="api-li api-child-main">
-                                        <img src="../images/list.png" class="rount">
-                                        <img src="../images/pack.png">
-                                        <span>项目1</span>
-                                        <img src="../images/more.png" class="api-more">
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-            </ul>
-
+            <ul id="api-module"></ul>
         </div>
+
         <div id="operation" class="ope-sha">
             <!-- 右边内容 -->
             <div class="detail-top">
@@ -167,20 +51,16 @@
                         <div class="descript-status-green">
                             <input type="radio" name="status" class="api-status">
                             <span>已发布</span>
-                        </div>
-                        <div class="descript-status-yellow">
+                        </div><div class="descript-status-yellow">
                             <input type="radio" name="status" class="api-status">
                             <span>设计中</span>
-                        </div>
-                        <div class="descript-status-yellow">
+                        </div><div class="descript-status-yellow">
                             <input type="radio" name="status" class="api-status">
                             <span>测试</span>
-                        </div>
-                        <div class="descript-status-red">
+                        </div><div class="descript-status-red">
                             <input type="radio" name="status" class="api-status">
                             <span>维护</span>
-                        </div>
-                        <div class="descript-status-red">
+                        </div><div class="descript-status-red">
                             <input type="radio" name="status" class="api-status">
                             <span>废弃</span>
                         </div>
@@ -266,132 +146,257 @@
                                     </select>
                                 </div>
                                 <div>
-                            </div>
-                            <table class="table detail-table detail-w14">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>参数名</th>
-                                        <th>说明</th>
-                                        <th>类型</th>
-                                        <th>必填</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="request-body">
-                                </tbody>
-                                <tr>
-                                    <td class="detail-grey req-add-body">添加</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 响应内容 -->
-                <div class="detail-req-res">
-                    <!-- nav -->
-                    <div >
-                        响应内容
-                        <div class="detail-req-res-open detail-res-open">
-                            <span  id="detail-res-open-tag">收起</span>
-                            <img src="../images/nav.png">
-                        </div>
-                    </div>
-
-                    <!-- 主体 -->
-                    <div  id="detail-res">
-                        <div class="detail-req-res-nav">
-                            <div class="detail-req-res-nav-choose detail-return-tag" id="detail-return-tag-head">返回头部
-                            </div>
-                            <div class="detail-return-tag" id="detail-return-tag-result">返回结果</div>
-                        </div>
-
-                        <!-- 返回头部 -->
-                        <div class="detail-return-div" id="detail-return-head">
-                            <!-- <img src="../images/pack.png"><span>导入</span> -->
-                            <table class="table detail-table detail-table-w">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>标签</th>
-                                        <th>必填</th>
-                                        <th>示例</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="response-head">
-                                </tbody>
-                                <tr>
-                                    <td class="detail-grey res-add-header">添加</td>
-                                    <td></td>
-                                    <td class="w50"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <!-- 返回结果 -->
-                        <div class="detail-return-div hide" id="detail-return-result">
-                            <div class="detail-req-body">
-                                <div>
-                                    <select id="response-type">
-                                        <option value="form-data">Form-data</option>
-                                        <option value="application/json">JSON</option>
-                                    </select>
                                 </div>
-                                <!-- <div>
+                                <table class="table detail-table detail-w14">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>参数名</th>
+                                            <th>说明</th>
+                                            <th>类型</th>
+                                            <th>必填</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="request-body">
+                                    </tbody>
+                                    <tr>
+                                        <td class="detail-grey req-add-body">添加</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 响应内容 -->
+                    <div class="detail-req-res">
+                        <!-- nav -->
+                        <div>
+                            响应内容
+                            <div class="detail-req-res-open detail-res-open">
+                                <span id="detail-res-open-tag">收起</span>
+                                <img src="../images/nav.png">
+                            </div>
+                        </div>
+
+                        <!-- 主体 -->
+                        <div id="detail-res">
+                            <div class="detail-req-res-nav">
+                                <div class="detail-req-res-nav-choose detail-return-tag" id="detail-return-tag-head">
+                                    返回头部
+                                </div>
+                                <div class="detail-return-tag" id="detail-return-tag-result">返回结果</div>
+                            </div>
+
+                            <!-- 返回头部 -->
+                            <div class="detail-return-div" id="detail-return-head">
+                                <!-- <img src="../images/pack.png"><span>导入</span> -->
+                                <table class="table detail-table detail-table-w">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>标签</th>
+                                            <th>必填</th>
+                                            <th>示例</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="response-head">
+                                    </tbody>
+                                    <tr>
+                                        <td class="detail-grey res-add-header">添加</td>
+                                        <td></td>
+                                        <td class="w50"></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!-- 返回结果 -->
+                            <div class="detail-return-div hide" id="detail-return-result">
+                                <div class="detail-req-body">
+                                    <div>
+                                        <select id="response-type">
+                                            <option value="form-data">Form-data</option>
+                                            <option value="application/json">JSON</option>
+                                        </select>
+                                    </div>
+                                    <!-- <div>
                                     <select class="file-type">
                                         <option>选择格式</option>
                                         <option>XML</option>
                                         <option>Raw</option>
                                     </select>
                                 </div> -->
-                                <!-- <div>
+                                    <!-- <div>
                                     <input type="file" placeholder="导入" class="body-input">
                                 </div> -->
-                                
-                            </div>
-                            <table class="table detail-table detail-w14">
-                                <thead>
+
+                                </div>
+                                <table class="table detail-table detail-w14">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>参数名</th>
+                                            <th>说明</th>
+                                            <th>类型</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="response-body">
+                                    </tbody>
                                     <tr>
-                                        <th></th>
-                                        <th>参数名</th>
-                                        <th>说明</th>
-                                        <th>类型</th>
-                                        <th>操作</th>
+                                        <td class="detail-grey res-add-body">添加</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
-                                </thead>
-                                <tbody id="response-body">
-                                </tbody>
-                                <tr>
-                                    <td class="detail-grey res-add-body">添加</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                                </table>
+                            </div>
                         </div>
+
+
                     </div>
-
-
                 </div>
             </div>
         </div>
-        </div>
     </div>
+
+    <!-- 添加新项目 -->
+    <section id="add-new-module" class="section hide">
+        <div>
+            <p>添加新项目</p>
+            <input type="text" placeholder="请输入项目名">
+            <div>
+                <button value="确定">确定</button>
+                <button value="取消" class="quxiao">取消</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新建子模块 -->
+    <section id="add-new-true-module" class="section add-new-module hide">
+        <div>
+            <p>新建子模块</p>
+            <input type="text" placeholder="请输入模块名">
+            <div>
+                <button value="确定">确定</button>
+                <button value="取消" class="quxiao">取消</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 修改名称 -->
+    <section id="change-name" class="section add-new-module hide">
+        <div>
+            <p>修改名称</p>
+            <input type="text" placeholder="请输入新名称">
+            <div>
+                <button value="确定">确定</button>
+                <button value="取消" class="quxiao">取消</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 移动API编组 -->
+    <section id="move-api" class="section hide">
+        <div>
+            <div class="section-tit">移动API编组</div>
+            <div class="sec-main">
+                <p>项目目标</p>
+                <input type="text" placeholder="请输入项目名" disabled>
+                <p>目标分组</p>
+                <select id="move-proj">
+                    <option>模块1</option>
+                    <option>模块2</option>
+                    <option>模块3</option>
+                </select>
+                <!-- <div>
+                    <select>
+                        <option>子模块1</option>
+                        <option>子模块2</option>
+                        <option>子模块3</option>
+                    </select>
+                    <div>xxxx</div>
+                </div> -->
+
+            </div>
+
+            <div>
+                <button value="确定">确定</button>
+                <button value="取消" class="quxiao">取消</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 删除 -->
+    <section id="sec-module-de" class="section hide">
+        <div>
+            <p>是否确认删除</p>
+
+            <div>
+                <button value="确定" class="bg-red">确定</button>
+                <button value="取消" class="quxiao">取消</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 导出离线API文档 -->
+    <section id="sec-export" class="section hide">
+        <div>
+            <div class="section-tit">导出离线API文档</div>
+            <div class="sec-main">
+                <p>导出类型</p>
+                <select>
+                    <option>Markdown</option>
+                    <!-- <option>Microsoft Word</option>
+                    <option>PDF</option> -->
+                </select>
+            </div>
+
+            <div>
+                <button value="确定">确定</button>
+                <button value="取消" class="quxiao">取消</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 导入文件 -->
+    <section id="input-file" class="section add-new-module hide">
+        <div>
+            <p>导入文件</p>
+            <input type="file" placeholder="选择文件">
+            <div>
+                <button value="确定">确定</button>
+                <button value="取消" class="quxiao">取消</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="modu-list" class="hide">
+        <div>
+            <div>新建子模块</div>
+            <div>导出API文档</div>
+            <div>编辑</div>
+            <div>移动</div>
+            <div>删除</div>
+        </div>
+    </section>
+
+
     <div id="alert-div" class="hide">提示框</div>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/apiDetail.js"></script>
+    <script src="../js/api.js"></script>
 </body>
 
 </html>
