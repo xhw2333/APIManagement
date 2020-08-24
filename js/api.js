@@ -57,7 +57,7 @@ document.getElementById("new-groud").onclick = function () {
 }
 
 /* 导入 */
-document.getElementById("add-new-file").onclick = function() {
+document.getElementById("add-new-file").onclick = function () {
     document.getElementById("input-file").classList.remove("hide");
 }
 
@@ -462,18 +462,23 @@ function moveModu(name, myId) {
                     getNextElement(newSelect).remove();
                 let ppdiv = document.querySelector(`div[myid="${newSelect.value}"]`);
 
-                let ddiv = getNextElement(ppdiv).getElementsByTagName("div");
+                if (getNextElement(ppdiv)) {
+                    let ddiv = getNextElement(ppdiv).getElementsByTagName("div");
 
-                let div = document.createElement('div');
-                newSelect.parentElement.appendChild(div);
-                getNextElement(proj).innerHTML = addScelect(ddiv, 0);
+                    console.log(newSelect);
 
-                // 选择所有子模块
-                let se = getNextElement(proj).children[0];
-                se.onchange = function () {
-                    parentId = se.value;
-                    console.log(parentId);
+                    let div = document.createElement('div');
+                    newSelect.parentElement.appendChild(div);
+                    getNextElement(newSelect).innerHTML = addScelect(ddiv, 0);
+
+                    // 选择所有子模块
+                    let se = getNextElement(newSelect).children[0];
+                    se.onchange = function () {
+                        parentId = se.value;
+                        console.log(parentId);
+                    }
                 }
+
             }
         }
     }
