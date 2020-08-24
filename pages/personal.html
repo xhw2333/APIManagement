@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal</title>
+    <title>API管理平台-我的</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/personal.css">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
     <div id="top">
@@ -31,22 +32,37 @@
             <!-- 右边内容 -->
             <!-- 我的信息 -->
             <div id="operation-mine" class="operation-part">
-                <div class="mine-message">
-                    <h3 class="message-title">基本信息</h3>
+                <div id="mine-message" class="mine-message">
+                    <h3 class="message-title">
+                        基本信息
+                        <img id="message-edit" src="../images/edit.png" alt="">
+                    </h3>
                     <div class="message-portrait">
-                        <img src="../image/my.png" alt="">
+                        <img id="portrait-head" src="../image/my.png" alt="">
+                        <div id="portrait-upload" class="portrait-upload hide">
+                            <img src="../images/upload.png" alt="">
+                            <input type="file" class="upload-file" name="avatar" 
+                            id="upload-file" accept=".png,.jpg,.jepg,.JPG">
+                        </div>
                     </div>
                     <div class="message-name">
                         <h4>昵称（建议使用真实姓名）</h4>
-                        <p>阿斌</p>
+                        <p id="mine-nickname">
+                            
+                        </p>
                     </div>
                     <div class="message-email">
                         <h4>注册邮箱</h4>
-                        <p>1234567890@qq.com</p>
+                        <p id="mine-email"></p>
                     </div>
+                    <div id="message-btn" class="message-btn hide">
+                        <button id="message-cancel">取消</button>
+                        <button id="message-save">保存</button>
+                    </div>
+                    
                 </div>
                 <div class="mine-relate">
-                    <div class="mine-project">
+                    <!-- <div class="mine-project">
                         <h3 class="project-title">我参与的项目</h3>
                         <table class="project-pane">
                             <thead>
@@ -60,7 +76,7 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="project-list">
                                 <tr>
                                     <td>一个版面最多显示6行项目</td>
                                     <td>V 1.0</td>
@@ -86,11 +102,10 @@
                             <ul id="project-page-ul">
                             </ul>
                             <div class="project-footer-nxt"><p href="">下一页</p></div>
-                            <!-- <div class="project-switch"><p>跳转第</p><input type="text" id="opt-topage"><p>页</p></div> -->
                         </div>
-                    </div>
+                    </div> -->
                     <div class="mine-nozzle">
-                        <h3 class="nozzle-title">我参与的接口</h3>
+                        <h3 class="nozzle-title">我参与的项目及其接口</h3>
                         <table class="nozzle-pane">
                             <thead>
                                 <tr>
@@ -103,8 +118,8 @@
                                     <th></th> -->
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr id="nozzle-item">
+                            <tbody id="nozzle-list">
+                                <!-- <tr id="nozzle-item">
                                     <td>
                                         <i>项目一</i> 
                                     </td>
@@ -122,37 +137,11 @@
                                     <td>2020-08-18</td>
                                     
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <span>已发布</span>
-                                        获取统计图表所需要的数据
-                                    </td>
-                                    <td>
-                                        <span>POST</span>
-                                    </td>
-                                    <td>/graphic</td>
-                                    <td>阿斌</td>
-                                    <td>2020-08-18</td>
-                                    
-                                </tr>
                                 <tr id="nozzle-item">
                                     <td>
                                         <i>项目二</i> 
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>已发布</span>
-                                        获取统计图表所需要的数据
-                                    </td>
-                                    <td>
-                                        <span>POST</span>
-                                    </td>
-                                    <td>/graphic</td>
-                                    <td>阿斌</td>
-                                    <td>2020-08-18</td>
-                                    
-                                </tr>
+                                </tr>-->
                             </tbody>
                         </table>
                         <div class="nozzle-footer">
@@ -160,7 +149,7 @@
                             <ul id="nozzle-page-ul">
                             </ul>
                             <div class="nozzle-footer-nxt"><p href="">下一页</p></div>
-                            <!-- <div class="project-switch"><p>跳转第</p><input type="text" id="opt-topage"><p>页</p></div> -->
+                            <div class="nozzle-switch"><p>跳转第</p><input type="text" id="nozzle-topage"><p>页</p></div>
                         </div>
                     </div>
                 </div>
@@ -171,32 +160,46 @@
                 <div class="team-about">
                     <div class="team-item">
                         <h3 class="item-title">项目列表</h3>
-                        <ul class="item-list">
-                            <li>项目1</li>
-                            <li>项目2</li>
-                            <li>这里的字数上限为十二个字...</li>
+                        <ul id="item-list" class="item-list">
+                            <!-- <li class="item-choose">
+                                项目1
+                            </li>
+                            <li>
+                                项目2
+                            </li>
+                            <li>这里的字数上限为十二个字...</li> -->
                         </ul>
                     </div>
                     <div class="team-member">
                         <h3 class="member-title">项目成员</h3>
-                        <ul class="member-creator">
-                            <li>
+                        <ul id="member-creator" class="member-creator">
+                            <!-- <li>
                                 <img src="../image/my.png" alt="">
                                 <div class="creator-message">
                                     <span>阿斌（我）</span>
                                     <i>创建者</i>
                                     <p class="creator-email">1234567890@qq.com</p>
                                 </div>
-                            </li>
+                                <img id="creator-more" class="joiner-more" src="../images/more.png" alt="">
+                                <p id="creator-exit" class="joiner-exit hide">
+                                    <i class="joiner-exit-project">退出项目</i> 
+                                    <span class="joiner-exit-cancel">x</span>
+                                </p>
+                            </li> -->
                         </ul>
-                        <ul class="member-joiner">
-                            <li>
+                        <ul id="member-joiner" class="member-joiner">
+                            <!-- <li>
                                 <img src="../image/my.png" alt="">
                                 <div class="joiner-message">
                                     <span>啊红</span>
                                     <i>成员</i>
                                     <p class="joiner-email">1234567890@qq.com</p>
                                 </div>
+                                <img class="joiner-more" src="../images/more.png" alt="">
+                                <p class="joiner-exit hide">
+                                    <i class="joiner-exit-project">退出项目</i> 
+                                    <span class="joiner-exit-cancel">x</span>
+                                </p>
                             </li>
                             <li>
                                 <img src="../image/my.png" alt="">
@@ -205,6 +208,8 @@
                                     <i>成员</i>
                                     <p class="joiner-email">1234567890@qq.com</p>
                                 </div>
+                                <img class="joiner-more" src="../images/more.png" alt="">
+                                <p class="joiner-exit hide">退出项目</p>
                             </li>
                             <li>
                                 <img src="../image/my.png" alt="">
@@ -213,6 +218,8 @@
                                     <i>成员</i>
                                     <p class="joiner-email">1234567890@qq.com</p>
                                 </div>
+                                <img class="joiner-more" src="../images/more.png" alt="">
+                                <p class="joiner-exit hide">退出项目</p>
                             </li>
                             <li>
                                 <img src="../image/my.png" alt="">
@@ -221,81 +228,72 @@
                                     <i>成员</i>
                                     <p class="joiner-email">1234567890@qq.com</p>
                                 </div>
-                            </li>
-                            <li class="joiner-add">
+                                <img class="joiner-more" src="../images/more.png" alt="">
+                                <p class="joiner-exit hide">退出项目</p>
+                            </li> -->
+                            <!-- <li id="joiner-add" class="joiner-add">
                                 <p>+</p>
                                 <div class="">
                                     添加新成员
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
+                    </div>                  
+                </div>
+                <!-- 添加新成员 -->
+                <div id="joiner-add-container" class="hide">
+                    <div class="add-pane">
+                        <h3 class="add-title">添加新成员</h3>
+                        <div class="add-search">
+                            <input id="add-member" type="text" placeholder="请输入成员邮箱号">
+                            <img src="../images/find.png" alt="">
+                        </div>
+                        <ul class="add-search-result">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="add-btn">
+                            <button id="add-close">取消</button>
+                            <button id="add-invite">邀请</button>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- 消息通知 -->
             <div id="operation-notice" class="operation-part hide">
-                <div class="notice-message">
+                <div id="notice-message" class="notice-message">
                     <h3 class="message-title">基本信息</h3>
                     <div class="message-portrait">
                         <img src="../image/my.png" alt="">
                     </div>
                     <div class="message-name">
                         <h4>昵称（建议使用真实姓名）</h4>
-                        <p>阿斌</p>
+                        <p></p>
                     </div>
                     <div class="message-email">
                         <h4>注册邮箱</h4>
-                        <p>1234567890@qq.com</p>
+                        <p></p>
                     </div>
                 </div>
                 <div class="notice-deal">
                     <h3 class="notice-title">未处理信息</h3>
-                    <ul class="notice-invite">
-                        <li>
+                    <ul id="invite-list" class="notice-invite">
+                        <!-- <li>
                             <img src="../image/my.png" alt="">
                             <div class="invite-message">
                                 <span>阿斌</span>
                                 <span>2020-01-12 12:30</span>
                                 <p>
                                     邀请你加入
-                                    <strong>出租车大数据分析系统</strong>
+                                    <strong class="invite-project">出租车大数据分析系统</strong>
                                 </p>
                             </div>
                             <div class="invite-confirm">
-                                <button>同意</button>
-                                <button>拒绝</button>
+                                <button class="invite-accept">同意</button>
+                                <button class="invite-refuse">拒绝</button>
                             </div>
-                        </li>
-                        <li>
-                            <img src="../image/my.png" alt="">
-                            <div class="invite-message">
-                                <span>阿斌</span>
-                                <span>2020-01-12 12:30</span>
-                                <p>
-                                    邀请你加入
-                                    <strong>出租车大数据分析系统</strong>
-                                </p>
-                            </div>
-                            <div class="invite-confirm">
-                                <button>同意</button>
-                                <button>拒绝</button>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="../image/my.png" alt="">
-                            <div class="invite-message">
-                                <span>阿斌</span>
-                                <span>2020-01-12 12:30</span>
-                                <p>
-                                    邀请你加入
-                                    <strong>出租车大数据分析系统</strong>
-                                </p>
-                            </div>
-                            <div id="invite-confirm" class="invite-confirm">
-                                <button>同意</button>
-                                <button>拒绝</button>
-                            </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
