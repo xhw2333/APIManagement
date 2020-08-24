@@ -28,7 +28,6 @@ function getQueryString(name) {
 // 保存api的部分信息
 var apiId,moduleId,projectId,status;
 let id = getQueryString('apiID');
-let Buuid = getCookie('Buuid')
 // 请求接口参数详情
 getData('http://39.98.41.126:30003/api/interface/detail?id=' + id,'get',"066bf030-b544-4521-831b-ee1b4b614b51")
 .then(res=>{
