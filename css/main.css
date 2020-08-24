@@ -115,7 +115,7 @@ table {
 }
 
 .hide {
-    display: none !important;
+    display: none;
 }
 
 .v-hide {

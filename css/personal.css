@@ -4,20 +4,20 @@
 }
 
 .side-tabs {
-    height: 40px;
-    line-height: 40px;
-    font-size: 18px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 22px;
     text-align: center;
     transition: all 0.2s;
     cursor: pointer;
 }
 
 
-#operation-mine{
+.operation-mine{
     display: flex;
     margin: 24px 15px 10px 16px;
     /* justify-content: space-around; */
-    user-select: none;
+    /* user-select: none; */
 }
 
 .side-now {
@@ -65,12 +65,12 @@
 .project-footer,
 .nozzle-footer {
     display: flex;
-    height: 32px;
-    line-height: 32px;
-    padding: 0 10px;
+    height: 40px;
+    padding: 0 50px;
     margin-top: 10px;
     justify-content: flex-end;
     background-color: #F2F2F2;
+    align-items: center;
 }
 
 .project-footer div,
@@ -81,7 +81,7 @@
 .nozzle-pane thead th {
     padding: 10px 20px;
     border: 0;
-    text-align: center;
+    text-align: left;
     vertical-align: bottom;
 }
 
@@ -89,7 +89,7 @@
 .nozzle-pane tbody td {
     padding: 10px 20px;
     vertical-align: bottom;
-    text-align: center;
+    text-align: left;
 }
 
 .nozzle-pane tbody tr td span {
@@ -123,14 +123,26 @@
     display: flex;
 }
 
-#nozzle-topage {
-    width: 100px;
-    border: 1px solid #313131;
-    text-indent: 3px;
+.nozzle-footer-pre,
+.nozzle-footer-nxt {
+    cursor: pointer;
 }
 
+#nozzle-topage {
+    width: 60px;
+    border: 1px solid #313131;
+    text-indent: 3px;
+    border-radius: 5px;
+}
+
+
+#nozzle-list tr td,
 #nozzle-item td{
     text-align: left;
+    font-size: 11px;
+    /* overflow: hidden; */
+    white-space: nowrap;
+    /* text-overflow: ellipsis; */
 }
 
 #nozzle-item i {
@@ -139,6 +151,7 @@
     background-color: #E5E5E5;
     font-weight: bold;
     border-radius: 5px;
+    white-space: nowrap;
 }
 
 .mine-message,
@@ -235,7 +248,7 @@
     background-color: #7A57D1;
 }
 
-#operation-team {
+.operation-team {
     display: flex;
     margin: 24px 15px 10px 16px;
     /* justify-content: space-around; */
@@ -415,7 +428,7 @@ li.joiner-add {
     line-height: 40px;
 }
 
-#operation-notice{
+.operation-notice{
     display: flex;
     margin: 24px 15px 10px 16px;
     /* justify-content: space-around; */
@@ -486,7 +499,7 @@ li.joiner-add {
     background-color: #5BE7C4;
 }
 
-#joiner-add-container {
+.joiner-add-container {
     position: fixed;
     display: flex;
     top: 0;
