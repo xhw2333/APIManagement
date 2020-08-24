@@ -13,7 +13,7 @@ function getCookie(name) {
 function setCookie(name, value, day) {
     var date = new Date();
     date.setDate(date.getDate() + day);
-    document.cookie = name + '=' + value + ';expires=' + date;
+    document.cookie = name + '=' + value + ';expires=' + date + ';path=/';
 };
 
 // 删除cookie
@@ -36,3 +36,9 @@ function alertIt(content) {
         }, 3000);
     }
 }
+
+// 退出登录
+$('.exit').click( function(){
+    delCookie('Buuid');
+    location.assign('../index.html');
+})

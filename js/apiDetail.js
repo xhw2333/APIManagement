@@ -1,3 +1,10 @@
+// 本页面需要的参数
+// email(cookie)
+// Buuid(cookie)
+// apiID(url参数)
+
+
+
 
 function getData(url,method,uuid,data){
     return new Promise(resolve=>{

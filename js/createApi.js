@@ -1,3 +1,9 @@
+// 本页面需要的参数
+// email(cookie)
+// Buuid(cookie)
+// moduleId(url参数)
+// projeId(url参数)
+
 // 添加请求头
 $('.req-add-header').click(function () {
     let key = document.getElementById('request-head').children.length;
@@ -288,7 +294,7 @@ $('#save-api').click(function(){
     .then(resjson=>{
         alertIt(resjson.msg);
         setCookie('api-id',resjson.data.id);
-        location.reload('./apiDetail.html?apiID=143');
+        location.assign('./apiManagement.html');
 
     })
 

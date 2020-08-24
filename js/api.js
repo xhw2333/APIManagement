@@ -1,13 +1,12 @@
 // 文件下载不了,求助威哥
-// 项目导入，求助威哥
 
 
 
 /* 左边导航栏的内容 */
 
 // 从cookie获取
-var email = "3014899575@qq.com";
-var Buuid = "5668cbba-630f-4968-894e-bcd2a0a4ddc3";
+var email = getCookie('email');
+var Buuid = getCookie('Buuid');
 
 
 
@@ -39,7 +38,7 @@ getData("http://39.98.41.126:30008/api/member/list", oData).then((res) => {
 });
 
 /* 创建新项目 */
-document.getElementById("new-groud").onclick = function () {
+document.getElementById("new-group").onclick = function () {
     let sec = document.getElementById("add-new-module");
     sec.classList.remove("hide");
 
@@ -276,40 +275,40 @@ function addModule() {
     }
 }
 
-// 项目的操作
-let modList = document.getElementById("modu-list");
-let modListDiv = modList.getElementsByTagName("div");
-function addProjControl() {
-    let btn = document.getElementsByClassName("proj-con");
+// // 项目的操作
+// let modList = document.getElementById("modu-list");
+// let modListDiv = modList.getElementsByTagName("div");
+// function addProjControl() {
+//     let btn = document.getElementsByClassName("proj-con");
 
-    for (let i = 0; i < btn.length; i++) {
-        btn[i].onclick = function (event) {
-            event.stopPropagation();
+//     for (let i = 0; i < btn.length; i++) {
+//         btn[i].onclick = function (event) {
+//             event.stopPropagation();
 
-            modListDiv[2].classList.remove('hide');
-            modListDiv[4].classList.add('hide');
-            modListDiv[5].classList.add('hide');
-            modList.classList.toggle("hide");
+//             modListDiv[2].classList.remove('hide');
+//             modListDiv[4].classList.add('hide');
+//             modListDiv[5].classList.add('hide');
+//             modList.classList.toggle("hide");
 
-            let topY = event.clientY + 15;
-            modList.getElementsByTagName("div")[0].style.top = topY + 'px';
+//             let topY = event.clientY + 15;
+//             modList.getElementsByTagName("div")[0].style.top = topY + 'px';
 
-            // 操作
-            // 新建子模块
-            let projectId = this.parentElement.getAttribute("projectid");
-            let parentId = 0;
-            addSonModule(projectId, parentId);
-            // 导出api文档
-            exportApiMd(projectId);
-            // 修改名字
-            changeProjName(projectId);
-        }
+//             // 操作
+//             // 新建子模块
+//             let projectId = this.parentElement.getAttribute("projectid");
+//             let parentId = 0;
+//             addSonModule(projectId, parentId);
+//             // 导出api文档
+//             exportApiMd(projectId);
+//             // 修改名字
+//             changeProjName(projectId);
+//         }
 
-    }
-    document.body.onclick = function () {
-        modList.classList.add("hide");
-    }
-}
+//     }
+//     document.body.onclick = function () {
+//         modList.classList.add("hide");
+//     }
+// }
 
 // 模块的操作
 function addModuleControl() {

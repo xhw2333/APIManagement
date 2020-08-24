@@ -64,7 +64,7 @@ function getCookie(name) {
 function setCookie(name, value, day) {
     var date = new Date();
     date.setDate(date.getDate() + day);
-    document.cookie = name + '=' + value + ';expires=' + date;
+    document.cookie = name + '=' + value + ';expires=' + date + ';path=/';
 };
 
 // 删除cookie
@@ -78,12 +78,10 @@ function remember() {
         ev.stopPropagation();
     })
     $('#remember').click(function () {
-        if ($('#log-rem').data('checked') || $('#log-rem').prop('checked')) {
+        if ($('#log-rem').data('checked')) {
             $('#log-rem').data('checked', false);
-            $('#log-rem').prop('checked', false);
         } else {
             $('#log-rem').data('checked', true);
-            $('#log-rem').prop('checked', true);
         }
     })
 }
@@ -129,7 +127,7 @@ function loginBind() {
                     // 设置cookie
                     let base = new Base64();
                     pwd = base.encode(pwd);
-                    if ($('#log-rem').data('checked') || $('#log-rem').prop('checked')) {
+                    if ($('#log-rem').data('checked')) {
                         setCookie('email', email, 7);
                         setCookie('pwd', pwd,7);
                     } else {
@@ -140,6 +138,7 @@ function loginBind() {
                     $('#log-password').val('');
                     $('#log-rem').data('checked', false);
                     $('#log-rem').prop('checked', false);
+                    // location.assign('./pages/personal.html');
 
                 } else {
                     alertIt(res.msg);
