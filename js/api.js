@@ -1,4 +1,4 @@
-// 文件下载不了,求助威哥
+// 文件下载不了(好像是数据库网速问题),求助威哥
 // 项目导入，求助威哥
 
 
@@ -12,6 +12,9 @@ var Buuid = "5668cbba-630f-4968-894e-bcd2a0a4ddc3";
 
 
 var tBody = document.getElementById("api-tbody");
+var apiManegementPID = 0;
+var apiManegementMID = 0;
+
 
 /* 获取项目 */
 var apiUl = document.getElementById("api-module");
@@ -50,7 +53,10 @@ document.getElementById("new-groud").onclick = function () {
                 "email": email
             }
             getData("http://39.98.41.126:30008/api/pro/createProject", oData).then((res) => {
-                location.reload();
+                if (res.code == 1)
+                    location.reload();
+                else
+                    alertIt(res.msg);
             });
         } else {
             alertIt("项目名不能为空");
@@ -82,6 +88,8 @@ function addClickModule(dom) {
         mode[i].onclick = function (event) {
             event.stopPropagation();
 
+            apiManegementPID = mode[i].getAttribute("projectid");
+            apiManegementMID = mode[i].getAttribute("myID");
             let oData = {
                 "moduleId": mode[i].getAttribute("myID")
             }
@@ -107,7 +115,7 @@ function addClickModule(dom) {
                             <td>${apis[i].updater}</td>
                             <td>${apis[i].updateTime}</td>
                             <td>
-                                <span>编辑</span> | <span>新标签页打开</span> | <span>更多</span>
+                                <span>编辑</span> | <span>新标签页打开</span> | <span>删除</span>
                             </td>
                         </tr>
                             `
@@ -117,6 +125,7 @@ function addClickModule(dom) {
 
                         document.getElementById("table-bottom").innerHTML = `已加载${apis.length}条信息，共${apis.length}条记录`;
 
+                        manegement();
                     }
                 }
             });
@@ -125,7 +134,7 @@ function addClickModule(dom) {
 
 }
 
-/* 点击项目或模块获取接口和子模块 */
+/* 点击项目获取接口和子模块 */
 function addModule() {
     let div = apiUl.getElementsByClassName("project");
 
@@ -137,8 +146,10 @@ function addModule() {
             this.getElementsByTagName('img')[0].classList.add("rount");
             this.classList.add("api-shadow");
 
+            apiManegementPID = this.getAttribute("projectId");
+            apiManegementMID = 0;
             let id = {
-                "projectId": this.getAttribute("projectId")
+                "projectId": apiManegementPID
             };
 
             let that = this.parentElement;
@@ -191,7 +202,7 @@ function addModule() {
 
                     /* 只进行一次排序 */
                     if (unAdd.length) {
-                        while(unAdd.length) {
+                        while (unAdd.length) {
                             let i = unAdd.pop();
                             /* 找到父节点 */
                             let pID;
@@ -240,20 +251,20 @@ function addModule() {
                         let apiStr = "";
                         for (let j = 0; j < apis.length; j++) {
                             apiStr += `
-                        <tr apiID=${apis[i].id}>
+                        <tr apiID=${apis[j].id}>
                             <td class="w50"><input type="checkbox"></td>
                             <td>
-                                <div class="my-border my-border-${getStatusColor(apis[i].status)}">${getStatus(apis[i].status)}</div>
-                                ${apis[i].url}
+                                <div class="my-border my-border-${getStatusColor(apis[j].status)}">${getStatus(apis[j].status)}</div>
+                                ${apis[j].url}
                             </td>
                             <td>
-                                <div class="my-border my-border-blue">${apis[i].method}</div>
+                                <div class="my-border my-border-blue">${apis[j].method}</div>
                             </td>
-                            <td>${apis[i].url}</td>
-                            <td>${apis[i].updater}</td>
-                            <td>${apis[i].updateTime}</td>
+                            <td>${apis[j].url}</td>
+                            <td>${apis[j].updater}</td>
+                            <td>${apis[j].updateTime}</td>
                             <td>
-                                <span>编辑</span> | <span>新标签页打开</span> | <span>更多</span>
+                                <span>编辑</span> | <span>新标签页打开</span> | <span>删除</span>
                             </td>
                         </tr>
                             `
@@ -263,6 +274,7 @@ function addModule() {
 
                         document.getElementById("table-bottom").innerHTML = `已加载${apis.length}条信息，共${apis.length}条记录`;
 
+                        manegement();
                     }
                 }
 
@@ -411,7 +423,7 @@ function exportApiMd(projectId) {
         dom.classList.add("hide");
         getData("http://39.98.41.126:30008/api/pro/export", oData).then((res) => {
             //location.reload();
-            console.log(res);
+            //console.log(res);
             window.open(res);
         });
     }
@@ -481,7 +493,7 @@ function moveModu(name, myId) {
     // 选择项目后
     proj.onchange = function () {
         parentId = 0;
-        console.log(parentId);
+        //console.log(parentId);
         if (getNextElement(document.getElementById("move-proj")))
             getNextElement(document.getElementById("move-proj")).remove();
         let projID = proj.value;
@@ -507,7 +519,7 @@ function moveModu(name, myId) {
             // 选择模块
             newSelect.onchange = function () {
                 parentId = newSelect.value;
-                console.log(parentId);
+                //console.log(parentId);
 
                 if (getNextElement(newSelect))
                     getNextElement(newSelect).remove();
@@ -692,6 +704,3 @@ function getNextElement(element) {
         return next;
     }
 }
-
-
-
