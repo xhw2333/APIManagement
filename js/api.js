@@ -70,17 +70,6 @@ document.getElementById("add-new-file").onclick = function () {
     document.getElementById("input-file").classList.remove("hide");
 }
 
-
-
-
-
-
-
-
-
-
-
-
 // 点击模块获取接口
 function addClickModule(dom) {
     let mode = dom.getElementsByTagName("div");
@@ -481,7 +470,7 @@ function moveModu(name, myId) {
     // 回写项目
     let proj = document.getElementById("move-proj");
     let project = document.getElementsByClassName("project");
-    let str = `<option disabled selected value="0">请选择模块</option>`;
+    let str = `<option disabled selected value="0">请选择项目</option>`;
     for (let i = 0; i < project.length; i++) {
         let pNmae = project[i].getElementsByTagName("span")[0].innerHTML;
         str += `

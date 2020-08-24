@@ -25,39 +25,40 @@
             <div id="api-nav-new">
                 <div id="new-groud">创建新项目</div>
                 <div id="add-new-file">
-                    <img src="../images/piliang.png">导入
+                    <img src="../images/in.png">导入
                 </div>
             </div>
             <ul id="api-module"></ul>
         </div>
-        
+
         <div id="operation">
             <!-- 右边内容 -->
             <div class="api-body-out">
                 <div class="api-new-search">
                     <button type="button" id="add-new-api">+ 新建API接口</button>
-                    <img src="../images/piliang.png"><span>批量操作</span>
-                    <img src="../images/piliang.png"><span>导出</span>
+                    <img src="../images/de.png"><span id="pl-delete">批量删除</span>
+                    <img src="../images/move.png"><span id="pi-move">批量移动</span>
                     <div class="api-search">
                         <img src="../images/find.png">
-                        <input type="text" placeholder="搜索API">
+                        <input type="text" placeholder="搜索API" id="search-api">
                     </div>
                 </div>
 
                 <div class="table-out">
                     <table class="table">
-                        <thead>
+                        <thead class="thead">
                             <tr>
-                                <th><input type="checkbox"></th>
-                                <th>APIs<img src="../images/xianshi.png"></th>
-                                <!-- <th>
-                                    <select>
-                                        <option>APIs</option>
+                                <th><input type="checkbox" id="select-all-input"></th>
+                                <th>APIs</th>
+                                <th><!-- 请求方式<img src="../images/xianshi.png"> -->
+                                    <select id="search-for-method">
+                                        <option value="all">请求方式</option>
+                                        <option value="POST">POST</option>
+                                        <option value="GET">GET</option>
                                     </select>
-                                </th> -->
-                                <th>请求方式<img src="../images/xianshi.png"></th>
-                                <th>URL<img src="../images/xianshi.png"></th>
-                                <th>最近更新者<img src="../images/xianshi.png"></th>
+                                </th>
+                                <th>URL</th>
+                                <th>最近更新者</th>
                                 <th>最近更新时间</th>
                                 <th>操作</th>
                             </tr>
@@ -217,6 +218,36 @@
     </section>
 
     <div id="alert-div" style="display: none;">提示框</div>
+
+    <!-- 批量移动 -->
+    <section id="pl-move-api" class="section hide">
+        <div>
+            <div class="section-tit">移动API编组</div>
+            <div class="sec-main">
+                <p>目标分组</p>
+                <select id="pl-move-proj">
+                    <option>模块1</option>
+                    <option>模块2</option>
+                    <option>模块3</option>
+                </select>
+                <!-- <div>
+                    <select>
+                        <option>子模块1</option>
+                        <option>子模块2</option>
+                        <option>子模块3</option>
+                    </select>
+                    <div>xxxx</div>
+                </div> -->
+
+            </div>
+
+            <div>
+                <button value="确定">确定</button>
+                <button value="取消" class="quxiao">取消</button>
+            </div>
+        </div>
+    </section>
+
 
 
 
