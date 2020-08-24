@@ -1,13 +1,10 @@
-// 文件下载不了(好像是数据库网速问题),求助威哥
-// 项目导入，求助威哥
-
 
 
 /* 左边导航栏的内容 */
 
 // 从cookie获取
-var email = "3014899575@qq.com";
-var Buuid = "5668cbba-630f-4968-894e-bcd2a0a4ddc3";
+var email = getCookie('email');
+var Buuid = getCookie('Buuid');
 
 
 
@@ -42,7 +39,7 @@ getData("http://39.98.41.126:30008/api/member/list", oData).then((res) => {
 });
 
 /* 创建新项目 */
-document.getElementById("new-groud").onclick = function () {
+document.getElementById("new-group").onclick = function () {
     let sec = document.getElementById("add-new-module");
     sec.classList.remove("hide");
 
@@ -407,14 +404,24 @@ function exportApiMd(projectId) {
         let oData = {
             "projectId": projectId
         };
-
+        console.log(projectId);
         alertIt("开始建立连接……");
         dom.classList.add("hide");
         getData("http://39.98.41.126:30008/api/pro/export", oData).then((res) => {
-            //location.reload();
-            //console.log(res);
             window.open(res);
         });
+        // fetch("http://39.98.41.126:30008/api/pro/export",{
+        //     method : 'post',
+        //     body : JSON.stringify(oData),
+        //     headers : {
+        //         "Content-Type" : "application/json",
+        //         "Buuid" : Buuid
+        //     }
+        // })
+        // .then(res=>res.json())
+        // .then(resjson=>{
+        //     console.log(resjson);
+        // })
     }
 }
 

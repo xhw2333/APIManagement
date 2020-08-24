@@ -10,7 +10,7 @@ window.onload = function () {
 
     // 记住我
     remember();
-    if (getCookie('email')) {
+    if (getCookie('pwd')) {
         $('#log-rem').data('checked', true);
         $('#log-rem').prop('checked', true);
         $('#log-email').val(getCookie('email'));
@@ -36,7 +36,7 @@ window.onload = function () {
     checkForm('#rechieve-email', isEmailValid);
     checkForm('#rechieve-password', isPwdValid);
     checkForm('#rechieve-confirm', isPwdComfirm('#rechieve-password', '#rechieve-confirm'));
-
+    hideLoading();
 
 }
 
@@ -64,7 +64,7 @@ function getCookie(name) {
 function setCookie(name, value, day) {
     var date = new Date();
     date.setDate(date.getDate() + day);
-    document.cookie = name + '=' + value + ';expires=' + date;
+    document.cookie = name + '=' + value + ';expires=' + date + ';path=/';
 };
 
 // 删除cookie
@@ -78,12 +78,10 @@ function remember() {
         ev.stopPropagation();
     })
     $('#remember').click(function () {
-        if ($('#log-rem').data('checked') || $('#log-rem').prop('checked')) {
+        if ($('#log-rem').data('checked')) {
             $('#log-rem').data('checked', false);
-            $('#log-rem').prop('checked', false);
         } else {
             $('#log-rem').data('checked', true);
-            $('#log-rem').prop('checked', true);
         }
     })
 }
@@ -107,7 +105,7 @@ function alertIt(content) {
 // 登录事件
 function loginBind() {
     $('#login-btn').bind('click', function () {
-        alertIt('登录中，请稍后！')
+
         $(this).unbind('click');
         let email = $('#log-email').val();
         let pwd = $('#log-password').val();
@@ -122,14 +120,14 @@ function loginBind() {
                 "password": pwd
             }
             let url = 'http://39.98.41.126:30004/api/user/login';
-
+            showLoading();
             doPost(url, data).then(res => {
                 if (res.code == 1) {
                     alertIt('登录成功！')
                     // 设置cookie
                     let base = new Base64();
                     pwd = base.encode(pwd);
-                    if ($('#log-rem').data('checked') || $('#log-rem').prop('checked')) {
+                    if ($('#log-rem').prop('checked')) {
                         setCookie('email', email, 7);
                         setCookie('pwd', pwd,7);
                     } else {
@@ -140,10 +138,12 @@ function loginBind() {
                     $('#log-password').val('');
                     $('#log-rem').data('checked', false);
                     $('#log-rem').prop('checked', false);
+                    location.assign('./pages/personal.html');
 
                 } else {
                     alertIt(res.msg);
                     loginBind();
+                    hideLoading();
                     return;
                 }
             })
@@ -178,11 +178,11 @@ function doPost(url, data, bindFn) {
             },
             data: JSON.stringify(data),
             success: function (res, status, xhr) {
-                // setCookie('session',xhr.getResponseHeader('SESSION'))
                 resolve(res)
             },
             error: function () {
                 alertIt("服务器连接失败！请联系管理员！");
+                hideLoading();
                 if (bindFn) {
                     bindFn();
                 }
@@ -212,7 +212,7 @@ function registerBind() {
                 "password": pwd1,
                 "nickname": nickname
             }
-
+            showLoading();
             doPost(url, data, registerBind).then(res => {
                 if (res.code == 1) {
                     alertIt('注册成功！');
@@ -223,12 +223,14 @@ function registerBind() {
                 } else {
                     alertIt(res.msg);
                     registerBind();
+                    hideLoading();
                     return;
                 }
             })
         } else {
             alertIt('信息填写错误！');
             registerBind();
+            hideLoading();
             return;
         }
     })
@@ -273,11 +275,14 @@ function codeBind() {
             let data = {
                 "email": email
             }
+            alertIt('正在发送验证码......')
             doPost(url, data).then(res => {
                 if (res.code == 1) {
                     setCookie('Auuid', res.msg);
+                    hideLoading();
                     alertIt('验证码已发送，请留意邮箱！');
                 } else {
+                    hideLoading();
                     alertIt(res.msg + '!请' + time + '秒后重试！');
                 }
             })
@@ -310,7 +315,7 @@ function rechieveBind() {
                 "password": pwd1,
                 "code": code
             };
-
+            showLoading();
             doPost(url,data,rechieveBind)
             .then(res => {
                 if (res.code == 1) {
@@ -319,10 +324,12 @@ function rechieveBind() {
                     $('#rechieve-password').val('');
                     $('#rechieve-confirm').val('');
                     $('#rechieve-code').val('');
+                    hideLoading();
                     return;
                 } else {
                     alertIt(res.msg);
                     rechieveBind();
+                    hideLoading();
                     return;
                 }
             })
@@ -369,4 +376,13 @@ function checkForm(domID, checkFn) {
         })
     }
 
+}
+
+// loading
+function showLoading(){
+    $('#loading').fadeIn(500);
+}
+
+function hideLoading(){
+    $('#loading').fadeOut(300);
 }

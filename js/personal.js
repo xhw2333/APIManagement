@@ -7,8 +7,8 @@ var server3 = 'http://39.98.41.126:30004/api/apis';
 var personTab = document.getElementsByClassName('side-tabs');
 var personPage = document.getElementsByClassName('operation-part');
 
-var email = "1311844250@qq.com";
-
+var email = getCookie('email');
+var Buuid = getCookie('Buuid');
 var data = {
     email:email
 }
@@ -64,7 +64,8 @@ function postDo(url,data){
             method: "POST",
             url: url,
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Buuid" : Buuid
             },
             data: JSON.stringify(data),
             success: function (res) {
@@ -96,7 +97,7 @@ let nozzleList = document.getElementById('nozzle-list');
 function showApis(){
     postDo(server1+'/list',data).then((res)=>{
     
-    
+        nozzleList.innerHTML = ''
         for(let i = 0; i < res.length; i++){
             var data = {
                 projectId: res[i].id

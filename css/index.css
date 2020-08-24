@@ -17,7 +17,7 @@ body {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-image: url('../image/bg.png');
+    background-image: url('../images/bg.png');
 }
 
 .hide{
@@ -69,7 +69,7 @@ input[type="checkbox"]{
     position: absolute;
     width: 55%;
     height: 100%;
-    background-image: url('../image/logo.png');
+    background-image: url('../images/logo.png');
     background-size: cover;
     animation: ease 2s slidein;
 }
@@ -342,4 +342,57 @@ input[type="checkbox"]{
     text-align: right;
     text-decoration: underline;
     cursor: pointer;
+}
+
+/* loading */
+#loading{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+.loading{
+    color: #fff;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 101;
+}
+
+#loading-cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.45);
+    backdrop-filter:blur(5px);
+    z-index:100;
+    background-size:cover;
+
+}
+
+.loading img{
+    width: 200px;
+    height: 200px;
+    z-index: 101;
+    
+}
+
+.loading p{
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: 600;
+    user-select: none;
+    z-index: 101;
 }

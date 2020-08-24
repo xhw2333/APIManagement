@@ -14,15 +14,16 @@
 <body>
     <div id="top">
         <ul id="top-nav">
-            <li class="top-choose"><a href="">API管理</a></li>
-            <li><a href="">我的</a></li>
+            <li class="top-choose"><a href="./apiManagement.html">API管理</a></li>
+            <li><a href="./personal.html">我的</a></li>
+            <li><a class="exit">退出登录</a></li>
         </ul>
     </div>
     <div id="content">
         <div id="side-nav">
             <!-- 左边导航 -->
             <div id="api-nav-new">
-                <div id="new-groud">创建新项目</div>
+                <div id="new-group">创建新项目</div>
                 <div id="add-new-file">
                     <img src="../images/piliang.png">导入
                 </div>
@@ -91,7 +92,7 @@
                 <div class="detail-descript detail-name">
                     <p>API名称</p>
                     <div class="descript-div">
-                        <input type="text" value="登录接口" id="api-name">
+                        <input type="text" value="" id="api-name">
                     </div>
                 </div>
 
@@ -434,6 +435,14 @@
             <div>删除</div>
         </div>
     </section>
+
+    <div id="loading">
+        <div class="loading">
+            <div id="loading-cover"></div>
+            <img src="../images/loading.gif" alt="">
+            <p>Loading......</p>
+        </div>
+    </div>
 
     <div id="alert-div" class="hide">提示框</div>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>

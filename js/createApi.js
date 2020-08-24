@@ -1,3 +1,9 @@
+// 本页面需要的参数
+// email(cookie)
+// Buuid(cookie)
+// moduleId(url参数)
+// projeId(url参数)
+
 // 添加请求头
 $('.req-add-header').click(function () {
     let key = document.getElementById('request-head').children.length;
@@ -191,7 +197,9 @@ function addRow(tbody, template) {
 
 // 保存接口
 $('#save-api').click(function(){
-    let moduleId=37,projectId=16,status;
+    let moduleId = getQueryString('mID'),
+    projectId = getQueryString('pID'),
+    status;
     // 获取请求头
     let reqHeaders = document.getElementById('request-head').children;
     let reqheaders = document.getElementsByClassName('req-headers');
@@ -275,7 +283,7 @@ $('#save-api').click(function(){
         "responseHeader" : '[' + responseHeader.toString()+ ']',
         "responseBody" :'[' +  responseBody.toString()+ ']'
     }
-
+    showLoading();
     fetch('http://39.98.41.126:30003/api/interface/create',{
         method : 'post',
         body : JSON.stringify(json),
@@ -286,9 +294,23 @@ $('#save-api').click(function(){
     })
     .then(res=>res.json())
     .then(resjson=>{
-        alertIt(resjson.msg);
-        setCookie('api-id',resjson.data.id);
-        location.reload('./apiDetail.html?apiID=143');
+        if(resjson.code == 1){
+            alertIt(resjson.msg);
+            setCookie('api-id',resjson.data.id);
+            hideLoading();
+            location.assign('./apiManagement.html');
+        }else{
+            alertIt(resjson.msg);
+            hideLoading();
+            location.assign('../index.html');
+
+        }
+
+    })
+    .catch(err=>{
+        alertIt('请先登录！');
+        hideLoading();
+        location.assign('../index.html');
 
     })
 
