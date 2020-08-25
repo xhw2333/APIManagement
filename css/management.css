@@ -443,8 +443,9 @@
     z-index: 1001;
 }
 
-#new-groud {
+#new-group {
     cursor: pointer;
+    user-select: none;
 }
 
 #bg-red {

@@ -220,6 +220,7 @@ function registerBind() {
                     $("#reg-email").val('');
                     $('#reg-password').val('');
                     $('#reg-confirm').val('');
+                    hideLoading();
                 } else {
                     alertIt(res.msg);
                     registerBind();
