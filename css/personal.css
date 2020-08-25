@@ -17,7 +17,7 @@
     display: flex;
     margin: 24px 15px 10px 16px;
     /* justify-content: space-around; */
-    /* user-select: none; */
+    user-select: none;
 }
 
 .side-now {
