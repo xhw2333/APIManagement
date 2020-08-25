@@ -178,6 +178,7 @@ function doPost(url, data, bindFn) {
             },
             data: JSON.stringify(data),
             success: function (res, status, xhr) {
+                hideLoading();
                 resolve(res)
             },
             error: function () {
@@ -214,17 +215,16 @@ function registerBind() {
             }
             showLoading();
             doPost(url, data, registerBind).then(res => {
+                hideLoading();
                 if (res.code == 1) {
                     alertIt('注册成功！');
                     $('#reg-nickname').val('');
                     $("#reg-email").val('');
                     $('#reg-password').val('');
                     $('#reg-confirm').val('');
-                    hideLoading();
                 } else {
                     alertIt(res.msg);
                     registerBind();
-                    hideLoading();
                     return;
                 }
             })
@@ -320,17 +320,16 @@ function rechieveBind() {
             doPost(url,data,rechieveBind)
             .then(res => {
                 if (res.code == 1) {
+                    hideLoading();
                     alertIt('密码修改成功！');
                     $('#rechieve-email').val('');
                     $('#rechieve-password').val('');
                     $('#rechieve-confirm').val('');
                     $('#rechieve-code').val('');
-                    hideLoading();
                     return;
                 } else {
                     alertIt(res.msg);
                     rechieveBind();
-                    hideLoading();
                     return;
                 }
             })
