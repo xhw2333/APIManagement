@@ -203,7 +203,7 @@ getData('http://39.98.41.126:30003/api/interface/detail?id=' + id, 'get', getCoo
         }else{
             alertIt(res.msg);
             hideLoading();
-            location.assign('../index.html');
+            location.assign('./apiManagement.html');
         }
     })
     .catch(function () {
@@ -499,7 +499,7 @@ $('#save-api').click(function () {
             }else{
                 alertIt(resjson.msg);
                 hideLoading();
-                location.assign('../index.html');
+                location.assign('./apiManagement.html');
             }
         })
         .catch(err=>{

@@ -302,7 +302,7 @@ $('#save-api').click(function(){
         }else{
             alertIt(resjson.msg);
             hideLoading();
-            location.assign('../index.html');
+            location.assign('./apiManagement.html');
 
         }
 
