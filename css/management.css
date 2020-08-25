@@ -307,8 +307,7 @@
     background-color: rgba(189, 189, 189, 0.37);
 }
 
-#add-new-module>div,
-.add-new-module>div {
+#add-new-module>div, .add-new-module>div {
     padding: 24px 24px 0 24px;
 }
 
@@ -320,16 +319,14 @@
     text-align: center;
 }
 
-#add-new-module p,
-.add-new-module p {
+#add-new-module p, .add-new-module p {
     font-size: 18px;
     font-family: Source Han Sans CN;
     font-weight: 400;
     color: rgba(123, 123, 123, 1);
 }
 
-#add-new-module input,
-.add-new-module input {
+#add-new-module input, .add-new-module input {
     width: 344px;
     height: 32px;
     padding: 0 8px;
@@ -469,4 +466,17 @@
     background-color: transparent;
     outline: none;
     border: none;
+}
+
+.section-div {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1001;
 }
