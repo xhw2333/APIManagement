@@ -289,7 +289,7 @@ $('#save-api').click(function(){
         body : JSON.stringify(json),
         headers:{
             "Content-Type" : "application/json",
-            "Buuid" : '066bf030-b544-4521-831b-ee1b4b614b51'
+            "Buuid" : getCookie('Buuid')
         }
     })
     .then(res=>res.json())
