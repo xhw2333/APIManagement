@@ -450,7 +450,8 @@ function exportApiMd(projectId) {
         //     "projectId": projectId
         // }
         showLoading();
-        window.open(`http://39.98.41.126:30008/api/pro/export?projectId=${projectId}&uuid=${Buuid}`)
+        window.open(`http://39.98.41.126:30008/api/pro/export?projectId=${projectId}&uuid=${Buuid}`);
+        hideLoading();
         // getData("http://39.98.41.126:30008/api/pro/export", odata)
         //     .then(res => {
         //         hideLoading();
