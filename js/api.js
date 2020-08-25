@@ -446,25 +446,26 @@ function exportApiMd(projectId) {
     dom.getElementsByTagName("button")[0].onclick = () => {
         alertIt("开始建立连接……");
         dom.classList.add("hide");
-        let odata = {
-            "projectId": projectId
-        }
+        // let odata = {
+        //     "projectId": projectId
+        // }
         showLoading();
-        getData("http://39.98.41.126:30008/api/pro/export", odata)
-            .then(res => {
-                hideLoading();
-                let blob = new Blob([res]);
-                let link = document.createElement('a');
-                let fileName = `${new Date().valueOf()}.md`;
-                link.href = window.URL.createObjectURL(blob);
-                link.download = fileName;
-                link.click();
-                window.URL.revokeObjectURL(link.href);
-            })
-            .catch(err => {
-                alertIt('服务器开小差啦！请联系管理员！');
-                hideLoading();
-            })
+        window.open(`http://39.98.41.126:30008/api/pro/export?projectId=${projectId}&uuid=${Buuid}`)
+        // getData("http://39.98.41.126:30008/api/pro/export", odata)
+        //     .then(res => {
+        //         hideLoading();
+        //         let blob = new Blob([res]);
+        //         let link = document.createElement('a');
+        //         let fileName = `${new Date().valueOf()}.zip`;
+        //         link.href = window.URL.createObjectURL(blob);
+        //         link.download = fileName;
+        //         link.click();
+        //         window.URL.revokeObjectURL(link.href);
+        //     })
+        //     .catch(err => {
+        //         alertIt('服务器开小差啦！请联系管理员！');
+        //         hideLoading();
+        //     })
     }
 }
 

@@ -19,11 +19,11 @@ function getData(url, method, uuid, data) {
             success: function (res) {
                 resolve(res);
             },
-            error : function (err){
+            error: function (err) {
                 hideLoading();
                 alert('请先登录！');
                 location.assign('../index.html');
-            } 
+            }
         })
     })
 }
@@ -93,9 +93,9 @@ getData('http://39.98.41.126:30003/api/interface/detail?id=' + id, 'get', getCoo
         `);
             } else {
                 $('#request-type').html(`
-        <option value="form-data">Form-data</option>
-        <option value="application/json" selected>JSON</option>
-    `)
+            <option value="form-data">Form-data</option>
+            <option value="application/json" selected>JSON</option>
+        `)
 
             }
             // 获取响应类型
@@ -113,86 +113,151 @@ getData('http://39.98.41.126:30003/api/interface/detail?id=' + id, 'get', getCoo
 
             // 获取请求头
             let reqHeader = str2Arr(res.data.requestHeader);
-            for (let i = 0; i < reqHeader.length; i++) {
-                let data = JSON.parse(reqHeader[i]);
-                let template = `
-        <tr>
-        <td></td>
-        <td><input type="text" class="req-headers" value=${data.header}></td>
-        <td class="w50"><input type="checkbox" class="req-header-must" ${data.must ? "checked" : ''}></td>
-        <td><input type="text" class="req-header-examples" value=${data.example}></td>
-        <td>
-        <span class="option del-req-header"  key=${i}>删除</span>
-        </td>
-        </tr>
-        `
-                addRow('#request-head', template)
+            if (reqHeader[0] != "") {
+                for (let i = 0; i < reqHeader.length; i++) {
+                    let data = JSON.parse(reqHeader[i]);
+                    let template = `
+            <tr>
+            <td></td>
+            <td><input type="text" class="req-headers" value=${data.header}></td>
+            <td class="w50"><input type="checkbox" class="req-header-must" ${data.must ? "checked" : ''}></td>
+            <td><input type="text" class="req-header-examples" value=${data.example}></td>
+            <td>
+            <span class="option del-req-header"  key=${i}>删除</span>
+            </td>
+            </tr>
+            `
+                    addRow('#request-head', template)
+                }
+
             }
 
             // 获取请求体
-            let reqBody = str2Arr(res.data.requestBody);
-            for (let i = 0; i < reqBody.length; i++) {
-                let data = JSON.parse(reqBody[i]);
-                let template = `
+            if (res.data.requestType == 'raw') {
+                let reqBody = JSON.parse(res.data.requestBody);
+                for (let i = 0; i < Object.keys(reqBody).length; i++) {
+                    let key = Object.keys(reqBody)[i];
+                    let value = Object.values(reqBody)[i];
+                    let template = `
         <tr>
             <td></td>
-            <td><input type="text" class="req-bodys" value=${data.body}></td>
-            <td><input type="text" class="req-body-example" value=${data.example}></td>
+            <td><input type="text" class="req-bodys" value=${key}></td>
+            <td><input type="text" class="req-body-example" value=${value}></td>
             <td>
                 <select class="req-body-type">
-                    <option value="String" ${data.type == "bool" ? "selected" : ""}>String</option>
-                    <option value="bool" ${data.type == "bool" ? "selected" : ""}>bool</option>
+                    <option value="String" }>String</option>
+                    <option value="bool" }>bool</option>
                 </select>
             </td>
-            <td class="w50"><input type="checkbox" class="req-body-must" ${data.must ? "checked" : ''}></td>
+            <td class="w50"><input type="checkbox" class="req-body-must"></td>
             <td>
                 <span class="option del-req-body" key=${i}>删除</span>
             </td>
         </tr>
         `
-                addRow('#request-body', template)
+                    addRow('#request-body', template)
+                }
+            } else {
+                let reqBody = str2Arr(res.data.requestBody);
+                if(reqBody[0]!=""){
+                    for (let i = 0; i < reqBody.length; i++) {
+                        let data = JSON.parse(reqBody[i]);
+                        let template = `
+            <tr>
+                <td></td>
+                <td><input type="text" class="req-bodys" value=${data.body}></td>
+                <td><input type="text" class="req-body-example" value=${data.example}></td>
+                <td>
+                    <select class="req-body-type">
+                        <option value="String" ${data.type == "bool" ? "selected" : ""}>String</option>
+                        <option value="bool" ${data.type == "bool" ? "selected" : ""}>bool</option>
+                    </select>
+                </td>
+                <td class="w50"><input type="checkbox" class="req-body-must" ${data.must ? "checked" : ''}></td>
+                <td>
+                    <span class="option del-req-body" key=${i}>删除</span>
+                </td>
+            </tr>
+            `
+                        addRow('#request-body', template)
+                    }
+    
+                }
+
             }
 
             // 获取响应头
             let resHeader = str2Arr(res.data.responseHeader);
-            for (let i = 0; i < resHeader.length; i++) {
-                let data = JSON.parse(resHeader[i]);
-                let template = `
-        <tr>
-            <td></td>
-            <td><input type="text" class="res-headers" value=${data.header}></td>
-            <td class="w50"><input class="res-header-must" type="checkbox" ${data.must ? 'checked' : ''}></td>
-            <td><input type="text" class="res-header-examples" value=${data.example}></td>
-            <td>
-                <span class="option del-res-header" key=${i}>删除</span>
-            </td>
-        </tr>
-        `
-                addRow('#response-head', template)
+            if (resHeader[0] != "") {
+                for (let i = 0; i < resHeader.length; i++) {
+                    let data = JSON.parse(resHeader[i]);
+                    let template = `
+            <tr>
+                <td></td>
+                <td><input type="text" class="res-headers" value=${data.header}></td>
+                <td class="w50"><input class="res-header-must" type="checkbox" ${data.must ? 'checked' : ''}></td>
+                <td><input type="text" class="res-header-examples" value=${data.example}></td>
+                <td>
+                    <span class="option del-res-header" key=${i}>删除</span>
+                </td>
+            </tr>
+            `
+                    addRow('#response-head', template)
+                }
             }
 
+
             // 获取响应体
-            let resBody = str2Arr(res.data.responseBody);
-            for (let i = 0; i < resBody.length; i++) {
-                let data = JSON.parse(resBody[i]);
-                let template = `
-        <tr>
-            <td></td>
-            <td><input type="text" class="res-bodys" value=${data.body}></td>
-            <td><input type="text" class="res-body-example" value=${data.example}></td>
-            <td>
-                <select class="res-body-type">
-                    <option value="String" ${data.type == "bool" ? "selected" : ""}>String</option>
-                    <option value="bool" ${data.type == "bool" ? "selected" : ""}>bool</option>
-                </select>
-            </td>
-            <td>
-                <span class="option del-res-body" key=${i}>删除</span>
-            </td>
-        </tr>
-        `
-                addRow('#response-body', template)
+            if (res.data.responseType == 'raw') {
+                let resBody = JSON.parse(res.data.responseBody);
+                for (let i = 0; i < Object.keys(resBody).length; i++) {
+                    let key = Object.keys(resBody)[i];
+                    let value = Object.values(resBody)[i];
+                    let template = `<tr>
+                    <td></td>
+                    <td><input type="text" class="res-bodys" value=${key}></td>
+                    <td><input type="text" class="res-body-example" value=${value}></td>
+                    <td>
+                        <select class="res-body-type">
+                            <option value="String"}>String</option>
+                            <option value="bool"}>bool</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="option del-res-body" key=${i}>删除</span>
+                    </td>
+                </tr>
+                `
+                addRow('#response-body', template);
+                }
+            } else {
+                let resBody = str2Arr(res.data.responseBody);
+                if(resBody[0] != ""){
+                    for (let i = 0; i < resBody.length; i++) {
+                        let data = resBody[i];
+                        let template = `
+            <tr>
+                <td></td>
+                <td><input type="text" class="res-bodys" value=${data.body}></td>
+                <td><input type="text" class="res-body-example" value=${data.example}></td>
+                <td>
+                    <select class="res-body-type">
+                        <option value="String" ${data.type == "bool" ? "selected" : ""}>String</option>
+                        <option value="bool" ${data.type == "bool" ? "selected" : ""}>bool</option>
+                    </select>
+                </td>
+                <td>
+                    <span class="option del-res-body" key=${i}>删除</span>
+                </td>
+            </tr>
+            `
+                        addRow('#response-body', template)
+                    }
+                }
+                
             }
+
+
 
 
             // 删除请求头
@@ -205,17 +270,17 @@ getData('http://39.98.41.126:30003/api/interface/detail?id=' + id, 'get', getCoo
             removeRow('response-body', 'del-res-body')
 
             hideLoading();
-        }else{
+        } else {
             alertIt(res.msg);
             hideLoading();
             location.assign('./apiManagement.html');
         }
     })
-    .catch(function () {
-        hideLoading();
-        alert('服务器连接失败！');
-        location.assign('./apiManagement.html');
-    })
+// .catch(function () {
+//     hideLoading();
+//     alert('服务器连接失败！');
+//     location.assign('./apiManagement.html');
+// })
 
 
 // 删除功能
@@ -496,18 +561,18 @@ $('#save-api').click(function () {
     })
         .then(res => res.json())
         .then(resjson => {
-            if(resjson.code == 1){
+            if (resjson.code == 1) {
                 alertIt(resjson.msg);
-            setCookie('api-id', resjson.data.id);
-            hideLoading();
-            location.assign('./apiManagement.html');
-            }else{
+                setCookie('api-id', resjson.data.id);
+                hideLoading();
+                location.assign('./apiManagement.html');
+            } else {
                 alertIt(resjson.msg);
                 hideLoading();
                 location.assign('./apiManagement.html');
             }
         })
-        .catch(err=>{
+        .catch(err => {
             alert('服务器连接失败！！');
             hideLoading();
             location.assign('./apiManagement.html');
@@ -516,3 +581,7 @@ $('#save-api').click(function () {
 })
 
 
+// 请求体页面切换
+$('#request-type').change(function () {
+
+})

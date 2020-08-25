@@ -188,3 +188,12 @@ table {
     margin-left: 256px;
     overflow: auto;
 }
+
+.code-area{
+    font-size: 12px;
+    width: 100%;
+    height: 300px;
+    border: grey;
+    outline: none;
+    padding: 10px;
+}
