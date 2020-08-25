@@ -466,7 +466,7 @@ $('#save-api').click(function () {
     let statuscode = document.getElementsByClassName('api-status');
     for (let i = 0; i < statuscode.length; i++) {
         if (statuscode[i].checked) {
-            status = i;
+            status = i + 1;
         }
     }
 

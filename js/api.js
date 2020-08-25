@@ -68,6 +68,37 @@ document.getElementById("add-new-file").onclick = function () {
     document.getElementById("input-file").classList.remove("hide");
 }
 
+// 点击确定上传
+$('.upload-file').click(function () {
+    let file = document.getElementById('json-file').files;
+    if (file.length == 0) {
+        alertIt('请选择文件！');
+        return;
+    }
+    showLoading();
+    $.getJSON(window.URL.createObjectURL(file[0]), function (data, status) {
+        let jsondata = {
+            "json": JSON.stringify(data)
+        };
+        getData('http://39.98.41.126:30003/api/interface/input', jsondata)
+            .then(res => {
+                hideLoading();
+                if (res.code == 1) {
+                    location.reload();
+                } else {
+                    alertIt('服务器开小差啦!请刷新后重试');
+                }
+            })
+            .catch(err => {
+                hideLoading();
+                alertIt('服务器开小差啦!请刷新后重试');
+            })
+
+    })
+
+
+})
+
 // 点击模块获取接口
 function addClickModule(dom) {
     let mode = dom.getElementsByTagName("div");
@@ -411,28 +442,27 @@ function addSonModule(projectId, parentId) {
 function exportApiMd(projectId) {
     let dom = document.getElementById('sec-export');
     dom.getElementsByTagName("button")[0].onclick = () => {
-        let oData = {
-            "projectId": projectId
-        };
-        console.log(projectId);
         alertIt("开始建立连接……");
         dom.classList.add("hide");
-
-        getData("http://39.98.41.126:30008/api/pro/export", oData).then((res) => {
-            window.open(res);
-        });
-        // fetch("http://39.98.41.126:30008/api/pro/export",{
-        //     method : 'post',
-        //     body : JSON.stringify(oData),
-        //     headers : {
-        //         "Content-Type" : "application/json",
-        //         "Buuid" : Buuid
-        //     }
-        // })
-        // .then(res=>res.json())
-        // .then(resjson=>{
-        //     console.log(resjson);
-        // })
+        let odata = {
+            "projectId": projectId
+        }
+        showLoading();
+        getData("http://39.98.41.126:30008/api/pro/export", odata)
+            .then(res => {
+                // window.location.href = res;
+                let blob = new Blob([res]);
+                let link = document.createElement('a');
+                let fileName = `${new Date().valueOf()}.md`;
+                link.href = window.URL.createObjectURL(blob);
+                link.download = fileName;
+                link.click();
+                window.URL.revokeObjectURL(link.href);
+            })
+            .catch(err => {
+                alertIt('服务器开小差啦！请联系管理员！');
+                hideLoading();
+            })
     }
 }
 
@@ -660,27 +690,13 @@ function getData(url, data) {
                 resolve(res)
             },
             error: function () {
+                hideLoading();
                 alertIt("服务器连接失败！请联系管理员！")
             }
         })
     })
 }
 
-// 提示框
-/* alertTimer = null;
-function alertIt(content) {
-    $('#alert-div').html(content);
-    $('#alert-div').slideDown(500);
-    if (alertTimer) {
-        alertTimer = null;
-    } else {
-        alertTimer = setTimeout(() => {
-            $('#alert-div').slideUp(500);
-            alertTimer = null;
-        }, 3000);
-    }
-}
- */
 // 状态码
 function getStatus(num) {
     if (num == 1) return "已发布";
