@@ -452,7 +452,7 @@ function exportApiMd(projectId) {
         showLoading();
         getData("http://39.98.41.126:30008/api/pro/export", odata)
             .then(res => {
-                // window.location.href = res;
+                hideLoading();
                 let blob = new Blob([res]);
                 let link = document.createElement('a');
                 let fileName = `${new Date().valueOf()}.md`;
