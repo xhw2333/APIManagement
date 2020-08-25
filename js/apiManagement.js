@@ -72,7 +72,7 @@ document.getElementById("search-api").onkeypress = function (event) {
                             <td class="w50"><input type="checkbox"></td>
                             <td>
                                 <div class="my-border my-border-${getStatusColor(apis[j].status)}">${getStatus(apis[j].status)}</div>
-                                ${apis[j].url}
+                                ${apis[j].name}
                             </td>
                             <td>
                                 <div class="my-border my-border-blue">${apis[j].method}</div>
