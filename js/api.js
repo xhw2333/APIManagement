@@ -1,11 +1,8 @@
-
-
 /* 左边导航栏的内容 */
 
 // 从cookie获取
 var email = getCookie('email');
 var Buuid = getCookie('Buuid');
-
 
 
 var tBody = document.getElementById("api-tbody");
@@ -18,7 +15,9 @@ var apiUl = document.getElementById("api-module");
 var oData = {
     "email": email
 }
+showLoading();
 getData("http://39.98.41.126:30008/api/member/list", oData).then((res) => {
+    hideLoading();
     let str = "";
     for (let i = 0; i < res.length; i++) {
         str += `
@@ -49,7 +48,9 @@ document.getElementById("new-group").onclick = function () {
                 "name": sec.getElementsByTagName("input")[0].value,
                 "email": email
             }
+            showLoading();
             getData("http://39.98.41.126:30008/api/pro/createProject", oData).then((res) => {
+                hideLoading();
                 if (res.code == 1)
                     location.reload();
                 else
@@ -79,7 +80,9 @@ function addClickModule(dom) {
             let oData = {
                 "moduleId": mode[i].getAttribute("myID")
             }
+            showLoading();
             getData("http://39.98.41.126:30004/api/apis/findAPI", oData).then((res) => {
+                hideLoading();
 
                 /* 添加apis */
                 if (tBody) {
@@ -140,7 +143,9 @@ function addModule() {
 
             let that = this.parentElement;
 
+            showLoading();
             getData("http://39.98.41.126:30004/api/apis/getModulesAndApis", id).then((res) => {
+                hideLoading();
                 let data = res.data;
 
                 /* 左边栏目 */
@@ -186,7 +191,7 @@ function addModule() {
 
                     }
 
-                    /* 只进行一次排序 */
+                    /* 再进行一次排序 */
                     if (unAdd.length) {
                         while (unAdd.length) {
                             let i = unAdd.pop();
@@ -385,13 +390,18 @@ function addSonModule(projectId, parentId) {
             "parentId": parentId,
             "projectId": projectId
         };
-        if (name)
+        if (name) {
+            showLoading();
             getData("http://39.98.41.126:30004/api/module/createModule", oData).then((res) => {
+                hideLoading();
                 if (res.code == 1)
                     location.reload();
                 else
                     alertIt(res.msg);
             });
+        }
+
+
         else
             alertIt("模块名不能为空")
     }
@@ -407,6 +417,7 @@ function exportApiMd(projectId) {
         console.log(projectId);
         alertIt("开始建立连接……");
         dom.classList.add("hide");
+
         getData("http://39.98.41.126:30008/api/pro/export", oData).then((res) => {
             window.open(res);
         });
@@ -435,14 +446,16 @@ function changeProjName(projectId) {
             "email": email,
             "newName": name
         };
-        if (name)
+        if (name) {
+            showLoading();
             getData("http://39.98.41.126:30008/api/pro/updateProject", oData).then((res) => {
+                hideLoading();
                 if (res.code == 1)
                     location.reload();
                 else
                     alertIt(res.msg);
             });
-        else
+        } else
             alertIt("模块名不能为空")
     }
 }
@@ -456,14 +469,16 @@ function changeModuName(parentId) {
             "name": name,
             "id": parentId
         };
-        if (name)
+        if (name) {
+            showLoading();
             getData("http://39.98.41.126:30004/api/module/updateName", oData).then((res) => {
+                hideLoading();
                 if (res.code == 1)
                     location.reload();
                 else
                     alertIt(res.msg);
             });
-        else
+        } else
             alertIt("模块名不能为空")
     }
 }
@@ -548,14 +563,16 @@ function moveModu(name, myId) {
             "parentId": parentId,
             "id": myId
         };
-        if (parentId)
+        if (parentId) {
+            showLoading();
             getData("http://39.98.41.126:30004/api/module/remove", oData).then((res) => {
+                hideLoading();
                 if (res.code == 1)
                     location.reload();
                 else
                     alertIt(res.msg);
             });
-        else
+        } else
             alertIt("不可以跨项目移动");
 
     }
@@ -568,7 +585,9 @@ function deleModu(parentId) {
         let oData = {
             "id": parentId
         };
+        showLoading();
         getData("http://39.98.41.126:30004/api/module/delete", oData).then((res) => {
+            hideLoading();
             if (res.code == 1)
                 location.reload();
             else
@@ -648,7 +667,7 @@ function getData(url, data) {
 }
 
 // 提示框
-alertTimer = null;
+/* alertTimer = null;
 function alertIt(content) {
     $('#alert-div').html(content);
     $('#alert-div').slideDown(500);
@@ -661,7 +680,7 @@ function alertIt(content) {
         }, 3000);
     }
 }
-
+ */
 // 状态码
 function getStatus(num) {
     if (num == 1) return "已发布";

@@ -20,7 +20,9 @@ function manegement() {
                 let oData = {
                     "id": allTr[i].getAttribute("apiid")
                 }
+                showLoading();
                 getData("http://39.98.41.126:30003/api/interface/delete", oData).then((res) => {
+                    hideLoading();
                     if (res.code == 1)
                         location.reload();
                     else
@@ -56,7 +58,9 @@ document.getElementById("search-api").onkeypress = function (event) {
                 "param": this.value
             }
 
+            showLoading();
             getData("http://39.98.41.126:30004/api/apis/findAPI", oData).then((res) => {
+                hideLoading();
 
                 /* 添加apis */
                 let apis = res.data;
@@ -107,7 +111,9 @@ document.getElementById("pl-delete").onclick = function () {
             let oData = {
                 "ids": getSelect()
             }
+            showLoading();
             getData("http://39.98.41.126:30004/api/apis/delete", oData).then((res) => {
+                hideLoading();
                 if (res.code == 1)
                     location.reload();
                 else
@@ -245,13 +251,17 @@ function plMoveModu(pID) {
             "moduleId": parentId
         }
 
-        if (parentId)
+        if (parentId) {
+            showLoading();
             getData("http://39.98.41.126:30004/api/apis/remove", oData).then((res) => {
+                hideLoading();
                 if (res.code == 1)
                     location.reload();
                 else
                     alertIt(res.msg);
             });
+        }
+
         else
             alertIt("不可以跨项目移动");
 
