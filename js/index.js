@@ -129,7 +129,7 @@ function loginBind() {
                     pwd = base.encode(pwd);
                     if ($('#log-rem').prop('checked')) {
                         setCookie('email', email, 7);
-                        setCookie('pwd', pwd,7);
+                        setCookie('pwd', pwd, 7);
                     } else {
                         delCookie('pwd');
                     }
@@ -173,8 +173,8 @@ function doPost(url, data, bindFn) {
             url: url,
             headers: {
                 "Content-Type": "application/json",
-                "Auuid" : getCookie('Auuid'),
-                "Buuid" : getCookie('Buuid')
+                "Auuid": getCookie('Auuid'),
+                "Buuid": getCookie('Buuid')
             },
             data: JSON.stringify(data),
             success: function (res, status, xhr) {
@@ -214,13 +214,13 @@ function registerBind() {
             }
             showLoading();
             doPost(url, data, registerBind).then(res => {
+                hideLoading();
                 if (res.code == 1) {
                     alertIt('注册成功！');
                     $('#reg-nickname').val('');
                     $("#reg-email").val('');
                     $('#reg-password').val('');
                     $('#reg-confirm').val('');
-                    hideLoading();
                 } else {
                     alertIt(res.msg);
                     registerBind();
@@ -317,23 +317,23 @@ function rechieveBind() {
                 "code": code
             };
             showLoading();
-            doPost(url,data,rechieveBind)
-            .then(res => {
-                if (res.code == 1) {
-                    alertIt('密码修改成功！');
-                    $('#rechieve-email').val('');
-                    $('#rechieve-password').val('');
-                    $('#rechieve-confirm').val('');
-                    $('#rechieve-code').val('');
-                    hideLoading();
-                    return;
-                } else {
-                    alertIt(res.msg);
-                    rechieveBind();
-                    hideLoading();
-                    return;
-                }
-            })
+            doPost(url, data, rechieveBind)
+                .then(res => {
+                    if (res.code == 1) {
+                        alertIt('密码修改成功！');
+                        $('#rechieve-email').val('');
+                        $('#rechieve-password').val('');
+                        $('#rechieve-confirm').val('');
+                        $('#rechieve-code').val('');
+                        hideLoading();
+                        return;
+                    } else {
+                        alertIt(res.msg);
+                        rechieveBind();
+                        hideLoading();
+                        return;
+                    }
+                })
         } else {
             alertIt('请检查信息格式！');
             rechieveBind();
@@ -380,10 +380,10 @@ function checkForm(domID, checkFn) {
 }
 
 // loading
-function showLoading(){
+function showLoading() {
     $('#loading').fadeIn(500);
 }
 
-function hideLoading(){
+function hideLoading() {
     $('#loading').fadeOut(300);
 }
