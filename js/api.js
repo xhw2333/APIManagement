@@ -114,7 +114,7 @@ function addClickModule(dom) {
                 "moduleId": mode[i].getAttribute("myID")
             }
             showLoading();
-            getData("http://39.98.41.126:30004/api/apis/findAPI", oData).then((res) => {
+            getData("http://39.98.41.126:30008/api/apis/findAPI", oData).then((res) => {
                 hideLoading();
 
                 /* 添加apis */
@@ -177,7 +177,7 @@ function addModule() {
             let that = this.parentElement;
 
             showLoading();
-            getData("http://39.98.41.126:30004/api/apis/getModulesAndApis", id).then((res) => {
+            getData("http://39.98.41.126:30008/api/apis/getModulesAndApis", id).then((res) => {
                 hideLoading();
                 let data = res.data;
 
@@ -427,7 +427,7 @@ function addSonModule(projectId, parentId) {
         };
         if (name) {
             showLoading();
-            getData("http://39.98.41.126:30004/api/module/createModule", oData).then((res) => {
+            getData("http://39.98.41.126:30008/api/module/createModule", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();
@@ -509,7 +509,7 @@ function changeModuName(parentId) {
         };
         if (name) {
             showLoading();
-            getData("http://39.98.41.126:30004/api/module/updateName", oData).then((res) => {
+            getData("http://39.98.41.126:30008/api/module/updateName", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();
@@ -603,7 +603,7 @@ function moveModu(name, myId) {
         };
         if (parentId) {
             showLoading();
-            getData("http://39.98.41.126:30004/api/module/remove", oData).then((res) => {
+            getData("http://39.98.41.126:30008/api/module/remove", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();
@@ -625,7 +625,7 @@ function deleModu(parentId) {
             "id": parentId
         };
         showLoading();
-        getData("http://39.98.41.126:30004/api/module/delete", oData).then((res) => {
+        getData("http://39.98.41.126:30008/api/module/delete", oData).then((res) => {
             hideLoading();
             if (res.code == 1)
                 location.reload();

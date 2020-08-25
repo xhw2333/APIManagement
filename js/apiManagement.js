@@ -153,7 +153,7 @@ document.getElementById("search-for-method").onchange = function () {
             let met = this.value;
             let allMethod = tBody.getElementsByTagName("div");
             for (let i = 0; i < allLi.length; i++) {
-                if (allMethod[i * 2 + 1].innerHTML == met) {
+                if ((allMethod[i * 2 + 1].innerHTML).toLowerCase() == met.toLowerCase()) {
                     allLi[i].classList.remove("hide");
                 } else {
                     allLi[i].classList.add("hide");
