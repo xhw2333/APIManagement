@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API管理平台-我的</title>
-    <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/personal.css">
+    <link rel="stylesheet" href="../css/main.css">
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
@@ -32,7 +32,7 @@
         <div id="operation">
             <!-- 右边内容 -->
             <!-- 我的信息 -->
-            <div id="operation-mine" class="operation-part">
+            <div id="operation-mine" class="operation-mine operation-part">
                 <div id="mine-message" class="mine-message">
                     <h3 class="message-title">
                         基本信息
@@ -157,7 +157,7 @@
                
             </div>
             <!-- 成员管理 -->
-            <div id="operation-team" class="operation-part hide">
+            <div id="operation-team" class="operation-team operation-part hide">
                 <div class="team-about">
                     <div class="team-item">
                         <h3 class="item-title">项目列表</h3>
@@ -242,7 +242,7 @@
                     </div>                  
                 </div>
                 <!-- 添加新成员 -->
-                <div id="joiner-add-container" class="hide">
+                <div id="joiner-add-container" class="joiner-add-container hide">
                     <div class="add-pane">
                         <h3 class="add-title">添加新成员</h3>
                         <div class="add-search">
@@ -262,7 +262,7 @@
                 </div>
             </div>
             <!-- 消息通知 -->
-            <div id="operation-notice" class="operation-part hide">
+            <div id="operation-notice" class="operation-notice operation-part hide">
                 <div id="notice-message" class="notice-message">
                     <h3 class="message-title">基本信息</h3>
                     <div class="message-portrait">
@@ -307,6 +307,7 @@
             </div>
         </div>
     </div>
+    <div id="alert-div" class="hide">提示框</div>
     <script src="../js/main.js"></script>
     <script src="../js/personal.js"></script>
 </body>

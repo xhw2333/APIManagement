@@ -13,20 +13,31 @@ var data = {
     email:email
 }
 
+
+//加载
+showLoading();
+
 //展示项目及其接口
 showApis();
 //基本信息展示
 showMessage();
+
 
 //点击我的信息
 personTab[0].onclick = function(){
     hidePerPage();
     personPage[0].classList.remove('hide');
     personTab[0].classList.add('side-now');
+    //清空
+    clearContent();
+    //加载
+    showLoading();
+
     //展示项目及其接口
     showApis();
     //基本信息展示
     showMessage();
+
 }
 
 //点击我的团队
@@ -34,6 +45,10 @@ personTab[1].onclick = function(){
     hidePerPage();
     personPage[1].classList.remove('hide');
     personTab[1].classList.add('side-now');
+    //清空
+    clearContent();
+    //加载
+    showLoading();
     //项目列表以及成员查看
     lookProject();
 }
@@ -43,8 +58,12 @@ personTab[2].onclick = function(){
     hidePerPage();
     personPage[2].classList.remove('hide');
     personTab[2].classList.add('side-now');
-     //基本信息展示
-     showMessage();
+    //清空
+    clearContent();
+    //加载
+    showLoading();
+    //基本信息展示
+    showMessage();
     //查看邀请信息
     lookInvite(data);
 }
@@ -72,7 +91,9 @@ function postDo(url,data){
                 resolve(res);
             },
             error: function () {
-                // alert('error!^_^!');
+                alertIt('服务器有问题，请联系管理员');
+                //消失
+                hideLoading();
             }
         })
     })
@@ -90,22 +111,18 @@ var projectId = [];
 var projectName = [];
 //我参与的项目
 
-let projectList = document.getElementById('project-list');
+
 let nozzleList = document.getElementById('nozzle-list');
 
 
 function showApis(){
     postDo(server1+'/list',data).then((res)=>{
     
-        nozzleList.innerHTML = ''
+        // nozzleList.innerHTML = ''
         for(let i = 0; i < res.length; i++){
             var data = {
                 projectId: res[i].id
             }        
-            // if(i == 0){
-            //     data.projectId = 8;
-            // }
-            // console.log(data);
             
             postDo(server3 + '/getModulesAndApis',data).then((res)=>{
                 let apis = res.data.apis;
@@ -123,8 +140,12 @@ function showApis(){
                 addPageChange();
                 //页面跳转
                 toPage();
+
+                //消失
+                hideLoading();
             })
         }    
+        
     })
 }
 
@@ -199,6 +220,9 @@ upFile.onchange = function(){
         $.ajax({
             method:"POST",
             url: 'http://39.98.41.126:30004/api/user/saveUrl',
+            // headers: {
+            //     "Buuid" : Buuid
+            // },
             cache: false,
             data: formData,
             processData: false,
@@ -231,7 +255,7 @@ editSave.onclick = function(){
         url: portraitAfter || portraitBefore
     }
     postDo(server2 +'/updateMsg',data).then((res)=>{
-        console.log(res.msg);
+        alertIt(res.msg);
     })
 }
 
@@ -247,6 +271,8 @@ function showMessage(){
         mineNick.innerHTML = res.data.nickname;
         mineEmail.innerHTML = res.data.email;
         document.getElementById('notice-message').innerHTML = message;
+        //消失
+        hideLoading();
     })
 }
 
@@ -302,7 +328,8 @@ function lookProject(){
             
             itemList[i].onclick = function(){
     
-                
+                //加载
+                showLoading();
                 selectId = this.index;
     
                 for(let i = 0; i < itemList.length; i++){
@@ -319,6 +346,8 @@ function lookProject(){
             }
             
         }
+        //消失
+        hideLoading();
         
     });
 }
@@ -371,6 +400,8 @@ function memberManage(data){
             }
         }
         
+        //取消
+        hideLoading();
         
         //点击退出项目
         for(let i = 0; i < exitProject.length; i++){
@@ -387,7 +418,8 @@ function memberManage(data){
                             projectId: projectId[selectId]
                         }
                         postDo(server1+'/dissolutionProject',data).then((res)=>{
-                            console.log(res);
+                            // console.log(res);
+                            alertIt(res.msg);
                             document.getElementById('member-creator').innerHTML = '';
                             memberJoiner.innerHTML = '';
                             let itemList = document.getElementById('item-list').getElementsByTagName('li');
@@ -400,7 +432,8 @@ function memberManage(data){
                         }
                         postDo(server1 + '/deleteMember',data).then((res)=>{
                             let joiners = memberJoiner.getElementsByTagName('li');
-                            console.log(res);
+                            // console.log(res);
+                            alertIt(res.msg);
                             if(res.code == 1){
                                 //移除
                                 joiners[selectMan - 1].parentNode.removeChild(joiners[selectMan - 1]);
@@ -417,7 +450,7 @@ function memberManage(data){
                         }
                         postDo(server1 + '/deleteMember',data).then((res)=>{
                             // let joiners = memberJoiner.getElementsByTagName('li');
-                            console.log(res);
+                            alertIt(res.msg);
                             if(res.code == 1){
                                 //移除自身
                                 // joiners[selectMan - 1].parentNode.removeChild(joiners[selectMan - 1]);
@@ -429,7 +462,7 @@ function memberManage(data){
                             
                         })
                     } else {
-                        alert('无权限');
+                        alertIt('无权限');
                     }
                 }
             }
@@ -510,8 +543,9 @@ addMember.onchange = function(){
 //点击邀请
 addInvite.onclick =function(){
     let addMember = document.getElementById('add-member');
-    if(!addMember.value){
-        alert('请输入邮箱');
+    if(!addMember.value || !isEmailValid(addMember.value)){
+        // alertIt('请输入邮箱');
+        alertIt('请输入邮箱或邮箱格式不对');
         return false;
     }
     let data = {
@@ -519,7 +553,7 @@ addInvite.onclick =function(){
         projectId: projectId[selectId]
     }
     postDo(server1 + '/inviteMember',data).then((res)=>{
-        alert(res.msg);
+        alertIt(res.msg);
         addContainer.classList.add('hide');
         addMember.value = '';
     })
@@ -542,7 +576,8 @@ function lookInvite(data){
     postDo(server1 + '/viewInvite',data).then((res)=>{
 
         let inviteList = document.getElementById('invite-list');
-        var selectLi;
+        inviteList.innerHTML = '';
+        var selectLi = '';
         for(let i = 0; i < res.length; i++){
             inviteList.innerHTML += createInvite(res[i]);
         }
@@ -566,7 +601,7 @@ function lookInvite(data){
                 data.projectName = inProject[this.index].innerHTML;
       
                 postDo(server1+'/handleInvite',data).then((res)=>{
-                    console.log(res);
+                    alertIt(res.msg);
                     if(res.code == 1){
                         inviteList.removeChild(inviteListLi[selectLi]);
                     }
@@ -579,19 +614,25 @@ function lookInvite(data){
                 data.projectName = inProject[this.index].innerHTML;
             
                 postDo(server1+'/handleInvite',data).then((res)=>{
-                    console.log(res);
-                    if(res.code == 1){
+                    alertIt(res.msg);
+                    if(res.code == -1){
                         inviteList.removeChild(inviteListLi[selectLi]);
                     }
                 })
             }
         }
+        //消失
+        hideLoading();
     })
     
 }
 
 
-
+// 校验邮箱
+function isEmailValid(email) {
+    let re = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    return re.test(email);
+}
 
 
 
@@ -625,6 +666,7 @@ function diviPage(stuArr){
     let totalPage = Math.ceil(stuArr.length/6);
     // 往ul中添加页码
     let ul = document.getElementById('nozzle-page-ul');
+    nowPage = 1;
     let pages = '';
     for(let i=1;i<=totalPage;i++){
         pages += `<li class="nozzle-page-tab" >${i}</li>`;
@@ -709,3 +751,14 @@ function insertAfter( newElement, targetElement ){ // newElement是要追加的�
     parent.insertBefore( newElement, targetElement.nextSibling );
     };
 };*/
+
+//清空内容
+function clearContent(){
+    
+    document.getElementById('nozzle-list').innerHTML ='';
+    document.getElementById('nozzle-page-ul').innerHTML = '';
+    document.getElementById('item-list').innerHTML = '';
+    document.getElementById('member-joiner').innerHTML = '';
+    document.getElementById('member-creator').innerHTML = '';
+    document.getElementById('invite-list').innerHTML = '';
+}

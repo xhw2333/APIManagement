@@ -151,6 +151,7 @@
 }
 
 .api-new-search span {
+    cursor: pointer;
     margin-right: 16px;
     font-size: 14px;
     font-family: Source Han Sans CN;
@@ -219,8 +220,17 @@
 }
 
 #api-tbody tr:hover {
-    cursor: pointer;
+    /* cursor: pointer; */
     background-color: rgba(197, 196, 196, 0.2);
+}
+
+#api-tbody input {
+    cursor: pointer;
+}
+
+#api-tbody span {
+    cursor: pointer;
+    color: rgba(79, 193, 233, 1);
 }
 
 #api-tbody>tr td {
@@ -452,4 +462,11 @@
 
 #add-new-file {
     cursor: pointer;
+}
+
+.thead select {
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
 }
