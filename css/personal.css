@@ -98,9 +98,29 @@
 
 .nozzle-pane tbody tr td span {
     padding: 2px 5px;
-    color: #4FC1E9;
-    border: 1px solid #4FC1E9;
+    /* color: #4FC1E9;
+    border: 1px solid #4FC1E9; */
     border-radius: 5px;
+}
+
+.nozzle-border-blue {
+    border: 1px solid rgba(79, 193, 233, 1);
+    color: rgba(79, 193, 233, 1);
+}
+
+.nozzle-border-green {
+    border: 1px solid rgba(91, 231, 196, 1);
+    color: rgba(91, 231, 196, 1);
+}
+
+.nozzle-border-yellow {
+    color: rgba(246, 194, 79, 1);
+    border: 1px solid rgba(246, 194, 79, 1);
+}
+
+.nozzle-border-red {
+    border: 1px solid rgba(243, 109, 112, 1);
+    color: rgba(243, 109, 112, 1);
 }
 
 #nozzle-page-ul {

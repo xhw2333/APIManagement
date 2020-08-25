@@ -156,16 +156,25 @@ function getStatus(status){
     else if(status == 5) return "废弃";
 }
 
+//数字对应的颜色
+function getStatusColor(status) {
+    if (status == 1) return "green";
+    if (status == 2) return "yellow";
+    if (status == 3) return "yellow";
+    if (status == 4) return "red";
+    if (status == 5) return "red";
+}
+
 //创建接口名单
 function createAPIs(res){
-    let status = getStatus(res.status);
+
     return `<tr>
                 <td>
-                    <span>${status}</span>
+                    <span class="nozzle-border-${getStatusColor(res.status)}">${getStatus(res.status)}</span>
                     ${res.name}
                 </td>
                 <td>
-                    <span>${res.method}</span>
+                    <span class="nozzle-border-blue">${res.method}</span>
                 </td>
                 <td>${res.url}</td>
                 <td>${res.updater}</td>
