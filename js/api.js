@@ -43,6 +43,7 @@ document.getElementById("new-group").onclick = function () {
     sec.classList.remove("hide");
 
     sec.getElementsByTagName("button")[0].onclick = function () {
+        document.getElementById("new-group").classList.add("hide");
         if (sec.getElementsByTagName("input")[0].value) {
             let oData = {
                 "name": sec.getElementsByTagName("input")[0].value,
@@ -417,6 +418,7 @@ modListDivSection();
 function addSonModule(projectId, parentId) {
     let dom = document.getElementById("add-new-true-module");
     dom.getElementsByTagName("button")[0].onclick = () => {
+        dom.classList.add("hide");
         let name = dom.getElementsByTagName("input")[0].value;
         let oData = {
             "name": name,
@@ -474,6 +476,7 @@ function exportApiMd(projectId) {
 function changeProjName(projectId) {
     let dom = document.getElementById("change-name");
     dom.getElementsByTagName("button")[0].onclick = () => {
+        dom.classList.add("hide");
         let name = dom.getElementsByTagName("input")[0].value;
         let oData = {
             "projectId": projectId,
@@ -498,6 +501,7 @@ function changeProjName(projectId) {
 function changeModuName(parentId) {
     let dom = document.getElementById("change-name");
     dom.getElementsByTagName("button")[0].onclick = () => {
+        dom.classList.add("hide");
         let name = dom.getElementsByTagName("input")[0].value;
         let oData = {
             "name": name,
@@ -592,7 +596,7 @@ function moveModu(name, myId) {
 
 
     dom.getElementsByTagName("button")[0].onclick = () => {
-
+        dom.classList.add("hide");
         let oData = {
             "parentId": parentId,
             "id": myId
@@ -616,6 +620,7 @@ function moveModu(name, myId) {
 function deleModu(parentId) {
     let dom = document.getElementById("sec-module-de");
     dom.getElementsByTagName("button")[0].onclick = () => {
+        dom.classList.add("hide");
         let oData = {
             "id": parentId
         };

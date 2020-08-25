@@ -129,7 +129,7 @@ function loginBind() {
                     pwd = base.encode(pwd);
                     if ($('#log-rem').prop('checked')) {
                         setCookie('email', email, 7);
-                        setCookie('pwd', pwd,7);
+                        setCookie('pwd', pwd, 7);
                     } else {
                         delCookie('pwd');
                     }
@@ -173,8 +173,8 @@ function doPost(url, data, bindFn) {
             url: url,
             headers: {
                 "Content-Type": "application/json",
-                "Auuid" : getCookie('Auuid'),
-                "Buuid" : getCookie('Buuid')
+                "Auuid": getCookie('Auuid'),
+                "Buuid": getCookie('Buuid')
             },
             data: JSON.stringify(data),
             success: function (res, status, xhr) {
@@ -333,6 +333,7 @@ function rechieveBind() {
                     return;
                 }
             })
+
         } else {
             alertIt('请检查信息格式！');
             rechieveBind();
@@ -379,10 +380,10 @@ function checkForm(domID, checkFn) {
 }
 
 // loading
-function showLoading(){
+function showLoading() {
     $('#loading').fadeIn(500);
 }
 
-function hideLoading(){
+function hideLoading() {
     $('#loading').fadeOut(300);
 }
