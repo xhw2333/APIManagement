@@ -18,7 +18,12 @@ function getData(url, method, uuid, data) {
             data: data,
             success: function (res) {
                 resolve(res);
-            }
+            },
+            error : function (err){
+                hideLoading();
+                alert('请先登录！');
+                location.assign('../index.html');
+            } 
         })
     })
 }

@@ -1,3 +1,4 @@
+
 // 获取cookie
 function getCookie(name) {
     var reg = RegExp(name + '=([^;]+)');
@@ -52,4 +53,12 @@ function showLoading(){
 function hideLoading(){
     $('#loading').fadeOut(300);
 }
+
+
+// 判断Buuid
+if(!getCookie('Buuid')){
+    alert('请先登录！');
+    location.assign('../index.html');
+}
+
 hideLoading();
