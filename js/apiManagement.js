@@ -21,7 +21,7 @@ function manegement() {
                     "id": allTr[i].getAttribute("apiid")
                 }
                 showLoading();
-                getData("http://39.98.41.126:30003/api/interface/delete", oData).then((res) => {
+                getData("http://39.98.41.126:30004/api/interface/delete", oData).then((res) => {
                     hideLoading();
                     if (res.code == 1)
                         location.reload();

@@ -1,5 +1,5 @@
 
-var server1 = 'http://39.98.41.126:30008/api/member';
+var server1 = 'http://39.98.41.126:30004/api/member';
 var server2 = 'http://39.98.41.126:30004/api/user';
 var server3 = 'http://39.98.41.126:30004/api/apis';
 
@@ -12,8 +12,8 @@ var Buuid = getCookie('Buuid');
 var data = {
     email:email
 }
-console.log(email);
-console.log(Buuid);
+// console.log(email);
+// console.log(Buuid);
 //加载
 showLoading();
 
@@ -234,7 +234,7 @@ upFile.onchange = function(){
             processData: false,
             contentType: false,
             success: function(res){
-                console.log(res.msg);
+                // console.log(res.msg);
                 portraitAfter = res.msg;
             }
         })
@@ -569,6 +569,10 @@ addInvite.onclick =function(){
         alertIt('请输入邮箱或邮箱格式不对');
         return false;
     }
+    if(addMember.value == email){
+        alertIt('不能邀请自己');
+        return false;
+    }
     //加载
     showLoading();
     let data = {
@@ -697,7 +701,7 @@ var nowPage = 1;
 // 分页显示
 function diviPage(stuArr){
     // 页数
-    let totalPage = Math.ceil(stuArr.length/6);
+    let totalPage = Math.ceil(stuArr.length/10);
     // 往ul中添加页码
     let ul = document.getElementById('nozzle-page-ul');
     nowPage = 1;
@@ -717,7 +721,7 @@ function appearPage(page){
     let myTr = tbody.getElementsByTagName("tr");
     for(let i = 0; i < myTr.length; i++){
         myTr[i].classList.add('hide');
-        if(i >= (page - 1)* 6 && i < page*6){
+        if(i >= (page - 1)* 10 && i < page*10){
             myTr[i].classList.remove('hide');
         }
     }

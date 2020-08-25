@@ -284,7 +284,7 @@ $('#save-api').click(function(){
         "responseBody" :'[' +  responseBody.toString()+ ']'
     }
     showLoading();
-    fetch('http://39.98.41.126:30003/api/interface/create',{
+    fetch('http://39.98.41.126:30004/api/interface/create',{
         method : 'post',
         body : JSON.stringify(json),
         headers:{
