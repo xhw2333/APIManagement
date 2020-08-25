@@ -101,6 +101,7 @@ $('.upload-file').click(function () {
 
 // 点击模块获取接口
 function addClickModule(dom) {
+    document.getElementById("search-for-method").value = "all";
     let mode = dom.getElementsByTagName("div");
     for (let i = 0; i < mode.length; i++) {
         mode[i].onclick = function (event) {
@@ -300,7 +301,8 @@ function addModule() {
                     }
                 }
 
-                addClickModule(that);
+                if (tBody)
+                    addClickModule(that);
                 addHideList();
                 addModule();
                 addProjControl();
