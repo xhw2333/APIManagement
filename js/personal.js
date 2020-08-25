@@ -187,7 +187,7 @@ function createAPIs(res){
 //基本信息编辑操作
 let messageBtn = document.getElementById('message-btn');
 let portraitUp = document.getElementById('portrait-upload');
-let mineNick =document.getElementById('mine-nickname');
+let mineNick = document.getElementById('mine-nickname');
 let mineEmail = document.getElementById('mine-email');
 let messageEdit = document.getElementById('message-edit');
 let editCancel = document.getElementById('message-cancel');
@@ -260,8 +260,22 @@ editSave.onclick = function(){
         nickname: nickBefore,
         url: portraitAfter || portraitBefore
     }
+    //加载
+    showLoading();
     postDo(server2 +'/updateMsg',data).then((res)=>{
-        alertIt(res.msg);
+        
+        if(res.code == 1){
+            alertIt('已保存');
+            mineNick.contentEditable = "false";
+            messageBtn.classList.add('hide');
+            portraitUp.classList.add('hide');
+            //基本信息展示
+            showMessage();
+        } else {
+            //消失
+            hideLoading();
+            alertIt('保存失败');
+        }
     })
 }
 
