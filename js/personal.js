@@ -12,8 +12,8 @@ var Buuid = getCookie('Buuid');
 var data = {
     email:email
 }
-
-
+console.log(email);
+console.log(Buuid);
 //加载
 showLoading();
 
@@ -98,9 +98,6 @@ function postDo(url,data){
         })
     })
 }
-
-
-
 
 
 
@@ -220,9 +217,9 @@ upFile.onchange = function(){
         $.ajax({
             method:"POST",
             url: 'http://39.98.41.126:30004/api/user/saveUrl',
-            // headers: {
-            //     "Buuid" : Buuid
-            // },
+            headers: {
+                "Buuid" : Buuid
+            },
             cache: false,
             data: formData,
             processData: false,
@@ -538,21 +535,26 @@ addMember.onchange = function(){
     if(!this.value){
         return false;
     }
-    addInvite.style.opacity = 1;
+    // addInvite.style.opacity = 1;
 }
 //点击邀请
 addInvite.onclick =function(){
+    
     let addMember = document.getElementById('add-member');
     if(!addMember.value || !isEmailValid(addMember.value)){
         // alertIt('请输入邮箱');
         alertIt('请输入邮箱或邮箱格式不对');
         return false;
     }
+    //加载
+    showLoading();
     let data = {
         email:addMember.value,
         projectId: projectId[selectId]
     }
     postDo(server1 + '/inviteMember',data).then((res)=>{
+        //消失
+        hideLoading();
         alertIt(res.msg);
         addContainer.classList.add('hide');
         addMember.value = '';
@@ -596,11 +598,15 @@ function lookInvite(data){
             inviteRefuse[i].index = i;
             //同意
             inviteAccept[i].onclick = function(){
+                //加载
+                showLoading();
                 selectLi = this.index;
                 data.status = 'y';
                 data.projectName = inProject[this.index].innerHTML;
       
                 postDo(server1+'/handleInvite',data).then((res)=>{
+                    //消失
+                    hideLoading();
                     alertIt(res.msg);
                     if(res.code == 1){
                         inviteList.removeChild(inviteListLi[selectLi]);
@@ -609,15 +615,20 @@ function lookInvite(data){
             }
             //拒绝
             inviteRefuse[i].onclick = function(){
+                //加载
+                showLoading();
                 selectLi = this.index;
                 data.status = 'n';
                 data.projectName = inProject[this.index].innerHTML;
             
                 postDo(server1+'/handleInvite',data).then((res)=>{
+                    //消失
+                    hideLoading();
                     alertIt(res.msg);
                     if(res.code == -1){
                         inviteList.removeChild(inviteListLi[selectLi]);
                     }
+                    
                 })
             }
         }

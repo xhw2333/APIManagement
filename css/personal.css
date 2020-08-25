@@ -44,6 +44,10 @@
     font-size: 20px;
 }
 
+.nozzle-pane {
+    width: 100%;
+}
+
 .project-pane thead,
 .nozzle-pane thead {
     background-color: #F2F2F2;
@@ -267,6 +271,7 @@
 .team-item {
     flex: 1;
     padding-top: 28px;
+    overflow: hidden;
 }
 
 
@@ -277,6 +282,8 @@
 
 .item-title {
     margin: 0 0 10px 24px;
+    white-space: nowrap;
+    overflow: hidden;
 } 
 
 
@@ -320,7 +327,7 @@
     display: flex;
     padding: 10px;
     background-color: #fff;
-    width: 44%;
+    min-width: 44%;
 }
 
 .creator-message,
@@ -362,7 +369,7 @@
     margin: 10px 0;
     padding: 10px;
     background-color: #fff;
-    width: 44%;
+    min-width: 44%;
 }
 
 .joiner-message i {
@@ -568,7 +575,7 @@ li.joiner-add {
     background-color: #7A57D1;
     border: none;
     color: rgb(255,255,255);
-    opacity: 0.4;
+    /* opacity: 0.4; */
 }
 
 .add-search-result {
