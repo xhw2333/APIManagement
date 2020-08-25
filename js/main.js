@@ -61,4 +61,9 @@ if(!getCookie('Buuid')){
     location.assign('../index.html');
 }
 
+// 返回事件
+$('.return-manage').click(function(){
+    location.assign('./apiManagement.html');
+})
+
 hideLoading();

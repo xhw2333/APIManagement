@@ -213,8 +213,8 @@ getData('http://39.98.41.126:30003/api/interface/detail?id=' + id, 'get', getCoo
     })
     .catch(function () {
         hideLoading();
-        alertIt('服务器连接失败！');
-        location.assign('../index.html');
+        alert('服务器连接失败！');
+        location.assign('./apiManagement.html');
     })
 
 
@@ -508,10 +508,11 @@ $('#save-api').click(function () {
             }
         })
         .catch(err=>{
-            alertIt('请先登录！');
+            alert('服务器连接失败！！');
             hideLoading();
-            location.assign('../index.html');
+            location.assign('./apiManagement.html');
         })
 
 })
+
 
