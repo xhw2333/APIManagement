@@ -78,6 +78,7 @@ $('.upload-file').click(function () {
     }
     showLoading();
     $.getJSON(window.URL.createObjectURL(file[0]), function (data, status) {
+        querySelector(".upload-file").classList.add("hide");
         let jsondata = {
             "json": JSON.stringify(data)
         };

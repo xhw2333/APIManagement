@@ -244,6 +244,7 @@ function plMoveModu(pID) {
 
 
     dom.getElementsByTagName("button")[0].onclick = () => {
+        dom.classList.add("hide");
 
         let oData = {
             "ids": getSelect(),
