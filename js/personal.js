@@ -1,7 +1,5 @@
 
-var server1 = 'http://39.98.41.126:30004/api/member';
-var server2 = 'http://39.98.41.126:30004/api/user';
-var server3 = 'http://39.98.41.126:30004/api/apis';
+var server = 'http://39.98.41.126:30004/api';
 
 //切换个人页面
 var personTab = document.getElementsByClassName('side-tabs');
@@ -113,7 +111,7 @@ let nozzleList = document.getElementById('nozzle-list');
 
 
 function showApis(){
-    postDo(server1+'/list',data).then((res)=>{
+    postDo(server+'/member/list',data).then((res)=>{
     
         // nozzleList.innerHTML = ''
         for(let i = 0; i < res.length; i++){
@@ -121,7 +119,7 @@ function showApis(){
                 projectId: res[i].id
             }        
             
-            postDo(server3 + '/getModulesAndApis',data).then((res)=>{
+            postDo(server + '/apis/getModulesAndApis',data).then((res)=>{
                 let apis = res.data.apis;
                 nozzleList.innerHTML += `<tr id="nozzle-item" class="nozzle-item">
                                                 <td>
@@ -262,7 +260,7 @@ editSave.onclick = function(){
     }
     //加载
     showLoading();
-    postDo(server2 +'/updateMsg',data).then((res)=>{
+    postDo(server +'/user/updateMsg',data).then((res)=>{
         
         if(res.code == 1){
             alertIt('已保存');
@@ -284,7 +282,7 @@ editSave.onclick = function(){
 //基本信息展示
 // showMessage();
 function showMessage(){
-    postDo(server2 +'/getMyMsg',data).then((res)=>{
+    postDo(server +'/user/getMyMsg',data).then((res)=>{
         // console.log(res.data);
         var message = createMessage(res.data);
         portraitHead.src = res.data.url;
@@ -328,7 +326,7 @@ var emails = [];
 //项目列表以及成员查看
 // lookProject();
 function lookProject(){
-    postDo(server1+'/list',data).then((res)=>{
+    postDo(server+'/member/list',data).then((res)=>{
 
         var itemListul = document.getElementById('item-list');
         var str = '';
@@ -375,7 +373,7 @@ function lookProject(){
 //成员管理
 function memberManage(data){
 
-    postDo(server1+'/member',data).then((res)=>{
+    postDo(server+'/member/member',data).then((res)=>{
         //存邮箱
         emails = [];
         emails.push(res.creator.email);
@@ -437,7 +435,7 @@ function memberManage(data){
                         data = {
                             projectId: projectId[selectId]
                         }
-                        postDo(server1+'/dissolutionProject',data).then((res)=>{
+                        postDo(server+'/member/dissolutionProject',data).then((res)=>{
                             // console.log(res);
                             alertIt(res.msg);
                             document.getElementById('member-creator').innerHTML = '';
@@ -450,7 +448,7 @@ function memberManage(data){
                             email: emails[this.index],
                             projectId: projectId[selectId]
                         }
-                        postDo(server1 + '/deleteMember',data).then((res)=>{
+                        postDo(server + '/member/deleteMember',data).then((res)=>{
                             let joiners = memberJoiner.getElementsByTagName('li');
                             // console.log(res);
                             alertIt(res.msg);
@@ -468,7 +466,7 @@ function memberManage(data){
                             email: email,
                             projectId: projectId[selectId]
                         }
-                        postDo(server1 + '/deleteMember',data).then((res)=>{
+                        postDo(server + '/member/deleteMember',data).then((res)=>{
                             // let joiners = memberJoiner.getElementsByTagName('li');
                             alertIt(res.msg);
                             if(res.code == 1){
@@ -552,14 +550,55 @@ var selectId;
 //邀请成员
 let addInvite = document.getElementById('add-invite');
 let addMember = document.getElementById('add-member');
+let addSearch = document.getElementById('add-search-result');
 
-//填选框变化
-addMember.onchange = function(){
-    if(!this.value){
+//点回车后搜索
+addMember.onkeypress = function(event){
+    if (event.keyCode == 13) { 
+        if(!this.value){
+        alertIt('信息不能为空');
         return false;
-    }
-    // addInvite.style.opacity = 1;
+        }
+
+        let data = {
+            condition: addMember.value,
+            projectId: projectId[selectId]
+        }
+        addSearch.innerHTML = '';
+        //加载
+        showLoading();
+        postDo(server + '/member/searchMember',data).then((res)=>{
+            //消失
+            hideLoading();
+            if(!res.length){
+                alertIt('无结果');
+            }
+            for(let i = 0; i < res.length; i++){
+                addSearch.innerHTML += createMan(res[i].member);
+            }
+            let addSearchLi = addSearch.getElementsByTagName('li');
+            let addSearchStrong = document.getElementsByTagName('strong');
+            for(let i = 0; i < addSearchLi.length; i++){
+                addSearchLi[i].index = i;
+                addSearchLi[i].onclick = function(){
+                    addMember.value = addSearchStrong[this.index].innerHTML;
+                }
+            }
+        })              
+    }   
 }
+
+//判断是否已在项目中
+function isIn(email){
+    let status = false;
+    for(let i = 0; i < emails.length; i++){
+        if(emails[i] == email){
+            status = true;
+        }
+    }
+    return status;
+}
+
 //点击邀请
 addInvite.onclick =function(){
     
@@ -569,8 +608,8 @@ addInvite.onclick =function(){
         alertIt('请输入邮箱或邮箱格式不对');
         return false;
     }
-    if(addMember.value == email){
-        alertIt('不能邀请自己');
+    if(addMember.value == email || isIn(addMember.value)){
+        alertIt('该成员已在项目中');
         return false;
     }
     //加载
@@ -579,13 +618,21 @@ addInvite.onclick =function(){
         email:addMember.value,
         projectId: projectId[selectId]
     }
-    postDo(server1 + '/inviteMember',data).then((res)=>{
+    postDo(server + '/member/inviteMember',data).then((res)=>{
         //消失
         hideLoading();
         alertIt(res.msg);
         addContainer.classList.add('hide');
         addMember.value = '';
+        addSearch.innerHTML = '';
     })
+}
+
+function createMan(res){
+    return `<li>
+                <span>${res.nickname}</span>
+                <strong>${res.email}</strong>
+            </li>`
 }
 
 //添加成员面板
@@ -595,6 +642,7 @@ var addClose = document.getElementById('add-close');
 addClose.onclick = function(){
     addContainer.classList.add('hide');
     addMember.value = '';
+    addSearch.innerHTML = '';
 }
 
 
@@ -602,7 +650,7 @@ addClose.onclick = function(){
 // var inviteList = document.getElementById('invite-list');
 // lookInvite();
 function lookInvite(data){
-    postDo(server1 + '/viewInvite',data).then((res)=>{
+    postDo(server + '/member/viewInvite',data).then((res)=>{
 
         let inviteList = document.getElementById('invite-list');
         inviteList.innerHTML = '';
@@ -631,7 +679,7 @@ function lookInvite(data){
                 data.status = 'y';
                 data.projectName = inProject[this.index].innerHTML;
       
-                postDo(server1+'/handleInvite',data).then((res)=>{
+                postDo(server+'/member/handleInvite',data).then((res)=>{
                     //消失
                     hideLoading();
                     alertIt(res.msg);
@@ -648,7 +696,7 @@ function lookInvite(data){
                 data.status = 'n';
                 data.projectName = inProject[this.index].innerHTML;
             
-                postDo(server1+'/handleInvite',data).then((res)=>{
+                postDo(server+'/member/handleInvite',data).then((res)=>{
                     //消失
                     hideLoading();
                     alertIt(res.msg);
@@ -799,4 +847,5 @@ function clearContent(){
     document.getElementById('member-joiner').innerHTML = '';
     document.getElementById('member-creator').innerHTML = '';
     document.getElementById('invite-list').innerHTML = '';
+    document.getElementById('add-search-result').innerHTML = '';
 }
