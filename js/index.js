@@ -1,3 +1,4 @@
+var domain = "http://119.3.228.123:80/"
 window.onload = function () {
     // 登录界面->忘记密码
     toPage('#to-rechieve', '#rechieve')
@@ -119,7 +120,7 @@ function loginBind() {
                 "email": email,
                 "password": pwd
             }
-            let url = 'http://39.98.41.126:30004/api/user/login';
+            let url = domain + 'api/user/login';
             showLoading();
             doPost(url, data).then(res => {
                 if (res.code == 1) {
@@ -207,7 +208,7 @@ function registerBind() {
             return;
         }
         if (isEmailValid(email) && isPwdComfirm(pwd1, pwd2) && isNicknameValid(nickname)) {
-            let url = 'http://39.98.41.126:30004/api/user/register';
+            let url = domain +  'api/user/register';
             let data = {
                 "email": email,
                 "password": pwd1,
@@ -272,7 +273,7 @@ function codeBind() {
                 }, 1000)
             }
 
-            let url = 'http://39.98.41.126:30004/api/user/getCode';
+            let url = domain + 'api/user/getCode';
             let data = {
                 "email": email
             }
@@ -310,7 +311,7 @@ function rechieveBind() {
             return;
         }
         if (isEmailValid(email) && isPwdComfirm(pwd1, pwd2)) {
-            let url = 'http://39.98.41.126:30004/api/user/findPass';
+            let url = domain + 'api/user/findPass';
             let data = {
                 "email": email,
                 "password": pwd1,

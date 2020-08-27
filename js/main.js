@@ -1,4 +1,5 @@
-
+// 
+var domain = "http://119.3.228.123:80/"
 // 获取cookie
 function getCookie(name) {
     var reg = RegExp(name + '=([^;]+)');

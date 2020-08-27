@@ -21,7 +21,7 @@ function manegement() {
                     "id": allTr[i].getAttribute("apiid")
                 }
                 showLoading();
-                getData("http://39.98.41.126:30004/api/interface/delete", oData).then((res) => {
+                getData(domain + "api/interface/delete", oData).then((res) => {
                     hideLoading();
                     if (res.code == 1)
                         location.reload();
@@ -59,7 +59,7 @@ document.getElementById("search-api").onkeypress = function (event) {
             }
 
             showLoading();
-            getData("http://39.98.41.126:30004/api/apis/findAPI", oData).then((res) => {
+            getData(domain + "api/apis/findAPI", oData).then((res) => {
                 hideLoading();
 
                 /* 添加apis */
@@ -112,7 +112,7 @@ document.getElementById("pl-delete").onclick = function () {
                 "ids": getSelect()
             }
             showLoading();
-            getData("http://39.98.41.126:30004/api/apis/delete", oData).then((res) => {
+            getData(domain + "api/apis/delete", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();
@@ -254,7 +254,7 @@ function plMoveModu(pID) {
 
         if (parentId) {
             showLoading();
-            getData("http://39.98.41.126:30004/api/apis/remove", oData).then((res) => {
+            getData(domain + "api/apis/remove", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();

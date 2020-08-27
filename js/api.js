@@ -16,7 +16,7 @@ var oData = {
     "email": email
 }
 showLoading();
-getData("http://39.98.41.126:30004/api/member/list", oData).then((res) => {
+getData(domain + "api/member/list", oData).then((res) => {
     hideLoading();
     let str = "";
     for (let i = 0; i < res.length; i++) {
@@ -50,7 +50,7 @@ document.getElementById("new-group").onclick = function () {
                 "email": email
             }
             showLoading();
-            getData("http://39.98.41.126:30004/api/pro/createProject", oData).then((res) => {
+            getData(domain + "api/pro/createProject", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();
@@ -82,7 +82,7 @@ $('.upload-file').click(function () {
         let jsondata = {
             "json": JSON.stringify(data)
         };
-        getData('http://39.98.41.126:30004/api/interface/input', jsondata)
+        getData(domain + 'api/interface/input', jsondata)
             .then(res => {
                 hideLoading();
                 if (res.code == 1) {
@@ -115,7 +115,7 @@ function addClickModule(dom) {
                 "moduleId": mode[i].getAttribute("myID")
             }
             showLoading();
-            getData("http://39.98.41.126:30004/api/apis/findAPI", oData).then((res) => {
+            getData(domain + "api/apis/findAPI", oData).then((res) => {
                 hideLoading();
 
                 /* 添加apis */
@@ -178,7 +178,7 @@ function addModule() {
             let that = this.parentElement;
 
             showLoading();
-            getData("http://39.98.41.126:30004/api/apis/getModulesAndApis", id).then((res) => {
+            getData(domain + "api/apis/getModulesAndApis", id).then((res) => {
                 hideLoading();
                 let data = res.data;
 
@@ -428,7 +428,7 @@ function addSonModule(projectId, parentId) {
         };
         if (name) {
             showLoading();
-            getData("http://39.98.41.126:30004/api/module/createModule", oData).then((res) => {
+            getData(domain + "api/module/createModule", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();
@@ -453,7 +453,7 @@ function exportApiMd(projectId) {
         //     "projectId": projectId
         // }
         showLoading();
-        window.open(`http://39.98.41.126:30004/api/pro/export?projectId=${projectId}&uuid=${Buuid}`);
+        window.open(`${domain}api/pro/export?projectId=${projectId}&uuid=${Buuid}`);
         hideLoading();
         // getData("http://39.98.41.126:30004/api/pro/export", odata)
         //     .then(res => {
@@ -486,7 +486,7 @@ function changeProjName(projectId) {
         };
         if (name) {
             showLoading();
-            getData("http://39.98.41.126:30004/api/pro/updateProject", oData).then((res) => {
+            getData(domain + "api/pro/updateProject", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();
@@ -510,7 +510,7 @@ function changeModuName(parentId) {
         };
         if (name) {
             showLoading();
-            getData("http://39.98.41.126:30004/api/module/updateName", oData).then((res) => {
+            getData(domain + "api/module/updateName", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();
@@ -604,7 +604,7 @@ function moveModu(name, myId) {
         };
         if (parentId) {
             showLoading();
-            getData("http://39.98.41.126:30004/api/module/remove", oData).then((res) => {
+            getData(domain + "api/module/remove", oData).then((res) => {
                 hideLoading();
                 if (res.code == 1)
                     location.reload();
@@ -626,7 +626,7 @@ function deleModu(parentId) {
             "id": parentId
         };
         showLoading();
-        getData("http://39.98.41.126:30004/api/module/delete", oData).then((res) => {
+        getData(domain + "api/module/delete", oData).then((res) => {
             hideLoading();
             if (res.code == 1)
                 location.reload();

@@ -1,5 +1,5 @@
 
-var server = 'http://39.98.41.126:30004/api';
+var server = domain + 'api';
 
 //切换个人页面
 var personTab = document.getElementsByClassName('side-tabs');
@@ -223,7 +223,7 @@ upFile.onchange = function(){
         formData.append('file',photo);
         $.ajax({
             method:"POST",
-            url: 'http://39.98.41.126:30004/api/user/saveUrl',
+            url: domain + 'api/user/saveUrl',
             headers: {
                 "Buuid" : Buuid
             },
