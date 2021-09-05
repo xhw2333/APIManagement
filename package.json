@@ -1,0 +1,25 @@
+{
+  "name": "APIManagement",
+  "version": "1.0.0",
+  "description": "api管理平台-前端",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xhw2333/APIManagement.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xhw2333/APIManagement/issues"
+  },
+  "homepage": "https://github.com/xhw2333/APIManagement#readme"
+}
